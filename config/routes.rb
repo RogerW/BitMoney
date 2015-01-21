@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'account/index'
-
-  get 'account/show'
-
-  get 'account/new'
-
+  resource :accounts
   devise_for :users
 
   root to: "home#index"

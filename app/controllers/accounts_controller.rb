@@ -1,4 +1,4 @@
-class AccountController < ApplicationController
+class AccountsController < ApplicationController
   before_action :authenticate_user!
   
   def index
@@ -36,16 +36,16 @@ class AccountController < ApplicationController
   private
   
   def load_accounts
-    @notes ||= account_scope.to_a
+    @accounts ||= account_scope.to_a
   end
   
   def load_account
-    @note ||= accout_scope.find(params[:id])
+    @account ||= account_scope.find(params[:id])
   end
   
   def build_account
-    @note ||= accout_scope.build
-    @note.attributes = account_params
+    @account ||= account_scope.build
+    @account.attributes = account_params
   end
   
   def save_account
@@ -59,8 +59,8 @@ class AccountController < ApplicationController
     account_params ? account_params.permit(:title, :description) : {}
   end
   
-  def accout_scope
-    current_user.admin? ? Account.scoped : current_user.accounts
+  def account_scope
+    current_user.admin? ? Account.where(nil) : current_user.accounts
   end
   
 end
