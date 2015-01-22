@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    load_account
+    load_account or redirect_to :accounts, alert: t(:could_not_find_account_text)
   end
 
   def new
@@ -14,17 +14,21 @@ class AccountsController < ApplicationController
   end
   
   def edit
-    load_account
+    load_account or redirect_to :accounts, alert: t(:could_not_find_account_text)
     build_account
   end
   
   def create
     build_account
+    flash[:notice] = t(:create_account_successful_text)
     save_account or render :new 
   end
   
   def update
-    
+    load_account
+    build_account
+    flash[:notice] = 'Account updated'
+    save_account or render :edit, notice: t(:could_not_find_account_text)
   end
   
   def destroy
@@ -40,7 +44,7 @@ class AccountsController < ApplicationController
   end
   
   def load_account
-    @account ||= account_scope.find(params[:id])
+    @account ||= account_scope.where(id: params[:id]).first
   end
   
   def build_account
@@ -56,7 +60,18 @@ class AccountsController < ApplicationController
   
   def account_params
     account_params = params[:account]
-    account_params ? account_params.permit(:title, :description) : {}
+    if current_user.admin?
+      
+      if account_params
+        account_params[:user_id].nil? ? account_params[:user_id] = current_user.id : {}
+      end
+      
+      account_params ? account_params.permit(:title, :description, :user_id) : {}
+    else
+      account_params ? account_params.permit(:title, :description) : {}
+    end
+    
+    
   end
   
   def account_scope
