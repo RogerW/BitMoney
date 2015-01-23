@@ -72,3 +72,13 @@ end
         true
     end
 end
+
+Допустим(/^пользователь ([\d\w\.@]+) хочет внести на счет ([\d\w\.@]+) ([\d\.]+) рублей$/) do |email, title, amount|
+    sign_in_by_email(email)
+    account ||= Account.where( :title => title ).first
+    visit "/accounts/#{account.id}"
+    
+    fill_in I18n.t('simple_form.labels.account.amount') , :with => name
+    click_button "Add Funds"
+
+end

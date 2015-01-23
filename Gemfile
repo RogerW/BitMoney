@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'foundation-rails'
 gem 'high_voltage'
 gem 'money-rails'
+gem 'active_type'
 
 group :development do
   gem 'better_errors'

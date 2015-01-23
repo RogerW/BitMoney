@@ -15,6 +15,7 @@ en:
         title: "Title"
         description: "Description"
         submit: "Submit"
+        amount: "Amount"
       
     
     # Examples

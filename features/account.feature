@@ -47,3 +47,19 @@
         | customer2@example.com | test3  | Account don't exist.         |
         | customer1@example.com | test1  | Account updated              | 
         | admin@example.com     | test3  | Account updated              |
+    
+    Структура сценария: Пользователям необходимо дать возможность вносить деньги на счет
+    с занесением соответсвующих записей в БД
+        Допустим созданы счета
+        | email                 | title  |
+        | customer1@example.com | test1  |
+        | customer2@example.com | test2  |
+        | admin@example.com     | test3  |
+        И пользователь <email> хочет внести на счет <title> <amount> рублей
+        То видит сообщение <message>
+    Примеры:
+        | email                 | title  | message                          | amount |
+        | customer1@example.com | test2  | Money deposited successfully     | 10.0   |
+        | customer2@example.com | test3  | Not enough money in the account  | 15.5   |
+        | customer1@example.com | test1  | Money deposited successfully     | 36.7   |
+        | admin@example.com     | test3  | Money deposited successfully     | 98.24  |
