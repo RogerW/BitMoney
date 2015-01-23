@@ -1,0 +1,16 @@
+%h2 Current Account
+
+%span
+    %b Title
+    .title= @account.title
+    
+%span
+    %b Amount
+    .amount= @account.amount
+    
+- unless @add_fund.nil?
+    = simple_form_for(@add_fund) do |form|
+        = form.error_notification
+        = form.input :amount, label: "Amount"
+        = form.input :note
+        = form.button :submit, 'Add Fund' 

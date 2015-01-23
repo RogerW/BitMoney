@@ -4,13 +4,17 @@ source 'https://rails-assets.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
+gem 'pg', group: [:production]
+# Use SQLite for development ant testing
+gem 'sqlite3', group: [:development, :test]
 
 gem 'rails-assets-angular'
 gem 'rails-assets-ng-tags-input'
 gem 'haml-rails'
 gem 'foundation-rails'
-
-gem 'pg', group: [:production]
+gem 'high_voltage'
+gem 'money-rails'
+gem 'active_type'
 
 group :development do
   gem 'better_errors'
@@ -22,11 +26,9 @@ group :development do
   gem "rvm-capistrano"
 end
 
-
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'sqlite3'
 end
 
 group :test do
@@ -40,8 +42,9 @@ end
 gem 'simple_form'
 gem 'russian'
 gem 'devise'
-gem 'rolify'
-gem 'cancan'
+gem 'pundit'
+#gem 'rolify'
+#gem 'cancan'
 
 
 # Use SCSS for stylesheets
@@ -75,5 +78,5 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
 

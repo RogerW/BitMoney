@@ -1,0 +1,17 @@
+!!!
+%html{lang: "ru"}
+  %head
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0", :charset => "utf-8"}
+    %title= content_for?(:title) ? yield(:title) : 'BitMoneyFor.me'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BitMoney'}"}
+    %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge" }
+    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application" 
+    =csrf_meta_tags
+
+  %body
+    = render 'layouts/messages'
+    = yield

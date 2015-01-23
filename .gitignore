@@ -18,3 +18,7 @@ test
 *.swp
 .DS_Store
 /.idea
+<<<<<<< HEAD
+=======
+/.c9
+>>>>>>> d5b3500a03a228994d22b978d20aa7d47acf5225

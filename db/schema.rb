@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150119154415) do
+ActiveRecord::Schema.define(version: 20150123102509) do
+
+  create_table "accounts", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.boolean  "is_default"
+    t.string   "description"
+    t.integer  "balance_cents"
+    t.string   "balance_currency", default: "USD", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
+
+  create_table "invoices", force: true do |t|
+    t.integer  "account_id"
+    t.integer  "amount_cents",    default: 0,     null: false
+    t.string   "amount_currency", default: "USD", null: false
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "invoices", ["account_id"], name: "index_invoices_on_account_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -30,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150119154415) do
     t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

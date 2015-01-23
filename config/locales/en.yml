@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  sign_in_button_text: "Sign in"
+  create_account_successful_text: "Account was created successful."
+  could_not_find_account_text: "Account don\'t exist."
+
