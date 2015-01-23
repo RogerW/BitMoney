@@ -9,4 +9,7 @@
   <data-source source="LOCAL" name="Rails BitMoney: development" uuid="69c19b17-e220-4adc-bd42-9d9d87975952">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails BitMoney: cucumber" uuid="421deb86-bd25-4386-810a-e9cecea3b46b">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>
