@@ -27,7 +27,7 @@ class Account::Transfer < ActiveType::Object
   end
 
   def equal_accounts?
-    if :destination_id == :account_id
+    if account.id == destination.id
       errors.add(:destination_id, "Source and Destination Equal")
     end
   end

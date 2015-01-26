@@ -90,5 +90,6 @@ end
   
   visit "/accounts/#{account_source.id}"
   fill_in "Transfer Amount" , :with => amount
+  select(title_destination, :from => 'account_transfer[destination_id]')
   click_button "Transfer"
 end
