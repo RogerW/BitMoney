@@ -1,31 +1,36 @@
 class AccountAddFund < ActiveType::Object
-    attribute :account_id, :integer
-    attribute :amount, :money
-    attribute :note, :string
-    
-    belongs_to :account, class_name: 'Account'
+  attribute :account_id, :integer
+  attribute :amount, :string
+  attribute :note, :string
 
-    validate :price_in_a_range_cents
-    validates_presence_of :id, :amount
+  # monetize :amount
     
-    after_save :add_funds
-    after_save :create_invoice
+  belongs_to :account, class_name: 'Account'
+
+  validate :price_in_a_range_cents
+  validates_presence_of :account_id, :amount
+    
+  after_save :add_fund
+  after_save :create_invoice
     
     
-    private
+  private
     
-    def price_in_a_range_cents
-        if amount <= 0
-            errors.add(:amount, "Amount must be greater than 0")
-        end
+  def price_in_a_range_cents
+    if amount.to_f <= 0.0
+      errors.add(:amount, "Amount must be greater than 0")
+      return false
     end
+    return true
+  end
     
-    def create_add_fund
-        account.update_attributes!(amount: account.amount + amount)
-    end
+  def add_fund
+    account.update_attributes!(balance: account.balance + amount.to_f)
+  end
     
-    def create_invoice
-        account.invoices.create( amount: amount, note: note )
-    end
+  def create_invoice
+    account.invoices.create( amount: amount, note: note )
+  end
+
     
 end

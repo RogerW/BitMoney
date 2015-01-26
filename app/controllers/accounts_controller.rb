@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @add_funds ||= AccountAddFund.new()
+    @add_fund ||= AccountAddFund.new()
     load_account or redirect_to :accounts, alert: t(:could_not_find_account_text)
   end
 

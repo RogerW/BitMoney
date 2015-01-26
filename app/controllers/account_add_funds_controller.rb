@@ -7,7 +7,7 @@ class AccountAddFundsController < ApplicationController
     
     def create
         build_account_add_fund
-        if @add_funds.save
+        if @add_fund.save
             redirect_to :back, :notice => "Money deposited successfully"
         else
             redirect_to :new
@@ -17,11 +17,12 @@ class AccountAddFundsController < ApplicationController
     private
     
     def build_account_add_fund
-        @add_funds ||= AccountAddFund.new(account_add_fund_param)
+        @add_fund ||= AccountAddFund.new(account_add_fund_param)
     end
     
     def account_add_fund_param
-        account_add_fund_param = params[:add_funds]
-        account_add_fund_param ? account_add_fund_param.permit(:id, :amount, :note) : {}
+        account_add_fund_param = params[:account_add_fund]
+        account_add_fund_param[:account_id] = params[:account_id]
+        account_add_fund_param ? account_add_fund_param.permit(:account_id, :amount, :note) : {}
     end
 end
