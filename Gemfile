@@ -11,7 +11,7 @@ gem 'sqlite3', group: [:development, :test]
 gem 'rails-assets-angular'
 gem 'rails-assets-ng-tags-input'
 gem 'haml-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.5'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'

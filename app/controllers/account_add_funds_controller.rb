@@ -22,7 +22,7 @@ class AccountAddFundsController < ApplicationController
     
     def account_add_fund_param
         account_add_fund_param = params[:account_add_fund]
-        account_add_fund_param[:account_id] = params[:account_id]
+        account_add_fund_param[:account_id] ? {} :account_add_fund_param[:account_id] = params[:account_id]
         account_add_fund_param ? account_add_fund_param.permit(:account_id, :amount, :note) : {}
     end
 end

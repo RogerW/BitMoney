@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :accounts do
     resources :account_add_funds, only: [:new, :create]
-    resources :account_transfers, only: [:new, :create] 
+    namespace :account do
+      resources :transfers, only: [:new, :create]
+    end
   end
   
   devise_for :users

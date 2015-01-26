@@ -76,6 +76,6 @@
     Примеры:
         | email                 | title_source  | title_destination | message                          | amount |
         | customer1@example.com | test1         | test1             | Source and Destination Equal     | 10.0   |
-        | customer2@example.com | test2         | test1             | Money transfered successfully    | 15.5   |
+        | customer1@example.com | test2         | test1             | Money transfered successfully    | 15.5   |
         | customer1@example.com | test1         | test2             | Money transfered successfully    | 36.7   |
         | customer1@example.com | test1         | test2             | Not enough money                 | 110.0  | 

@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123102509) do
+ActiveRecord::Schema.define(version: 20150126160216) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.boolean  "is_default"
     t.string   "description"
-    t.integer  "balance_cents",    default: 0,     null: false
+    t.integer  "balance_cents"
     t.string   "balance_currency", default: "USD", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150123102509) do
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "withdrawal?",     default: false
   end
 
   add_index "invoices", ["account_id"], name: "index_invoices_on_account_id"
