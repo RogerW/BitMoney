@@ -78,7 +78,17 @@ end
     account ||= Account.where( :title => title ).first
     visit "/accounts/#{account.id}"
     
-    fill_in I18n.t('simple_form.labels.account.amount') , :with => name
-    click_button "Add Funds"
+    fill_in "Amount Fu" , :with => amount
+    click_button "Add Fund"
 
+end
+
+Допустим(/^пользователь ([\d\w\.@]+) хочет перенести с счета ([\d\w]+) на счет ([\d\w]+) ([\d\.]+) рублей$/) do |email, title_source, title_destination, amount|
+  sign_in_by_email(email)
+  account_source ||= Account.where( :title => title_source ).first
+  account_destination ||= Account.where( :title => title_destination ).first
+  
+  visit "/accounts/#{account_source.id}"
+  fill_in "Transfer Amount" , :with => amount
+  click_button "Transfer"
 end

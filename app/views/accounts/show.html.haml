@@ -10,6 +10,13 @@
 
 = simple_form_for(@add_fund, :url => account_account_add_funds_path(account_id: @account.id)) do |form|
     = form.error_notification
-    = form.input :amount, label: "Amount"
+    = form.input :amount, label: "Amount Fund"
     = form.input :note
     = form.button :submit, 'Add Fund'
+    
+= simple_form_for(@account_transfer, :url => account_account_transfers_path(account_id: @account.id)) do |form|
+    = form.error_notification
+    = form.input :amount, label: "Transfer Amount"
+    = form.input :destination_id, collection: current_user.accounts
+    = form.input :note
+    = form.button :submit, 'Transfer'

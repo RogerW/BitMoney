@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :title
       t.boolean :is_default
       t.string :description
-      t.money :balance, amount: { null: true, default: nil }
+      t.money :balance, amount: { null: false, default: 0 }
 
       t.timestamps
     end

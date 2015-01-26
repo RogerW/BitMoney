@@ -31,7 +31,7 @@
         | email                 | title  | message                      |
         | customer1@example.com | test2  | Account don't exist.         |
         | customer2@example.com | test3  | Account don't exist.         |
-        | admin@example.com     | test1  | Find me in app               |
+        | admin@example.com     | test1  | Current Account              |
          
     Структура сценария: Пользователь пытается отредактировать счет
         Допустим созданы счета
@@ -59,7 +59,23 @@
         То видит сообщение <message>
     Примеры:
         | email                 | title  | message                          | amount |
-        | customer1@example.com | test2  | Money deposited successfully     | 10.0   |
-        | customer2@example.com | test3  | Not enough money in the account  | 15.5   |
+        | customer1@example.com | test1  | Money deposited successfully     | 10.0   |
+        | customer2@example.com | test2  | Money deposited successfully     | 15.5   |
         | customer1@example.com | test1  | Money deposited successfully     | 36.7   |
         | admin@example.com     | test3  | Money deposited successfully     | 98.24  |
+        | admin@example.com     | test2  | Money deposited successfully     | 15.24  |
+    
+    Структура сценария: Пользователям необходимо дать возможность переводить деньги между своими счетами
+        Допустим созданы счета
+        | email                 | title  | balance  |
+        | customer1@example.com | test1  | 100.00   |
+        | customer1@example.com | test2  | 100.00   |
+        | admin@example.com     | test3  | 101.00   |
+        И пользователь <email> хочет перенести с счета <title_source> на счет <title_destination> <amount> рублей
+        То видит сообщение <message>
+    Примеры:
+        | email                 | title_source  | title_destination | message                          | amount |
+        | customer1@example.com | test1         | test1             | Source and Destination Equal     | 10.0   |
+        | customer2@example.com | test2         | test1             | Money transfered successfully    | 15.5   |
+        | customer1@example.com | test1         | test2             | Money transfered successfully    | 36.7   |
+        | customer1@example.com | test1         | test2             | Not enough money                 | 110.0  | 

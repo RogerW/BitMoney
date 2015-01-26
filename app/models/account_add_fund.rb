@@ -25,12 +25,11 @@ class AccountAddFund < ActiveType::Object
   end
     
   def add_fund
-    account.update_attributes!(balance: account.balance + amount.to_f)
+    account.update_attributes!(balance: account.balance + amount.to_money)
   end
     
   def create_invoice
     account.invoices.create( amount: amount, note: note )
   end
 
-    
 end
