@@ -29,7 +29,7 @@ class AccountAddFund < ActiveType::Object
   end
     
   def create_invoice
-    account.invoices.create( amount: amount, note: note, withdrawal?: false )
+    account.invoices.create( amount: amount, note: note, type: :add_fund )
   end
 
 end

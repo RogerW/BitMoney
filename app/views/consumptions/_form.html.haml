@@ -1,0 +1,9 @@
+= simple_form_for(@consumption) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :invoice
+    = f.association :consumption_type
+
+  .form-actions
+    = f.button :submit

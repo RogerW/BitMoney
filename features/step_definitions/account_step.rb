@@ -24,6 +24,11 @@ def create_account_by_email_and_title(email, title)
     FactoryGirl.create(:account, { user_id: user.id, title: title })
 end
 
+def create_account_by_email_and_title_and_balance(email, title, balance)
+    user ||= User.where( :email => email ).first
+    FactoryGirl.create(:account, { user_id: user.id, title: title, balance: balance })
+end
+
 
 Допустим(/^созданы пользователи$/) do |table|
     table.hashes.each do |row|
@@ -46,6 +51,12 @@ end
 Допустим(/^созданы счета$/) do |table|
     table.hashes.each do |row|
         create_account_by_email_and_title(row[:email], row[:title])
+    end
+end
+
+Допустим(/^созданы счета c балансом$/) do |table|
+    table.hashes.each do |row|
+        create_account_by_email_and_title_and_balance(row[:email], row[:title], row[:balance])
     end
 end
 
@@ -92,4 +103,12 @@ end
   fill_in "Transfer Amount" , :with => amount
   select(title_destination, :from => 'account_transfer[destination_id]')
   click_button "Transfer"
+end
+
+Допустим(/^пользователь вносит расход ([\d\w\.:;]+) на счет ([\d\w\.@]+)$/) do |basket, title|
+  
+end
+
+То(/^видит остаток ([\d\.]+)$/) do |balance|
+  expect(page).to have_content "Balance: #{balance}"
 end

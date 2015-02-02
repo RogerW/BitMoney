@@ -41,11 +41,11 @@ class Account::Transfer < ActiveType::Object
   end
   
   def create_add_fund_invoice
-    destination.invoices.create(amount: amount, note: "Transfer from account id #{account.id} #{note}", withdrawal?: false)
+    destination.invoices.create(amount: amount, note: "Transfer from account id #{account.id} #{note}", type: :add_fund )
   end
   
   def create_withdrawal_invoice
-    account.invoices.create(amount: amount, note: "Transfer to account id #{destination.id} #{note}", withdrawal?: true)
+    account.invoices.create(amount: amount, note: "Transfer to account id #{destination.id} #{note}", type: :withdrawal)
   end
   
   def source_account

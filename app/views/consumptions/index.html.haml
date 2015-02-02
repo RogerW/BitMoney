@@ -1,0 +1,23 @@
+%h1 Listing consumptions
+
+%table
+  %thead
+    %tr
+      %th Invoice
+      %th Consumption type
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @consumptions.each do |consumption|
+      %tr
+        %td= consumption.invoice
+        %td= consumption.consumption_type
+        %td= link_to 'Show', consumption
+        %td= link_to 'Edit', edit_consumption_path(consumption)
+        %td= link_to 'Destroy', consumption, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Consumption', new_consumption_path

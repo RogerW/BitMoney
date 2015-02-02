@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :consumptions
+
+  resources :consumption_types
+
   resources :invoices
 
   resources :accounts do

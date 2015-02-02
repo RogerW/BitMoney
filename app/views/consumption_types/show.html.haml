@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @consumption_type.title
+%p
+  %b User:
+  = @consumption_type.user
+
+= link_to 'Edit', edit_consumption_type_path(@consumption_type)
+\|
+= link_to 'Back', consumption_types_path

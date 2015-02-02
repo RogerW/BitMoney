@@ -66,7 +66,7 @@
         | admin@example.com     | test2  | Money deposited successfully     | 15.24  |
     
     Структура сценария: Пользователям необходимо дать возможность переводить деньги между своими счетами
-        Допустим созданы счета
+        Допустим созданы счета c балансом
         | email                 | title  | balance  |
         | customer1@example.com | test1  | 100.00   |
         | customer1@example.com | test2  | 100.00   |
@@ -75,7 +75,23 @@
         То видит сообщение <message>
     Примеры:
         | email                 | title_source  | title_destination | message                          | amount |
-        | customer1@example.com | test1         | test1             | Source and Destination Equal     | 10.0   |
-        | customer1@example.com | test2         | test1             | Money transfered successfully    | 15.5   |
-        | customer1@example.com | test1         | test2             | Money transfered successfully    | 36.7   |
-        | customer1@example.com | test1         | test2             | Not enough money                 | 110.0  | 
+        | customer1@example.com | test1         | test1             | Source and Destination Equal     | 10     |
+        | customer1@example.com | test2         | test1             | Money transfered successfully    | 15     |
+        | customer1@example.com | test1         | test2             | Money transfered successfully    | 36     |
+        | customer1@example.com | test1         | test2             | Not enough money                 | 110    |
+    
+    Структура сценария: Пользователям необходимо дать возможность вносить расходы
+        Допустим созданы счета c балансом
+        | email                 | title  | balance  |
+        | customer1@example.com | test1  | 100.00   |
+        | customer1@example.com | test2  | 100.00   |
+        | customer1@example.com | test3  | 100.00   |
+        И пользователь <email> авторизован в системе
+        Также пользователь вносит расход <basket> на счет <title>
+        То видит сообщение <message>
+        И видит остаток <balance>
+    Примеры:
+        | email                 | title  | message                      | basket                            | balance   |
+        | customer1@example.com | test1  | Expenses made successfully   | test1:10.5;test2:29.5;test3:50.0  | 10.0      |
+        | customer2@example.com | test2  | Expenses made successfully   | test1:10.5;test2:29.5;test3:60.0  | 0.0       |
+        | customer1@example.com | test3  | Not enough money             | test1:10.5;test2:29.5;test3:70.0  | 100.0     |
