@@ -1,47 +1,63 @@
 class ConsumptionsController < ApplicationController
-  before_action :set_consumption, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  before_action :authenticate_user!
 
   def index
-    @consumptions = Consumption.all
-    respond_with(@consumptions)
+    load_consumptions
   end
 
   def show
-    respond_with(@consumption)
-  end
-
-  def new
-    @consumption = Consumption.new
-    respond_with(@consumption)
+    load_consumption
   end
 
   def edit
+    load_consumption
+    build_consumption
   end
 
-  def create
-    @consumption = Consumption.new(consumption_params)
-    @consumption.save
-    respond_with(@consumption)
+  def new
+    build_consumption
   end
 
   def update
-    @consumption.update(consumption_params)
-    respond_with(@consumption)
+    load_consumption
+    build_consumption
+    save_consumptions
   end
 
   def destroy
+    load_consumption
     @consumption.destroy
-    respond_with(@consumption)
+    redirect_to consumption_path
   end
 
-  private
-    def set_consumption
-      @consumption = Consumption.find(params[:id])
-    end
 
-    def consumption_params
-      params.require(:consumption).permit(:invoice_id, :consumption_type_id)
+  private
+
+  def consumption_scope
+    current_user.admin? ? Consumption.where(nil) : current_user.accounts
+  end
+
+  def consumption_params
+    consumption_params = params[:consumption]
+    consumption_params ? account_params.permit(:consumption_type_id, :invoice_id) : {}
+  end
+
+  def load_consumption
+    @consumption ||= consumption_scope.to_a
+  end
+
+  def load_consumptions
+    @consumptions ||= consumption_scope.where(id: params[:id]).first
+  end
+
+  def build_consumption
+    @consumption ||= consumption_scope.build
+    @consumption.attributes = consumption_params
+  end
+
+  def save_consumptions
+    if @consumption.save
+      redirect_to @consumption
     end
+  end
 end

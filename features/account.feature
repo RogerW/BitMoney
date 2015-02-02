@@ -87,11 +87,11 @@
         | customer1@example.com | test2  | 100.00   |
         | customer1@example.com | test3  | 100.00   |
         И пользователь <email> авторизован в системе
-        Также пользователь вносит расход <basket> на счет <title>
+        Также пользователь вносит расход <consumption> на сумму <amount> на счет <title>
         То видит сообщение <message>
         И видит остаток <balance>
     Примеры:
-        | email                 | title  | message                      | basket                            | balance   |
-        | customer1@example.com | test1  | Expenses made successfully   | test1:10.5;test2:29.5;test3:50.0  | 10.0      |
-        | customer2@example.com | test2  | Expenses made successfully   | test1:10.5;test2:29.5;test3:60.0  | 0.0       |
-        | customer1@example.com | test3  | Not enough money             | test1:10.5;test2:29.5;test3:70.0  | 100.0     |
+        | email                 | title  | message                      | consumption | amount  | balance   |
+        | customer1@example.com | test1  | Expenses made successfully   | others      | 10.0    | 90.0      |
+        | customer1@example.com | test2  | Expenses made successfully   | others      | 99.9    | 0.1       |
+        | customer1@example.com | test3  | Not enough money             | others      | 110.0   | 100.0     |

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :consumptions
+
 
   resources :consumption_types
 
@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :accounts do
     resources :account_add_funds, only: [:new, :create]
+    resources :consumptions
+
     namespace :account do
       resources :transfers, only: [:new, :create]
     end

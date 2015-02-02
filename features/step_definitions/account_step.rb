@@ -105,8 +105,13 @@ end
   click_button "Transfer"
 end
 
-Допустим(/^пользователь вносит расход ([\d\w\.:;]+) на счет ([\d\w\.@]+)$/) do |basket, title|
-  
+Допустим(/^пользователь вносит расход ([\d\w\.]+) на сумму ([\d\.]+) на счет ([\d\w\.]+)$/) do |consumption, amount, title|
+  account ||= Account.where( :title => title ).first
+  visit "/accounts/#{account.id}"
+
+  fill_in "Consumption Amount", with: amount
+  select(consumption, from: 'account_consumption[consumption_id]')
+  click_button 'Add Consumption'
 end
 
 То(/^видит остаток ([\d\.]+)$/) do |balance|
