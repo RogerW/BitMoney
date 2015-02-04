@@ -1,12 +1,14 @@
 class Account::TransfersController < ApplicationController
   before_action :authenticate_user!
-    
+  include Pundit
+  
   def new
     build_account_transfer
   end
 
   def create
     build_account_transfer
+    authorize @account_transfer
     if @account_transfer.save
       redirect_to :back, :notice => "Money transfered successfully"
     else

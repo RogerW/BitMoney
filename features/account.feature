@@ -92,6 +92,6 @@
         И видит остаток <balance>
     Примеры:
         | email                 | title  | message                      | consumption | amount  | balance   |
-        | customer1@example.com | test1  | Expenses made successfully   | others      | 10.0    | 90.0      |
-        | customer1@example.com | test2  | Expenses made successfully   | others      | 99.9    | 0.1       |
-        | customer1@example.com | test3  | Not enough money             | others      | 110.0   | 100.0     |
+        | customer1@example.com | test1  | Expenses made successfully   | Разное      | 10.0    | 90.0      |
+        | customer1@example.com | test2  | Expenses made successfully   | Разное      | 99.9    | 0.1       |
+        | customer1@example.com | test3  | Not enough money             | Разное      | 110.0   | 100.0     |

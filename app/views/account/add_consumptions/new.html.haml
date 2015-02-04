@@ -1,0 +1,5 @@
+%span
+    %b Balance:
+    .balance= Account.find(params[:account_id]).balance
+
+= render partial: 'shared/consumption', locals: { consumption: @add_consumption, account_id: params[:account_id] }

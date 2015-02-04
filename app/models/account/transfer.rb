@@ -17,7 +17,7 @@ class Account::Transfer < ActiveType::Object
   after_save :withdrawal
   after_save :create_add_fund_invoice
   after_save :create_withdrawal_invoice
-  
+
   private
   
   def has_money?
@@ -41,15 +41,16 @@ class Account::Transfer < ActiveType::Object
   end
   
   def create_add_fund_invoice
-    destination.invoices.create(amount: amount, note: "Transfer from account id #{account.id} #{note}").add_fund!
+    destination.invoices.create(amount: amount, note: "Transfer from account id #{account.id} #{note}", 
+        invtype: Invoice.invtypes[:add_fund])
   end
   
   def create_withdrawal_invoice
-    account.invoices.create(amount: amount, note: "Transfer to account id #{destination.id} #{note}").withdrawal!
-  end
-  
-  def source_account
-    Account.find(:account_id)
+    invoice = account.invoices.create(amount: amount, 
+        note: "Transfer to account id #{destination.id} #{note}", 
+        invtype: Invoice.invtypes[:withdrawal])
+    consumption_type_id = ConsumptionType.where(title: "Перевод").first
+    invoice.consumptions.create(consumption_type_id: consumption_type_id)
   end
   
 end

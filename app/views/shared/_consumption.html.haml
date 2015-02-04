@@ -1,3 +1,7 @@
-= simple_form_for(consumption)
+= simple_form_for(consumption, :url => account_account_add_consumptions_path(account_id: account_id)) do |form|
 	= form.error_notification
-	= form.
+	= form.input :amount, label: "Consumption Amount"
+	= form.input :consumption_type_id, collection: current_user.consumption_types
+	= form.input :note
+	= form.button :submit, 'Add Consumption'
+    
