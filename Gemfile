@@ -12,9 +12,12 @@ gem 'rails-assets-angular'
 gem 'rails-assets-ng-tags-input'
 gem 'haml-rails'
 gem 'foundation-rails', '5.4.5'
+gem 'foundation-icons-sass-rails'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
+
+gem 'google-webfonts-rails'
 
 group :development do
   gem 'better_errors'
@@ -24,6 +27,7 @@ group :development do
   gem 'rails_layout'
   gem "capistrano"
   gem "rvm-capistrano"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
@@ -43,12 +47,11 @@ gem 'simple_form'
 gem 'russian'
 gem 'devise'
 gem 'pundit'
-#gem 'rolify'
-#gem 'cancan'
 
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -59,7 +62,7 @@ gem 'therubyracer',  platforms: :ruby
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,2 +1,39 @@
-%h1 Account#index
-%p Find me in app/views/account/index.html.haml
+.row
+	.columns.large-3.small-3.medium-3
+		%a.radius.button.warning.expand{:href => "#", "data-reveal-id" => "add_consumption"}= t(:add_consumption_label)
+	.columns.large-3.small-3.medium-3
+		%a.radius.button.success.expand{:href => "#", "data-reveal-id" => "add_fund"}= t(:add_fund_label)
+.row
+	.columns.large-6.small-12.medium-6
+		.row
+			.columns.large-12
+				%h3= t('accounts_header')
+		- @accounts.each do |account|
+			.row.account
+				.columns.small-6
+					%span.account_title= account.title
+					= link_to t('edit_link'), edit_account_path(account), class: "edit modification"
+					= link_to t('delete_link'), account_path(account), method: :delete, class: "delete modification"
+				.columns.small-6
+					%span.account_balance= account.balance
+					%a.account_add_consumption.modification{:href => "#", "data-reveal-id" => "add_consumption"}
+						%i.fi-minus.add_consumption
+					%a.account_add_fund.modification{:href => "#", "data-reveal-id" => "add_fund"}
+						%i.fi-plus.add_fund
+					%a.account_add_transfer.modification{:href => "#", "data-reveal-id" => "add_consumption"}
+						%i.fi-arrow-right.add_transfer
+		.row
+			.columns.large-6.medium-6.small-12
+				=link_to t('create_account_link'), new_account_path, class: "radius button expand"
+
+	.columns.large-6.small-12.medium-6
+		.row
+			.columns.large-12
+				%h3= t('accounts_invoices_header')
+		-
+
+#add_consumption.reveal-modal{"data-reveal" => true}
+	= render partial: "shared/consumption", locals: {consumption: add_consumption}
+
+#add_fund.reveal-modal{"data-reveal" => true}
+	= render partial: "shared/add_fund", locals: {consumption: add_consumption}

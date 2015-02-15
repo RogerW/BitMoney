@@ -8,10 +8,21 @@
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
+    = google_webfonts_init({google: ['Neucha', 'Poiret One']})
+
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application" 
     =csrf_meta_tags
 
   %body
-    = render 'layouts/messages'
-    = yield
+    .page-wrap
+      = render 'layouts/navigation'
+      = render 'layouts/messages'
+      = yield
+
+  .footer
+    .row
+      .columns.large-12.medium-12.small-12
+        %span
+          %span (c) BitMoney.me 2015
+          %br= link_to "О нас", page_path('about')

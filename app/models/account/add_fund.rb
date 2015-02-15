@@ -1,4 +1,4 @@
-class AccountAddFund < ActiveType::Object
+class Account::AddFund < ActiveType::Object
   attribute :account_id, :integer
   attribute :amount, :string
   attribute :note, :string

@@ -1,3 +1,48 @@
-// Place all the styles related to the Account controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation-icons';
+
+.account {
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+}
+.account_title {
+  font-size: 1.5rem;
+  font-weight: 1.8rem ;
+  color: #273333;
+  text-transform: uppercase;
+}
+
+.account_balance {
+  font-size: 1.8rem;
+  font-weight: 1.8rem ;
+  color: #273333;
+  text-transform: uppercase;
+}
+
+.account .modification {
+  visibility: hidden;
+}
+
+.account:hover .modification {
+  visibility: visible ;
+}
+
+
+.edit {
+  color: #7CA668
+}
+
+.delete {
+  color: #FC575E
+}
+
+.add_consumption {
+  color: #FC575E
+}
+
+.add_fund {
+  color: #7CA668
+}
+
+.add_transfer {
+  color: #398EC4
+}

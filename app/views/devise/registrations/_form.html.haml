@@ -1,0 +1,12 @@
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |form|
+	.row
+		.large-12.small-12.medium-12.column
+			= form.input :email, label: false
+	.row
+		.large-6.column
+			= form.input :password, label: false
+		.large-6.column
+			= form.input :password_confirmation, label: false
+	.row
+		.large-4.small-12.medium-4.column
+			= form.button :submit, class: "small success"

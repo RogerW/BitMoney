@@ -1,7 +1,6 @@
-= simple_form_for(consumption) do |form|
+= simple_form_for(add_fund) do |form|
 	= form.error_notification
 	= form.input :account_id, collection: current_user.accounts, blank: false
 	= form.input :amount, label: "Consumption Amount"
-	= form.input :consumption_type_id, collection: current_user.consumption_types
 	= form.input :note
 	= form.button :submit

@@ -1,4 +1,4 @@
-class AccountAddFundsController < ApplicationController
+class Account::AddFundsController < ApplicationController
     before_action :authenticate_user!
 
     def new
@@ -17,7 +17,7 @@ class AccountAddFundsController < ApplicationController
     private
     
     def build_account_add_fund
-        @add_fund ||= AccountAddFund.new(account_add_fund_param)
+        @add_fund ||= AddFund.new(account_add_fund_param)
     end
     
     def account_add_fund_param

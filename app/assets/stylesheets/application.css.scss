@@ -13,5 +13,28 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
-
  */
+
+html, body {
+    height: 100%;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -70px;
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.footer, .page-wrap:after {
+  height: 70px;
+  background-color: #273333;
+  vertical-align: middle;
+  color: #ffffff;
+  padding-top: 10px;
+  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
+}

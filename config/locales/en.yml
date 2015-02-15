@@ -24,4 +24,17 @@ en:
   sign_in_button_text: "Sign in"
   create_account_successful_text: "Account was created successful."
   could_not_find_account_text: "Account don\'t exist."
+  sign_up_link: 'Sign Up'
+  sign_in_link: 'Sign In'
 
+
+  promo_text_money: "Если Вы будете фиксировать все ваши расходы и доходы в нашей системе, Вы всегда будете знать все ваши затраты в течении месяца. Это позволит увидеть, где Вы можете сэкономить, в конечном счете, сохраняя больше денег."
+  sign_out_link: "Sign Out"
+  add_consumption_label: "Add Consumption"
+  add_fund_label: "Add Fund"
+  accounts_header: "Счета"
+  create_account_link: "Create Account"
+  add_transaction_label: "Add  Transaction"
+  edit_link: "Edit"
+  delete_link: "Delete"
+  accounts_invoices_header: "Операции по счетам"

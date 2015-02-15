@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150203111517) do
     t.string   "title"
     t.boolean  "is_default"
     t.string   "description"
-    t.integer  "balance_cents",    default: 0,     null: false
+    t.integer  "balance_cents"
     t.string   "balance_currency", default: "USD", null: false
     t.datetime "created_at"
     t.datetime "updated_at"

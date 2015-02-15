@@ -1,3 +1,133 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+.header {
+  height:  500px;
+  background-color: #3064a8;
+  background-image: asset_url("main_bg.png", image);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: auto 500px;
+  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
+  margin-bottom: 70px;
+//  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.2);
+}
+
+#wrap__navigation {
+  height: 55px;
+}
+
+.button-group {
+  float: right;
+}
+
+.button-group > li > button, .button-group > li .button {
+  background-color: transparent;
+}
+.button-group a {
+  color: #273333;
+}
+
+.button-group a:hover {
+  color: black;
+}
+
+#logo__text {
+  font-family: 'Neucha', cursive;
+  font-size: 5em;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+.promo__header {
+  color: #273333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.promo__button {
+  text-align: center;
+}
+
+a.registry {
+  background-color: #3064a8;
+  color: #ffffff;
+}
+
+a:visited.registry {
+  color: #ffffff;
+}
+
+a:hover.registry {
+  color: #ffffff;
+  background-color: #3074b8;
+}
+
+.slogan {
+  color: #ffffff;
+  font-size: 18px;
+  font-family: 'Poiret One', cursive;
+}
+
+#registry_slogan {
+  margin-top: 40px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Poiret One', cursive;
+}
+
+.promo__line {
+  margin-bottom: 30px;
+}
+
+.promo__image {
+  padding-right:  1.5rem;
+  padding-left:  1.5rem;
+}
+
+div.promo__line > p {
+  font-size: 15px;
+  color: #273333;
+}
+
+.promo__text__right {
+  height: 200px;
+  padding-left:  1.5rem;
+}
+
+.promo__text__left {
+  height: 200px;
+  padding-left: 1.5rem;
+  text-align: right;
+}
+
+.promo__text__right > p, .promo__text__left > p {
+  font-size: 16px;
+  color: #637272;
+}
+
+.promo__text__right > p:hover, .promo__text__left > p:hover {
+  color: #273333;
+}
+
+.promo {
+  padding: 2% 0;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+p.promo {
+  font-size: 15px;
+  color: #273333;
+}
+
