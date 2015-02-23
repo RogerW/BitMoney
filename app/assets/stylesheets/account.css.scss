@@ -1,4 +1,3 @@
-@import 'foundation-icons';
 
 .account {
   padding-bottom: .5rem;
@@ -18,31 +17,6 @@
   text-transform: uppercase;
 }
 
-.account .modification {
-  visibility: hidden;
-}
-
-.account:hover .modification {
-  visibility: visible ;
-}
-
-
-.edit {
-  color: #7CA668
-}
-
-.delete {
-  color: #FC575E
-}
-
-.add_consumption {
-  color: #FC575E
-}
-
-.add_fund {
-  color: #7CA668
-}
-
-.add_transfer {
-  color: #398EC4
+.accounts_header {
+  font-family: 'Open Sans', sans-serif;
 }

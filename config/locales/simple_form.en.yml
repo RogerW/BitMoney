@@ -10,28 +10,9 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-    labels:
-      defaults:
-        password: 'Password'
-      account:
-        title: "Title"
-        description: "Description"
-        submit: "Submit"
-        amount: "Amount"
 
-    hints:
-      defaults:
-        password: 'No special characters, please.'
-        email: 'E-mail to sign in.'
     placeholders:
       defaults:
         email: 'E-mail'
         password: 'Password'
         password_confirmation: 'Confirm Password'
-  helpers:
-    submit:
-      seession:
-        create: "Sing In"
-
-
-    

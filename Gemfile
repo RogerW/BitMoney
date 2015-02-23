@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -8,11 +8,15 @@ gem 'pg', group: [:production]
 # Use SQLite for development ant testing
 gem 'sqlite3', group: [:development, :test]
 
-gem 'rails-assets-angular'
-gem 'rails-assets-ng-tags-input'
+source 'https://rails-assets.org' do
+  # gem 'rails-assets-boostrap-sass'
+  gem 'rails-assets-bootstrap-material-design'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-ng-tags-input'
+end
+
 gem 'haml-rails'
-gem 'foundation-rails', '5.4.5'
-gem 'foundation-icons-sass-rails'
+gem 'bootstrap-sass', '~> 3.3.3'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
@@ -27,7 +31,6 @@ group :development do
   gem 'rails_layout'
   gem "capistrano"
   gem "rvm-capistrano"
-  gem "binding_of_caller"
 end
 
 group :development, :test do
@@ -48,6 +51,7 @@ gem 'russian'
 gem 'devise'
 gem 'pundit'
 
+gem 'sprockets-rails', '>= 2.1.4'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

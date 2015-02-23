@@ -1,11 +1,10 @@
-.row#wrap__navigation
-	.large-6.small-12.medium-4.columns
-		-#%span ""
-	.large-6.small-12.medium-4.columns
-		.nav-bar
-			%ul.button-group
-				- if user_signed_in?
-					%li= link_to t(:sign_out_link), destroy_user_session_path, class: 'button'
-				- else
-					%li= link_to t(:sign_in_link), new_user_session_path, class: 'button'
-					%li= link_to t(:sign_up_link), new_user_registration_path, class: 'button'
+.container
+	.row#wrap__navigation
+		.col-md-6.col-lg-6.col-sm-12
+			%h2.logo MoneyBit.me
+		.col-md-6.col-lg-6.col-sm-12.text-right
+			- if user_signed_in?
+				= link_to t(:sign_out_link), destroy_user_session_path, class: 'btn btn-flat btn-default'
+			- else
+				= link_to t(:sign_in_link), new_user_session_path, class: 'btn btn-flat btn-default'
+				= link_to t(:sign_up_link), new_user_registration_path, class: 'btn btn-flat btn-default'

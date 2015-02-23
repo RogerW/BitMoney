@@ -1,7 +1,13 @@
-= simple_form_for(consumption) do |form|
-	= form.error_notification
-	= form.input :account_id, collection: current_user.accounts, blank: false
-	= form.input :amount, label: "Consumption Amount"
-	= form.input :consumption_type_id, collection: current_user.consumption_types
-	= form.input :note
-	= form.button :submit
+= simple_form_for(consumption,  html: { class: 'form-horizontal' }, wrapper: :horizontal_form,
+	wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes,
+		radio_buttons: :horizontal_radio_and_checkboxes,
+		file: :horizontal_file_input,
+		boolean: :horizontal_boolean} ) do |form|
+	%fieldset
+
+		= form.error_notification
+		= form.input :account_id, collection: current_user.accounts, blank: false, input_html: { class: 'form-control' }
+		= form.input :amount, label: "Consumption Amount", input_html: { class: 'form-control' }
+		= form.input :consumption_type_id, collection: current_user.consumption_types, input_html: { class: 'form-control' }
+		= form.input :note, input_html: { class: 'form-control' }
+		= form.button :submit, class: "btn btn-danger"

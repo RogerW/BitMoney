@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :accounts
+  has_many :accounts, dependent: :destroy
   has_many :consumption_types, dependent: :destroy
+  has_many :invoices, through: :accounts
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

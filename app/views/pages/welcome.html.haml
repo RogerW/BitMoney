@@ -1,43 +1,46 @@
 %section.header
+	.container
+		.row
+			.col-xs-5
+				.row
+					.col-xs-12
+						#logo__text
+							%span#logo__left MoneyBit.me
+				.row
+					.col-xs-12
+						%p.slogan
+							%em Возможно, самая простая система учета ваших финансов, которую вы можете найти!
+				.row
+					.col-xs-12
+						= link_to "Зарегиститроваться сейчас!", new_user_registration_path, class: "btn btn-warning"
+			.col-xs-7
+				= image_tag "EasilyEditOnYourMac.png", class: "img-responsive"
+.container
 	.row
-		.large-5.columns
-			.row
-				.columns.large-12
-					#logo__text
-						%span#logo__left BitMoney.me
-			.row
-				.columns.large-12
-					%p.slogan Возможно, самая простая система учета ваших финансов, которую вы можете найти!
-			.row
-				.columns.large-12
-					%p#registry_slogan Зарегиститроваться сейчас!
-			= render 'devise/registrations/form'
-		.large-7.column
-			= image_tag "EasilyEditOnYourMac.png"
-.row.promo__line
-	.columns.large-12.medium-12.small-12
-		%h2.promo__header 3 Причины регистрации на BitMoney.me
-.row.promo__line
-	.columns.small-6.promo__image
-		= image_tag "kopilka.png", class: "right"
-	.columns.small-6.left.promo__text__right
-		%h4 Вы всегда знаете куда уходят ваши деньги.
-		%p= t('promo_text_money')
-.row.promo__line
-	.columns.small-6.promo__text__left
-		%h4 С легкостью управляйте счетами.
-		%p Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
-	.columns.small-6.promo__image
-		= image_tag "accounts.png", class: "left"
-.row.promo__line
-	.columns.small-6.promo__image
-		= image_tag "goals.png", class: "right"
-	.columns.small-6.left.promo__text__right
-		%h4 Ваше финансовое развитие
-		%p Вы сможете увидеть, что в двух простых графики.Шесть месяцев расходы по сравнению с графика доходов и ежемесячные расходы категории графике. Время гордиться!
-.row.promo__line
-	.columns.large-12.medium-12.small-12.promo__button
-		= link_to "Зарегистируйтесь!", new_user_registration_path, class: "button large registry"
+		.columns.col-xs-12
+			%h2.promo__header
+				%em 3 Причины регистрации на MoneyBit.me
+	.row.promo__line
+		.columns.col-xs-6.promo__image.text-right
+			= image_tag "kopilka.png"
+		.columns.col-xs-6.promo__text
+			%h4 Вы всегда знаете куда уходят ваши деньги.
+			%p= t('promo_text_money')
+	.row.promo__line
+		.columns.col-xs-6.promo__text
+			%h4.text-right С легкостью управляйте счетами.
+			%p.text-right Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
+		.columns.col-xs-6.promo__image
+			= image_tag "accounts.png"
+	.row.promo__line
+		.columns.col-xs-6.promo__image.text-right
+			= image_tag "goals.png"
+		.columns.col-xs-6.promo__text
+			%h4 Ваше финансовое развитие
+			%p Вы сможете увидеть, что в двух простых графики.Шесть месяцев расходы по сравнению с графика доходов и ежемесячные расходы категории графике. Время гордиться!
+	.row
+		.columns.col-xs-12.text-center.promo__button
+			= link_to "Зарегистируйтесь!", new_user_registration_path, class: "btn btn-primary btn-raised btn-lg"
 
 
 

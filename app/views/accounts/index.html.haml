@@ -1,39 +1,83 @@
-.row
-	.columns.large-3.small-3.medium-3
-		%a.radius.button.warning.expand{:href => "#", "data-reveal-id" => "add_consumption"}= t(:add_consumption_label)
-	.columns.large-3.small-3.medium-3
-		%a.radius.button.success.expand{:href => "#", "data-reveal-id" => "add_fund"}= t(:add_fund_label)
-.row
-	.columns.large-6.small-12.medium-6
-		.row
-			.columns.large-12
-				%h3= t('accounts_header')
-		- @accounts.each do |account|
-			.row.account
-				.columns.small-6
-					%span.account_title= account.title
-					= link_to t('edit_link'), edit_account_path(account), class: "edit modification"
-					= link_to t('delete_link'), account_path(account), method: :delete, class: "delete modification"
-				.columns.small-6
-					%span.account_balance= account.balance
-					%a.account_add_consumption.modification{:href => "#", "data-reveal-id" => "add_consumption"}
-						%i.fi-minus.add_consumption
-					%a.account_add_fund.modification{:href => "#", "data-reveal-id" => "add_fund"}
-						%i.fi-plus.add_fund
-					%a.account_add_transfer.modification{:href => "#", "data-reveal-id" => "add_consumption"}
-						%i.fi-arrow-right.add_transfer
-		.row
-			.columns.large-6.medium-6.small-12
-				=link_to t('create_account_link'), new_account_path, class: "radius button expand"
+.container
+	.row
+		.col-lg-3
+			%a.btn.btn-danger.btn-block{:href => "#", "data-target" => "#add_consumption", 'data-toggle' =>"modal"}= t(:add_consumption_label)
+		.col-lg-3
+			%a.btn.btn-success.btn-block{:href => "#", "data-target" => "#add_fund", 'data-toggle' =>"modal"}= t(:add_fund_label)
+	.row
+		.col-xs-6
+			.row
+				.col-xs-12
+					%h3.accounts_header= t('accounts_header')
+			.row.col-xs-12
+				.list-group
+					.list-group-separator
+					- @accounts.each do |account|
+						.list-group-item
+							.row-action-primary
+								%i.mdi-action-account-balance-wallet
+							.row-content
+								.least-content
+									%span
+										= humanized_money_with_symbol(account.balance)
+										%br
+										%a.text-danger{:href => "#", "data-target" => "#add_consumption", 'data-toggle' =>"modal", title: t(:add_consumption_label)}
+											%i.mdi-content-remove-circle
+										%a.text-success{:href => "#", "data-target" => "#add_fund", 'data-toggle' =>"modal", title: t(:add_fund_label)}
+											%i.mdi-content-add-circle
+										%a.text-warning{:href => "#", "data-reveal-id" => "add_consumption"}
+											%i.mdi-content-send
+								%h4.list-group-item-heading= account.title
+								%p.list-group-item-text
+									= link_to edit_account_path(account), class: "text-success account_action",
+										'data-toggle'=>"tooltip", "data-placement"=> "bottom",
+										"title" => t(:edit_link) do
+										%i.mdi-content-create
+									= link_to account_path(account), method: :delete, class: "text-danger",
+										'data-toggle'=>"tooltip", "data-placement"=> "bottom", "title" => t(:delete_link) do
+										%i.mdi-action-delete
+						.list-group-separator
 
-	.columns.large-6.small-12.medium-6
-		.row
-			.columns.large-12
-				%h3= t('accounts_invoices_header')
-		-
+			.row
+				.col-xs-6
+					=link_to t('create_account_link'), new_account_path, class: "btn btn-block btn-primary"
 
-#add_consumption.reveal-modal{"data-reveal" => true}
-	= render partial: "shared/consumption", locals: {consumption: add_consumption}
+		.col-xs-6
+			.row
+				.col-xs-12
+					%h3.accounts_header= t('accounts_invoices_header')
+			.row.col-xs-12
+				.list-group
+					.list-group-separator
+					- user_invoices.each do |user_invoice|
+						.list-group-item
+							.row-action-primary.text-success
+								- if user_invoice.add_fund?
+									%i.mdi-content-add-circle
+								- else
+									%i.mdi-content-remove-circle
+							.row-content
+								.least-content
+									= humanized_money_with_symbol(user_invoice.amount)
+								%h4.list-group-item-heading= user_invoice.created_at
+								%p.list-group-item-text= user_invoice.note
+						.list-group-separator
 
-#add_fund.reveal-modal{"data-reveal" => true}
-	= render partial: "shared/add_fund", locals: {consumption: add_consumption}
+
+#add_consumption.modal.fade{'tabindex'=>"-1", role: "dialog", 'aria-labelledby'=>"myModalLabel", 'aria-hidden'=>"true"}
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close{type:'button','data-dismiss'=>"modal"} &times;
+				%h4.modal-title#myModalLabel= t(:add_consumption_label)
+			.modal-body
+				= render partial: "shared/consumption", locals: {consumption: add_consumption}
+
+#add_fund.modal.fade{'tabindex'=>"-1", role: "dialog", 'aria-labelledby'=>"myModalLabel", 'aria-hidden'=>"true"}
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close{type:'button','data-dismiss'=>"modal"} &times;
+				%h4.modal-title#myModalLabel= t(:add_fund_label)
+			.modal-body
+				= render partial: "shared/add_fund", locals: {consumption: add_fund}

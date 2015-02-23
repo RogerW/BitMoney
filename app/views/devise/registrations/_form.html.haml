@@ -1,12 +1,14 @@
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |form|
-	.row
-		.large-12.small-12.medium-12.column
-			= form.input :email, label: false
-	.row
-		.large-6.column
-			= form.input :password, label: false
-		.large-6.column
-			= form.input :password_confirmation, label: false
-	.row
-		.large-4.small-12.medium-4.column
-			= form.button :submit, class: "small success"
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), html: { class: 'form-horizontal' }) do |form|
+	.well.well-sm
+		.row
+			.form-group.col-lg-12
+				= form.input :email, label: false,  input_html: { class: "form-control input-lg-12" }
+		.row
+			.form-group
+				.col-lg-6
+					= form.input :password, label: false,  input_html: { class: "form-control input-lg-6" }
+				.col-lg-6
+					= form.input :password_confirmation, label: false,  input_html: { class: "form-control input-lg-5" }
+		.row
+			.col-xs-4
+				= form.button :submit, class: "btn btn-primary"

@@ -9,14 +9,21 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
- *= require_tree .
  *= require_self
- *= require foundation_and_overrides
+ *= require_tree .
  */
+
+@import "compass/css3";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-material-design";
 
 html, body {
     height: 100%;
+}
+
+#wrap__navigation {
+  height: 70px;
 }
 
 .page-wrap {
@@ -30,11 +37,23 @@ html, body {
   display: block;
 }
 
-.footer, .page-wrap:after {
+.footer {
   height: 70px;
   background-color: #273333;
   vertical-align: middle;
   color: #ffffff;
   padding-top: 10px;
   @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
+}
+
+a:visited.text-danger {
+  color: #f44336;
+}
+
+a:visited.text-success {
+  color: #0f9d58;
+}
+
+.logo {
+  font-family: 'Kaushan Script', cursive;
 }
