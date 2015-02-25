@@ -20,6 +20,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
+gem 'bem'
 
 gem 'google-webfonts-rails'
 

@@ -1,0 +1,9 @@
+// your_function_name_initializer = ->
+//
+// $ ->
+//    your_function_name_initializer()
+//    return
+//
+// $(window).bind 'page:load', ->
+//    your_function_name_initializer()
+//    return

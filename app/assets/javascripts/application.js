@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require bootstrap-material-design
+//= require shared/shared
 //= require_tree .

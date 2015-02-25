@@ -1,0 +1,7 @@
+@import "bootstrap";
+
+.head__menu-list {
+    @extend .nav;
+    @extend .navbar-nav;
+    @extend .navbar-right;
+}

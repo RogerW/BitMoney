@@ -14,9 +14,7 @@
  */
 
 @import "compass/css3";
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootstrap-material-design";
+@import 'shared/shared';
 
 html, body {
     height: 100%;
@@ -55,5 +53,5 @@ a:visited.text-success {
 }
 
 .logo {
-  font-family: 'Kaushan Script', cursive;
+  
 }

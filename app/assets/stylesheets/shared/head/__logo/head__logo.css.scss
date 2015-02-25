@@ -1,0 +1,6 @@
+@import "bootstrap";
+
+.head__logo {
+    @extend .navbar-brand;
+    font-family: 'Kaushan Script', cursive;
+}

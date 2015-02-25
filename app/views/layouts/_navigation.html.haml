@@ -1,10 +1,14 @@
-.container
-	.row#wrap__navigation
-		.col-md-6.col-lg-6.col-sm-12
-			%h2.logo MoneyBit.me
-		.col-md-6.col-lg-6.col-sm-12.text-right
+.head
+	.navbar-header
+		%button.navbar-toggle{type:"button", 'data-toggle' => "collapse", 'data-target'=>".navbar-responsive-collapse"}
+			%span.icon-bar
+			%span.icon-bar
+			%span.icon-bar
+		= link_to 'MoneyBit.me', "/", class: "head__logo"
+	.head__menu-box
+		%ul.head__menu-list
 			- if user_signed_in?
-				= link_to t(:sign_out_link), destroy_user_session_path, class: 'btn btn-flat btn-default'
+				%li= link_to t(:sign_out_link), destroy_user_session_path
 			- else
-				= link_to t(:sign_in_link), new_user_session_path, class: 'btn btn-flat btn-default'
-				= link_to t(:sign_up_link), new_user_registration_path, class: 'btn btn-flat btn-default'
+				%li== link_to t(:sign_in_link), new_user_session_path
+				%li== link_to t(:sign_up_link), new_user_registration_path

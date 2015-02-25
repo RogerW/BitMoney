@@ -1,0 +1,6 @@
+@import "bootstrap";
+
+.head {
+    @extend .navbar;
+    @extend .navbar-default;
+}
