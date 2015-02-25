@@ -14,10 +14,87 @@
  */
 
 @import "compass/css3";
-@import 'shared/shared';
+@import "bootstrap";
+@import "bootstrap-material-design";
+
+@mixin vertical-align() {
+  display: block;
+  &:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+  }
+  > * {
+    display: inline-block;
+    vertical-align: middle;
+    width: 98%;
+  }
+}
+
+.header {
+  @extend .navbar;
+  @extend .navbar-white;
+}
+
+.header__logo {
+  @extend .navbar-brand;
+  font-family: 'Kaushan Script', cursive;
+  font-size: 36px;
+}
+
+.head__menu-box {
+  @extend .navbar-collapse;
+  @extend .collapse;
+  @extend .navbar-responsive-collapse;
+}
+
+.head__menu-list {
+  @extend .nav;
+  @extend .navbar-nav;
+  @extend .navbar-right;
+}
+
+.present {
+  height:  500px;
+  background-image: asset_url("landing-bg.png", image);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: auto 600px;
+  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
+  margin-bottom: 100px;
+  margin-top: -20px;
+
+  .present__slogan {
+    @include make-xs-column(5);
+
+
+    .present__slogan--logo {
+      font-family: 'Kaushan Script', cursive;
+      font-size: 42px;
+      color: white;
+      padding-top: 150px;
+    }
+  }
+
+  .present__image {
+    @include make-xs-column(7);
+
+    img {
+      height: 500px;
+    }
+
+  }
+}
+
+
+
+
 
 html, body {
     height: 100%;
+  background-color: white;
 }
 
 #wrap__navigation {

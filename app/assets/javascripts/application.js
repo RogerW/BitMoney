@@ -13,7 +13,6 @@
 //= require angular
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require bootstrap-material-design
-//= require shared/shared
 //= require_tree .

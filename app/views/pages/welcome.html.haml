@@ -1,19 +1,12 @@
-%section.header
+%section.present
 	.container
 		.row
-			.col-xs-5
-				.row
-					.col-xs-12
-						#logo__text
-							%span#logo__left MoneyBit.me
-				.row
-					.col-xs-12
-						%p.slogan
-							%em Возможно, самая простая система учета ваших финансов, которую вы можете найти!
-				.row
-					.col-xs-12
-						= link_to "Зарегиститроваться сейчас!", new_user_registration_path, class: "btn btn-warning"
-			.col-xs-7
+			.present__slogan
+				%h3.present__slogan--logo MoneyBit.me
+				%p.slogan
+					%em Возможно, самая простая система учета ваших финансов, которую вы можете найти!
+				= link_to "Зарегиститроваться сейчас!", new_user_registration_path, class: "btn btn-warning"
+			.present__image
 				= image_tag "EasilyEditOnYourMac.png", class: "img-responsive"
 .container
 	.row
