@@ -10,17 +10,20 @@ gem 'sqlite3', group: [:development, :test]
 
 source 'https://rails-assets.org' do
   # gem 'rails-assets-boostrap-sass'
-  gem 'rails-assets-bootstrap-material-design'
+  # gem 'rails-assets-bootstrap-material-design'
   gem 'rails-assets-angular'
   gem 'rails-assets-ng-tags-input'
 end
 
 gem 'haml-rails'
-gem 'bootstrap-sass', '~> 3.3.3'
+gem 'polymer-rails'
+gem 'polymer-core-rails'
+gem 'polymer-paper-rails'
+# gem 'bootstrap-sass', '~> 3.3.3'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
-gem 'bem'
+# gem 'bem'
 
 gem 'google-webfonts-rails'
 
