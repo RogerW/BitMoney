@@ -11,9 +11,7 @@
 // about supported directives.
 //
 //= require angular
+//= require polymer/webcomponents
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
-//= require bootstrap-material-design
-//= require shared/shared
 //= require_tree .

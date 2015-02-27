@@ -11,12 +11,20 @@
     = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script']})
 
     = stylesheet_link_tag "application", media: "all"
-    = javascript_include_tag "application" 
-    =csrf_meta_tags
+    = javascript_include_tag "application"
+    = html_import_tag 'application'
+    // = html_import_tag 'core-toolbar/core-toolbar'
+    = csrf_meta_tags
 
-  %body
+  %body{unresolved:true}
+    // %my-navigation
+    %core-toolbar#tool
+      %paper-icon-button{ icon:"menu" }
+      %span{flex:true} Text
+      %paper-icon-button{ icon:"refresh" }
+      %paper-icon-button{ icon:"more-vert" }
     .page-wrap
-      = render 'layouts/navigation'
+      // = render 'layouts/navigation'
       = render 'layouts/messages'
       = yield
 
