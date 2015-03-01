@@ -11,12 +11,8 @@
 // about supported directives.
 //
 //= require angular
+//= require angular-animate
+//= require angular-resource
 //= require polymer/webcomponents
 //= require jquery
 //= require jquery_ujs
-<<<<<<< HEAD
-//= require bootstrap
-//= require bootstrap-material-design
-=======
->>>>>>> 35262a256c74a35a92c4dbef2e88a4dfb4bb7981
-//= require_tree .

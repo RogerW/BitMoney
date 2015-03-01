@@ -1,13 +1,11 @@
-%section.present
-	.container
-		.row
-			.present__slogan
-				%h3.present__slogan--logo MoneyBit.me
-				%p.slogan
-					%em Возможно, самая простая система учета ваших финансов, которую вы можете найти!
-				= link_to "Зарегиститроваться сейчас!", new_user_registration_path, class: "btn btn-warning"
-			.present__image
-				= image_tag "EasilyEditOnYourMac.png", class: "img-responsive"
+.present{horizontal:true, layout:true}
+	.present_left{flex:true, 'self-center'=>true}
+		%h3.present__logo MoneyBit.me
+		%p.present__slogan Возможно, самая простая система учета ваших финансов, которую вы можете найти!
+		%paper-button.present__registry{raised:true, fill:true}
+			= link_to "Зарегиститроваться сейчас!", new_user_registration_path
+	.present__image{flex:true}
+		= image_tag "EasilyEditOnYourMac.png"
 .container
 	.row
 		.columns.col-xs-12

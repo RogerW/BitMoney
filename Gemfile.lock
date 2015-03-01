@@ -31,6 +31,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.7)
+    angularjs-rails (1.3.14)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -187,16 +188,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.6)
       sprockets-rails (~> 2.0)
-<<<<<<< HEAD
-    rails-assets-angular (1.3.14)
-    rails-assets-bootstrap-material-design (0.2.2)
-      rails-assets-jquery (~> 2.1.1)
-    rails-assets-jquery (2.1.3)
-=======
-    rails-assets-angular (9000.0.0)
->>>>>>> 35262a256c74a35a92c4dbef2e88a4dfb4bb7981
-    rails-assets-ng-tags-input (2.1.1)
-      rails-assets-angular (>= 1.2.1)
     rails_layout (1.0.24)
     railties (4.1.6)
       actionpack (= 4.1.6)
@@ -245,7 +236,7 @@ GEM
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
-    spring (1.3.2)
+    spring (1.3.3)
     sprockets (2.11.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -268,7 +259,7 @@ GEM
     tilt (1.4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.7.0)
+    uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     warden (1.2.3)
@@ -281,6 +272,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_type
+  angularjs-rails
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -309,8 +301,6 @@ DEPENDENCIES
   pundit
   quiet_assets
   rails (= 4.1.6)
-  rails-assets-angular!
-  rails-assets-ng-tags-input!
   rails_layout
   rspec-rails
   russian

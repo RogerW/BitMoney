@@ -13,105 +13,19 @@
  */
 
 @import "compass/css3";
-<<<<<<< HEAD
-@import "bootstrap";
-@import "bootstrap-material-design";
-
-@mixin vertical-align() {
-  display: block;
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-  }
-  > * {
-    display: inline-block;
-    vertical-align: middle;
-    width: 98%;
-  }
-}
-
-.header {
-  @extend .navbar;
-  @extend .navbar-white;
-}
-
-.header__logo {
-  @extend .navbar-brand;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 36px;
-}
-
-.head__menu-box {
-  @extend .navbar-collapse;
-  @extend .collapse;
-  @extend .navbar-responsive-collapse;
-}
-
-.head__menu-list {
-  @extend .nav;
-  @extend .navbar-nav;
-  @extend .navbar-right;
-}
-
-.present {
-  height:  500px;
-  background-image: asset_url("landing-bg.png", image);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: auto 600px;
-  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
-  margin-bottom: 100px;
-  margin-top: -20px;
-
-  .present__slogan {
-    @include make-xs-column(5);
 
 
-    .present__slogan--logo {
-      font-family: 'Kaushan Script', cursive;
-      font-size: 42px;
-      color: white;
-      padding-top: 150px;
-    }
-  }
-
-  .present__image {
-    @include make-xs-column(7);
-
-    img {
-      height: 500px;
-    }
-
-  }
-}
-
-
-
-
-
-html, body {
-    height: 100%;
-  background-color: white;
-}
-
-#wrap__navigation {
-  height: 70px;
-}
-
-.page-wrap {
-  min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -70px;
-=======
 // @import 'shared/shared';
 
-// html, body {
-//     height: 100%;
-// }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
 
+core-header-panel {
+  height: 100%;
+}
 // #wrap__navigation {
 //   height: 70px;
 // }
@@ -126,11 +40,63 @@ html, body {
 //   content: "";
 //   display: block;
 // }
+.header__logo {
+  font-family: 'Kaushan Script', cursive;
+  color: #fff;
+  font-size: 36px;
+  text-decoration: none;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.present {
+  background-color: #03A9F4;
+  color: #fff;
+  padding-right: 150px;
+  padding-left: 150px;
+//  padding-top: 50px;
+  height: 500px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+  -moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.present__registry {
+  background-color: #CDDC39;
+  color: #ffffff;
+  a {
+    text-decoration: none;
+    color: #212121;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+
+.present__logo {
+  font-family: 'Kaushan Script', cursive;
+  color: #fff;
+  font-size: 32px;
+}
+
+.present__image {
+  img {
+    height: 500px;
+  }
+}
+
+.present__slogan {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 21px;
+  font-style: italic;
+}
+
 #toolbar {
-    background-color: rgb(79, 125, 201);
-    color: rgb(255, 255, 255);
-    fill: rgb(255, 255, 255);
->>>>>>> 35262a256c74a35a92c4dbef2e88a4dfb4bb7981
+    background-color: #03A9F4;
+    color: #fff;
+    fill: #fff;
 }
 
 // .footer {
@@ -151,9 +117,5 @@ html, body {
 // }
 
 // .logo {
-  
-<<<<<<< HEAD
-}
-=======
+
 // }
->>>>>>> 35262a256c74a35a92c4dbef2e88a4dfb4bb7981

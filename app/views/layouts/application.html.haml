@@ -8,7 +8,7 @@
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
-    = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script']})
+    = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script', 'Roboto']})
 
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
@@ -16,22 +16,17 @@
     // = html_import_tag 'core-toolbar/core-toolbar'
     = csrf_meta_tags
 
-  %body{unresolved:true}
-    // %my-navigation
-    %core-toolbar#tool
-      %paper-icon-button{ icon:"menu" }
-      %span{flex:true} Text
-      %paper-icon-button{ icon:"refresh" }
-      %paper-icon-button{ icon:"more-vert" }
-    .page-wrap
-      // = render 'layouts/navigation'
+  %body{unresolved:true, fullbleed:true, layout:true, vertical:true}
+    %core-header-panel{ mode:'scroll' }
+      = render 'layouts/navigation'
       = render 'layouts/messages'
-      = yield
+      .main{flex:true}
+        = yield
 
-    .footer
-      .container
-        .row
-          .col-xs-12
-            %span
-              %span Copyright © BitMoney.me 2015
-              %br= link_to "О нас", page_path('about')
+      .footer
+        .container
+          .row
+            .col-xs-12
+              %span
+                %span Copyright © BitMoney.me 2015
+                %br= link_to "О нас", page_path('about')
