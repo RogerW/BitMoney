@@ -12,10 +12,12 @@
  *= require_self
  */
 
-@import "compass/css3";
+// @import "compass/css3";
 
 
 // @import 'shared/shared';
+
+$footer-padding: 150px;
 
 html, body {
   height: 100%;
@@ -26,20 +28,7 @@ html, body {
 core-header-panel {
   height: 100%;
 }
-// #wrap__navigation {
-//   height: 70px;
-// }
 
-// .page-wrap {
-//   min-height: 100%;
-//   /* equal to footer height */
-//   margin-bottom: -70px;
-// }
-
-// .page-wrap:after {
-//   content: "";
-//   display: block;
-// }
 .header__logo {
   font-family: 'Kaushan Script', cursive;
   color: #fff;
@@ -74,6 +63,29 @@ core-header-panel {
   }
 }
 
+.promo__registry {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background-color: #03A9F4;
+  color: #ffffff;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+.promo__header {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 260;
+}
+
+.promo__header-block {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
 
 .present__logo {
   font-family: 'Kaushan Script', cursive;
@@ -97,6 +109,53 @@ core-header-panel {
     background-color: #03A9F4;
     color: #fff;
     fill: #fff;
+}
+
+.promo__block {
+  padding-right: $footer-padding;
+  padding-left: $footer-padding;
+}
+
+
+
+.footer {
+  height: 150px;
+}
+
+.footer__links {
+  background-color: #727272;
+  padding-top: 10px;
+  height: 90px;
+  padding-right: $footer-padding;
+  padding-left: $footer-padding;
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+.footer__copyright {
+  background-color: #212121;
+  color: #ffffff;
+  height: 50px;
+  padding-right: $footer-padding;
+  padding-left: $footer-padding;
+}
+
+.content {
+  min-height: 100%;
+  /* equal to footer height */
+  // margin-bottom: -150px; 
+}
+
+.page__content:after {
+  // content: "";
+  // display: block;
+  // height: 150px; 
+}
+
+.main {
+  min-height: calc(100% - 64px /*core-toolbar*/ - 150px /*footer*/);
 }
 
 // .footer {

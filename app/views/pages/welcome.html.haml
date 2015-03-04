@@ -6,32 +6,24 @@
 			= link_to "Зарегиститроваться сейчас!", new_user_registration_path
 	.present__image{flex:true}
 		= image_tag "EasilyEditOnYourMac.png"
-.container
-	.row
-		.columns.col-xs-12
-			%h2.promo__header
-				%em 3 Причины регистрации на MoneyBit.me
-	.row.promo__line
-		.columns.col-xs-6.promo__image.text-right
+.promo__block{vertical:true, layout:true, center:true}
+	.promo__header-block
+		%h2.promo__header 3 Причины регистрации на MoneyBit.me
+	.promo{horizontal:true, layout:true}
+		%promo-card{flex:true}
 			= image_tag "kopilka.png"
-		.columns.col-xs-6.promo__text
 			%h4 Вы всегда знаете куда уходят ваши деньги.
 			%p= t('promo_text_money')
-	.row.promo__line
-		.columns.col-xs-6.promo__text
-			%h4.text-right С легкостью управляйте счетами.
-			%p.text-right Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
-		.columns.col-xs-6.promo__image
+		%promo-card{flex:true}
 			= image_tag "accounts.png"
-	.row.promo__line
-		.columns.col-xs-6.promo__image.text-right
+			%h4 С легкостью управляйте счетами.
+			%p Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
+		%promo-card{flex:true}
 			= image_tag "goals.png"
-		.columns.col-xs-6.promo__text
 			%h4 Ваше финансовое развитие
 			%p Вы сможете увидеть, что в двух простых графики.Шесть месяцев расходы по сравнению с графика доходов и ежемесячные расходы категории графике. Время гордиться!
-	.row
-		.columns.col-xs-12.text-center.promo__button
-			= link_to "Зарегистируйтесь!", new_user_registration_path, class: "btn btn-primary btn-raised btn-lg"
+	%paper-button.promo__registry{raised:true, fill:true}
+		= link_to "Зарегистируйтесь!", new_user_registration_path, class: "btn btn-primary btn-raised btn-lg"
 
 
 

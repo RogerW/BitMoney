@@ -1,0 +1,3 @@
+Polymer('promo-card', {
+
+});

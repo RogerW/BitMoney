@@ -2,7 +2,7 @@
 %html{lang: "ru"}
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0", :charset => "utf-8"}
-    %title= content_for?(:title) ? yield(:title) : 'BitMoneyFor.me'
+    %title= content_for?(:title) ? yield(:title) : 'MoneyBit.me'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BitMoney'}"}
     %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge" }
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -13,20 +13,18 @@
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = html_import_tag 'application'
-    // = html_import_tag 'core-toolbar/core-toolbar'
     = csrf_meta_tags
 
-  %body{unresolved:true, fullbleed:true, layout:true, vertical:true}
-    %core-header-panel{ mode:'scroll' }
-      = render 'layouts/navigation'
-      = render 'layouts/messages'
-      .main{flex:true}
-        = yield
+  %body{unresolved:true }
 
-      .footer
-        .container
-          .row
-            .col-xs-12
-              %span
-                %span Copyright © BitMoney.me 2015
-                %br= link_to "О нас", page_path('about')
+    = render 'layouts/navigation'
+    = render 'layouts/messages'
+  
+    .main
+      = yield
+  
+    .footer
+      .footer__links
+        = link_to "О нас", page_path('about')
+      .footer__copyright{layout:true, center:true, horizontal:true}
+        %span Copyright © MoneyBit.me 2015
