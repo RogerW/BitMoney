@@ -1,0 +1,29 @@
+:host {
+  display: block;
+}
+
+polyfill-next-selector { content: '.checkbox input[type="checkbox"]'; }
+.checkbox ::content input[type="checkbox"] {
+    display:none;
+}
+
+input[type="checkbox"] {
+  display:none;
+}
+
+paper-checkbox {
+  padding: 20px 20px 20px 0;
+}
+    
+section {
+  width: 300px;
+}
+    
+paper-checkbox.blue::shadow #ink[checked] {
+  color: #BBDEFB;
+}
+
+paper-checkbox.blue::shadow #checkbox.checked {
+  background-color: #2196F3;
+  border-color: #2196F3;
+}

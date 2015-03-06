@@ -1,0 +1,17 @@
+<polymer-element name="checkbox-input" attributes="label" >
+  <template>
+    <link rel="stylesheet" href="checkbox-input.css" />
+    
+    <div class="checkbox">
+      <core-label horizontal layout>
+        <paper-checkbox for on-change={{change}}></paper-checkbox>
+        <h4>{{label}}</h4>
+        <content id="content" select='input[type="checkbox"]'></content>
+        <content></content>
+      </core-label>
+    </div>
+    
+  </template>
+
+  <script src="checkbox-input.js"></script>
+</polymer-element>
