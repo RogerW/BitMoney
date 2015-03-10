@@ -1,7 +1,7 @@
 %div{layout:true, vertical:true, center:true}
   %sign-card
     %core-icon{icon:"social:person-add"}
-    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
+    = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', id:"polymer_form"}) do |f|
       %h3 Sign in
       = devise_error_messages!
       %paper-input-decorator{ :label => :email, floatingLabel:true }
@@ -20,9 +20,8 @@
       .buttons__block{layout:true, horizontal:true}
         .sign_up__block{flex:true}
           - if devise_mapping.registerable?
-            %paper-button.present__registry
-              = link_to 'Sign up', new_registration_path(resource_name)
+            = link_to new_registration_path(resource_name) do
+              %paper-button.sign__up Sign up
+              
         .sign_in__block
-          = f.button :submit
-
-          
+          %paper-button#submit_button.sign__in Submit

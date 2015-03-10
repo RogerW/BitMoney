@@ -7,6 +7,8 @@
     %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge" }
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
+    
 
     = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script', 'Roboto', 'RobotoDraft']})
 
@@ -28,3 +30,5 @@
         = link_to "О нас", page_path('about')
       .footer__copyright{layout:true, center:true, horizontal:true}
         %span Copyright © MoneyBit.me 2015
+        
+    = javascript_include_tag "body"
