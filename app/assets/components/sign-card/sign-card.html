@@ -1,15 +1,17 @@
 <polymer-element name="sign-card">
   <template>
     <link rel="stylesheet" href="sign-card.css" />
-    <paper-shadow z="1">
-      <div class="box" layout vertical>
+
+    <paper-shadow z="2">
+      <span class="box" layout vertical>
         <div class="box-icon">
           <content select="core-icon"></content>
         </div>
         <content select="h3"></content>
         <content></content>
-      </div>
+      </span>
     </paper-shadow>
+
   </template>
 
   <script src="sign-card.js"></script>

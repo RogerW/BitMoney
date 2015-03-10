@@ -83,10 +83,14 @@ test: &test
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: BitMoney_production
-  username: BitMoney
-  password: <%= ENV['BITMONEY_DATABASE_PASSWORD'] %>
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+#  <<: *default
+#  database: BitMoney_production
+#  username: BitMoney
+#  password: <%= ENV['BITMONEY_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test

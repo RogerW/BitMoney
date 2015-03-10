@@ -2,8 +2,9 @@
 	.present_left{flex:true, 'self-center'=>true}
 		%h3.present__logo MoneyBit.me
 		%p.present__slogan Возможно, самая простая система учета ваших финансов, которую вы можете найти!
-		%paper-button.present__registry{raised:true, fill:true}
-			= link_to "Зарегиститроваться сейчас!", new_user_registration_path
+		= link_to new_user_registration_path do
+			%paper-button.present__registry{raised:true} Зарегистрироваться сейчас!
+
 	.present__image{flex:true}
 		= image_tag "EasilyEditOnYourMac.png"
 .promo__block{vertical:true, layout:true, center:true}

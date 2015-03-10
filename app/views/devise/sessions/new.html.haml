@@ -11,7 +11,7 @@
       .member_forgot__block{layout:true, horizontal:true}
         .member__block{flex:true}
           - if devise_mapping.rememberable?
-            %checkbox-input{ :label => 'Remember Me'}
+            %checkbox-input{label:"Remember Me"}
               = f.check_box :remember_me
         .forgot__block{flex:true}
           - if devise_mapping.recoverable?
@@ -23,6 +23,6 @@
             %paper-button.present__registry
               = link_to 'Sign up', new_registration_path(resource_name)
         .sign_in__block
-          = f.button :submit
+          = f.button :submit, is:"paper-button-submit"
 
           

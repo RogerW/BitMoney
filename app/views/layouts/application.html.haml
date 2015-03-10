@@ -4,9 +4,6 @@
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0", :charset => "utf-8"}
     %title= content_for?(:title) ? yield(:title) : 'MoneyBit.me'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BitMoney'}"}
-    %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge" }
-    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 
     = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script', 'Roboto', 'RobotoDraft']})
 
@@ -15,16 +12,15 @@
     = html_import_tag 'application'
     = csrf_meta_tags
 
-  %body{unresolved:true }
+  %body{unresolved:true,fullbleed:true, layout:true, vertical:true }
+    %core-media-query#mediaQuery{query:"max-width: 640px"}
+    %core-header-panel{mode:"waterfall", flex:true}
+      = render :partial => "layouts/navigation"
+      .main
+        = yield
+      .footer
+        .footer__links
+          = link_to "О нас", page_path('about')
+        .footer__copyright{layout:true, center:true, horizontal:true}
+          %span Copyright © MoneyBit.me 2015
 
-    = render 'layouts/navigation'
-    = render 'layouts/messages'
-  
-    .main
-      = yield
-  
-    .footer
-      .footer__links
-        = link_to "О нас", page_path('about')
-      .footer__copyright{layout:true, center:true, horizontal:true}
-        %span Copyright © MoneyBit.me 2015

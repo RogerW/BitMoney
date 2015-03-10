@@ -1,0 +1,14 @@
+<polymer-element name="promo-card">
+  <template>
+    <style>:host{display:block}.promo-card{margin:10px}polyfill-next-selector{content:'.promo-card h4'}.promo-card ::content h4{font-family:'Open Sans', sans-serif;margin:5px;font-size:1.5rem;font-weight:250}polyfill-next-selector{content:'.promo-card img'}.promo-card ::content img{width:200px;border-radius:50%;margin:10px}polyfill-next-selector{content:'.promo-card p'}.promo-card ::content p{margin:5px}
+</style>
+
+    <div class="promo-card" layout="" vertical="" center="">
+      <content select="img"></content>
+      <content select="h4"></content>
+      <content></content>
+    </div>
+  </template>
+
+  <script>Polymer("promo-card",{});</script>
+</polymer-element>

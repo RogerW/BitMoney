@@ -14,7 +14,7 @@ Polymer('checkbox-input', {
                     nodes[i].checked = true;
                 }
             }
-            
+
         }
 
     }

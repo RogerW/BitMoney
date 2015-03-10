@@ -16,7 +16,7 @@ polyfill-next-selector { content: '.promo-card h4'; }
 
 polyfill-next-selector { content: '.promo-card img'; }
 .promo-card ::content img {
-    width: 100px;
+    width: 200px;
     border-radius: 50%;
     margin: 10px;
 }

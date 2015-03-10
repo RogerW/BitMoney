@@ -9,10 +9,7 @@ gem 'pg', group: [:production]
 gem 'sqlite3', group: [:development, :test]
 
 source 'https://rails-assets.org' do
-  # gem 'rails-assets-boostrap-sass'
-  # gem 'rails-assets-bootstrap-material-design'
-  # gem 'rails-assets-angular'
-  # gem 'rails-assets-ng-tags-input'
+  gem 'rails-assets-platform'
 end
 
 gem 'haml-rails'

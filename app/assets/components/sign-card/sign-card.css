@@ -22,12 +22,19 @@
   z-index:20;
 }
 
+paper-shadow {
+    height: 100%;
+    width: 100%;
+}
+
 polyfill-next-selector { content: '.box-icon core-icon'; }
 .box-icon ::content core-icon {
   fill:#fff;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+  height: 64px;
+  width: 64px;
 }
 
 polyfill-next-selector { content: '.box h3'; }
