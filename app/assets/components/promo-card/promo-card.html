@@ -1,11 +1,13 @@
-<polymer-element name="promo-card">
+<polymer-element name="promo-card" attributes="vertical">
   <template>
-    <link rel="stylesheet" href="promo-card.css" />
+    <link rel="stylesheet" href="promo-card.css.scss" />
 
     <div class="promo-card" layout vertical center>
-      <content select="img"></content>
+      <div layout vertical center>
+        <content select="img"></content>
+      </div>
       <content select="h4"></content>
-      <content></content>
+      <content select="p"></content>
     </div>
   </template>
 

@@ -1,0 +1,99 @@
+//colors
+$black_40: rgba(0, 0, 0, 0.4);
+
+//padding
+$footer-padding: 150px;
+
+:host {
+	display: block;
+	position: relative;
+}
+#outerContainer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+}
+#mainPanel {
+	position: relative;
+	height: 100%;
+}
+#mainContainer {
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100%;
+}
+#dropShadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 6px;
+	//Instead of the line below you could use @includebox-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: inset 0 5px 6px -3px $black_40;
+	&.hidden {
+		display: none;
+	}
+}
+:host([mode=scroll]) {
+	#mainContainer {
+		overflow: visible;
+	}
+	#outerContainer {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+}
+:host([mode=cover]) {
+	#mainPanel {
+		position: static;
+	}
+	#mainContainer {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+	#dropShadow {
+		position: static;
+		width: 100%;
+	}
+}
+
+polyfill-next-selector {content: ":host .main";}
+:host ::content .main {
+  min-height: calc(100% - 64px);
+  margin-bottom: -150px;
+}
+
+:host ::content .main:after {
+  content: "";
+  display: block;
+  height: 150px;
+}
+
+footer {
+  height: 150px;
+}
+
+polyfill-next-selector {content: ":host .footer__links";}
+:host ::content .footer__links {
+  background-color: #727272;
+  padding-top: 10px;
+  height: 90px;
+  padding-right: $footer-padding;
+  padding-left: $footer-padding;
+}
+
+polyfill-next-selector {content: ":host .footer__copyright";}
+:host ::content .footer__copyright {
+  background-color: #727272;
+  color: #ffffff;
+  height: 50px;
+  padding-right: $footer-padding;
+  padding-left: $footer-padding;
+}

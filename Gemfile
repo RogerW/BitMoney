@@ -17,12 +17,10 @@ gem 'polymer-rails'
 gem 'polymer-core-rails'
 gem 'polymer-paper-rails'
 gem 'angularjs-rails'
-# gem 'bootstrap-sass', '~> 3.3.3'
-gem 'compass-rails'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
-# gem 'bem'
+gem "green_monkey", '0.2.2'
 
 gem 'google-webfonts-rails'
 

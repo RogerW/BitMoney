@@ -1,18 +1,11 @@
 !!!
-%html{lang: "ru"}
+%html{lang: "ru", itemscope:true, itemtype:"http://schema.org/Product"}
   %head
-    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0", :charset => "utf-8"}
+    %meta{:name => "viewport", :content => "width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes", :charset => "utf-8"}
     %title= content_for?(:title) ? yield(:title) : 'MoneyBit.me'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BitMoney'}"}
-<<<<<<< HEAD
-=======
-    %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge" }
-    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    /[if lt IE 9] <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    
-    
->>>>>>> a12e4a950d715ac71cdd6b4446fd3c153e7ed7cf
-
+    %meta{itemprop:"brand", content:"MoneyBit"}
+    %meta{}
     = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script', 'Roboto', 'RobotoDraft']})
 
     = stylesheet_link_tag "application", media: "all"
@@ -20,31 +13,15 @@
     = html_import_tag 'application'
     = csrf_meta_tags
 
-  %body{unresolved:true,fullbleed:true, layout:true, vertical:true }
-    %core-media-query#mediaQuery{query:"max-width: 640px"}
-    %core-header-panel{mode:"waterfall", flex:true}
+  %body{unresolved:true}
+    %core-media-query{query:"min-width: 581px", queryMatches:"{{phoneScreen}}"}
+    %app-header-panel{mode:"waterfall"}
       = render :partial => "layouts/navigation"
-      .main
+      .main{flex:true}
         = yield
-      .footer
-        .footer__links
-          = link_to "О нас", page_path('about')
-        .footer__copyright{layout:true, center:true, horizontal:true}
-          %span Copyright © MoneyBit.me 2015
-
-<<<<<<< HEAD
-=======
-    = render 'layouts/navigation'
-    = render 'layouts/messages'
-  
-    .main
-      = yield
-  
-    .footer
       .footer__links
-        = link_to "О нас", page_path('about')
+        = link_to "О нас", page_path('about'), class:"footer__link"
       .footer__copyright{layout:true, center:true, horizontal:true}
         %span Copyright © MoneyBit.me 2015
         
-    = javascript_include_tag "body"
->>>>>>> a12e4a950d715ac71cdd6b4446fd3c153e7ed7cf
+    // = javascript_include_tag "body"

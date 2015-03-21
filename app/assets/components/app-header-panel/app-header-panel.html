@@ -1,0 +1,28 @@
+<polymer-element name="app-header-panel">
+  <template>
+    <link rel="stylesheet" href="app-header-panel.css.scss" />
+    
+    <div id="outerContainer" vertical layout>
+
+      <content id="headerContent" select="core-toolbar, .core-header"></content>
+
+      <div id="mainPanel" flex vertical layout>
+
+        <div id="mainContainer" flex?="{{mode !== 'cover'}}">
+          <content id="mainContent" select=".main"></content>
+          <footer>
+            <content id="footer__links" select=".footer__links"></content>
+            <content id="footer__copyright" select=".footer__copyright"></content>
+          </footer>
+        </div>
+
+        <div id="dropShadow"></div>
+        
+
+
+      </div>
+    </div>
+  </template>
+
+  <script src="app-header-panel.js"></script>
+</polymer-element>

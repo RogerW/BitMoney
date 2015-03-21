@@ -23,7 +23,6 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'RobotoDraft', sans-serif;
-//  font-size: 14px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
 }
@@ -32,7 +31,6 @@ core-header-panel {
   height: 100%;
 }
 
-<<<<<<< HEAD
 core-toolbar {
   background-color: #03A9F4;
   color: #ffffff;
@@ -52,12 +50,10 @@ paper-icon-button #icon {
 //  height: 16px;
 }
 
-core-header-panel #mainContainer, core-header-panel #mainPanel {
+app-header-panel {
   height: 100%;
 }
 
-
-=======
 .paper__button {
   display: inline-block;
   position: relative;
@@ -77,7 +73,6 @@ core-header-panel #mainContainer, core-header-panel #mainPanel {
   background-color: #03A9F4;
 }
 
->>>>>>> a12e4a950d715ac71cdd6b4446fd3c153e7ed7cf
 .header__logo {
   font-family: 'Kaushan Script', cursive;
   color: #fff;
@@ -115,11 +110,7 @@ a:hover.header__link {
   background-color: #CDDC39;
   color: #212121;
 }
-//
-//.forgot__block {
-//  text-align: right;
-//}
-//
+
 .promo__registry {
   margin-top: 20px;
   margin-bottom: 50px;
@@ -161,74 +152,20 @@ a:hover.header__link {
   font-size: 21px;
   font-style: italic;
 }
-//
-//#toolbar {
-//    background-color: #03A9F4;
-//    color: #fff;
-//    fill: #fff;
-//}
-//
+
+.footer__link {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .promo__block {
   padding-right: $footer-padding;
   padding-left: $footer-padding;
 }
-//
-//
-//
-.footer {
-  height: 150px;
-}
-//
-.footer__links {
-  background-color: #727272;
-  padding-top: 10px;
-  height: 90px;
-  padding-right: $footer-padding;
-  padding-left: $footer-padding;
-  a {
-    text-decoration: none;
-    color: #ffffff;
-  }
-}
 
-.footer__copyright {
-  background-color: #727272;
-  color: #ffffff;
-  height: 50px;
-  padding-right: $footer-padding;
-  padding-left: $footer-padding;
-}
 
-.main {
-  min-height: calc(100% - 64px /*core-toolbar*/ - 150px /*footer*/);
-}
 
-<<<<<<< HEAD
-=======
+
 .sign__in {
   color:  #03A9F4;
 }
-
-
-
-// .footer {
-//   height: 70px;
-//   background-color: #273333;
-//   vertical-align: middle;
-//   color: #ffffff;
-//   padding-top: 10px;
-//   @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
-// }
-
-// a:visited.text-danger {
-//   color: #f44336;
-// }
-
-// a:visited.text-success {
-//   color: #0f9d58;
-// }
-
-// .logo {
-
-// }
->>>>>>> a12e4a950d715ac71cdd6b4446fd3c153e7ed7cf
