@@ -1,4 +1,4 @@
 Polymer('promo-card', {
-    vertical: true
+    phone: true
 
 });

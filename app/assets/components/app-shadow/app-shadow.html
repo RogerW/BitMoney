@@ -1,0 +1,12 @@
+<polymer-element name="app-shadow">
+  <template>
+    <link rel="stylesheet" href="app-shadow.css.scss" />
+
+    <div id="shadow-bottom" fit animated?="[[animated]]" class="app-shadow-bottom-z-[[z]]"></div>
+    <div id="shadow-top" fit animated?="[[animated]]" class="app-shadow-top-z-[[z]]"></div>
+
+    <content></content>
+  </template>
+
+  <script src="app-shadow.js.coffee"></script>
+</polymer-element>

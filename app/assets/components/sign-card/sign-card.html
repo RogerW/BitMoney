@@ -2,15 +2,13 @@
   <template>
     <link rel="stylesheet" href="sign-card.css" />
 
-    <paper-shadow z="1" class="sign-card__shadow">
-      <div class="box" layout vertical>
-        <div class="box-icon">
-          <content select="core-icon"></content>
-        </div>
-        <content select="h3"></content>
-        <content></content>
-      </div>
-    </paper-shadow>
+    <app-shadow z="1" class="box">
+      <app-shadow class="box-icon" z="2">
+        <content select="core-icon"></content>
+      </app-shadow>
+      <content select="h3"></content>
+      <content></content>
+    </app-shadow>
 
   </template>
 

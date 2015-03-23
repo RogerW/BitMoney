@@ -6,12 +6,17 @@
   max-width: 500px;
   width: 500px;
   padding: 20px;
+  display: inline-block;
+  background: white;
+  box-sizing: border-box;
+  margin: 16px;
+  border-radius: 2px;
+  z-index:10;
 }
 
 .sign-card__shadow {
   display: inline-block;
-  margin-top: 100px;
-  margin-bottom: 50px;
+
 }
 
 .box-icon {
@@ -23,13 +28,9 @@
   margin: 0 auto;
   margin-top: -61px;
   padding: 17px;
-  z-index:20;
+  z-index:2000;
 }
 
-paper-shadow {
-    height: 100%;
-    width: 100%;
-}
 
 polyfill-next-selector { content: '.box-icon core-icon'; }
 .box-icon ::content core-icon {

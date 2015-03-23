@@ -11,15 +11,15 @@
 	.promo__header-block
 		%h2.promo__header 3 Причины регистрации на MoneyBit.me
 	.promo{horizontal:true, layout:true}
-		%promo-card{flex:true, "vertical?"=>"{{phoneScreen}}"}
-			= image_tag "kopilka.png", class:"promo-card__image"
+		%promo-card{flex:true, "phone?"=>"{{phoneScreen}}"}
+			= image_tag "kopilka.png"
 			%h4 Вы всегда знаете куда уходят ваши деньги.
 			%p= t('promo_text_money')
-		%promo-card{flex:true}
+		%promo-card{flex:true, "phone?"=>"{{phoneScreen}}"}
 			= image_tag "accounts.png"
 			%h4 С легкостью управляйте счетами.
 			%p Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
-		%promo-card{flex:true}
+		%promo-card{flex:true, "phone?"=>"{{phoneScreen}}"}
 			= image_tag "goals.png"
 			%h4 Ваше финансовое развитие
 			%p Вы сможете увидеть, что в двух простых графики. Шесть месяцев расходы по сравнению с графика доходов и ежемесячные расходы категории графике. Время гордиться!
