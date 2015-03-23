@@ -15,14 +15,16 @@
     = csrf_meta_tags
 
   %body{unresolved:true}
-    %core-media-query{query:"min-width: 581px", queryMatches:"{{phoneScreen}}"}
-    %app-header-panel{mode:"waterfall"}
-      = render :partial => "layouts/navigation"
-      .main{flex:true}
-        = yield
-      .footer__links
-        = link_to "О нас", page_path('about'), class:"footer__link"
-      .footer__copyright{layout:true, center:true, horizontal:true}
-        %span Copyright © MoneyBit.me 2015
+    %header
+      = link_to 'MoneyBit.me', "/", class: "header__logo"
+    -#%core-media-query{query:"min-width: 581px", queryMatches:"{{phoneScreen}}"}
+    -#%app-header-panel{mode:"waterfall"}
+    -#  = render :partial => "layouts/navigation"
+    -#  .main{flex:true}
+    -#    = yield
+    -#  .footer__links
+    -#    = link_to "О нас", page_path('about'), class:"footer__link"
+    -#  .footer__copyright{layout:true, center:true, horizontal:true}
+    -#    %span Copyright © MoneyBit.me 2015
 
     = javascript_include_tag "body"

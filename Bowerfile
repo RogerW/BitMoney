@@ -1,0 +1,14 @@
+asset 'angular'
+asset 'angular-route'
+asset 'angular-resource'
+asset 'angular-mocks'
+
+asset 'webcomponentsjs'
+
+asset 'polymer', github: 'Polymer/polymer' 
+asset 'polymer-core-elements', github: 'Polymer/core-elements' 
+asset 'polymer-paper-elements', github: 'Polymer/paper-elements'
+asset 'platform'
+
+# Voice Synthesis and Recognition
+asset 'voice-elements'

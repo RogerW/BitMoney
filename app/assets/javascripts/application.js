@@ -10,9 +10,10 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require angular
-//= require angular-animate
-//= require angular-resource
-//= require polymer/webcomponents
+//= require angular/angular
+//= require angular-route/angular-route
+//= require angular-resource/angular-resource
+//= require webcomponentsjs/webcomponents
+//= require platform/platform
 //= require jquery
 //= require jquery_ujs

@@ -9,18 +9,21 @@ gem 'pg', group: [:production]
 gem 'sqlite3', group: [:development, :test]
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-platform'
+  # gem 'rails-assets-platform'
 end
 
+
+gem 'bower-rails'
+gem 'emcee'
 gem 'haml-rails'
 gem 'polymer-rails'
-gem 'polymer-core-rails'
-gem 'polymer-paper-rails'
-gem 'angularjs-rails'
+# gem 'polymer-core-rails'
+# gem 'polymer-paper-rails'
+# gem 'angularjs-rails'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
-gem "green_monkey", '0.2.2'
+# gem "green_monkey", '0.2.2'
 
 gem 'google-webfonts-rails'
 
