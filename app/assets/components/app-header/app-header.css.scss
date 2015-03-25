@@ -21,5 +21,7 @@ polyfill-next-selector { content: '.nav .header__logo'; }
 
 .nav ::content .header__logo {
   font-size: 2rem;
-  color: black;
+  color: #222;
+  text-decoration: none;
+  font-family: 'Kaushan Script', sans-serif;
 }

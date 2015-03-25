@@ -1,0 +1,11 @@
+.present__block
+	.present__container
+		.present__main
+			.present__slogan
+				%h1 Простой способ учета и планирования Ваших финансов
+				%h2 Начните учет ваших финансов прямо сейчас, и вы очень быстро поймете куда утекают ваши деньги.
+			.present__registry
+				%p Зарегистрируйтесь сейчас!
+				%paper-button.present__registry-button{raised:true}
+					= link_to t(:sign_up_link), new_user_registration_path, class: "present__registry-link"
+.about__block
