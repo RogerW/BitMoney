@@ -12,17 +12,12 @@
  *= require_self
  */
 
-// @import "compass/css3";
-
-
-// @import 'shared/shared';
-
-$footer-padding: 150px;
 
 html, body {
   height: 100%;
   margin: 0;
   font-family: 'RobotoDraft', sans-serif;
+  font-size: 14pt;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
 }

@@ -1,0 +1,23 @@
+<polymer-element name="app-bar" attributes="query">
+  <template>
+    <link rel="stylesheet" href="app-bar.css" />
+    
+    <core-media-query query="{{query}}" queryMatches="{{phoneScreen}}"></core-media-query>
+    
+    <template if="{{phoneScreen}}">
+      <core-menu-button>
+        <core-icon-button icon="menu"></core-icon-button>
+        <core-dropdown class="dropdown" halign="right" valign="top">
+          <core-menu>
+            <content id="menu__links"></content>
+          </core-menu>
+        </core-dropdown>
+      </core-menu-button>
+    </template>
+    
+    <content id="menu__links"></content>
+    
+  </template>
+
+  <script src="app-bar.js.coffee"></script>
+</polymer-element>

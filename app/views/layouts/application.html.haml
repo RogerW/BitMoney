@@ -6,7 +6,6 @@
     %title= content_for?(:title) ? yield(:title) : 'MoneyBit.me'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'BitMoney'}"}
     %meta{itemprop:"brand", content:"MoneyBit"}
-    %meta{}
     = google_webfonts_init({google: ['Roboto Condensed', 'Open Sans', 'Kaushan Script', 'Roboto', 'RobotoDraft']})
 
     = stylesheet_link_tag "application", media: "all"
@@ -15,8 +14,16 @@
     = csrf_meta_tags
 
   %body{unresolved:true}
-    %header
+    %app-header{query:"max-width: 581px"}
       = link_to 'MoneyBit.me', "/", class: "header__logo"
+      %app-bar{query:"max-width: 581px"}
+        %a{ href:"#", target:"_self"}
+          %paper-button test
+        %a{ href:"#", target:"_self"}
+          %paper-button test
+        %a{ href:"#", target:"_self"}
+          %paper-button test
+      
     -#%core-media-query{query:"min-width: 581px", queryMatches:"{{phoneScreen}}"}
     -#%app-header-panel{mode:"waterfall"}
     -#  = render :partial => "layouts/navigation"

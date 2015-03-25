@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.header-page {
+  height: 80px;
+  text-align: center;
+}
+
+.nav {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  max-width: 1200px;
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+
+polyfill-next-selector { content: '.nav .header__logo'; }
+
+.nav ::content .header__logo {
+  font-size: 2rem;
+  color: black;
+}
