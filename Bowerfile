@@ -9,6 +9,7 @@ asset 'polymer', github: 'Polymer/polymer'
 asset 'polymer-core-elements', github: 'Polymer/core-elements' 
 asset 'polymer-paper-elements', github: 'Polymer/paper-elements'
 asset 'platform'
+asset 'app-router'
 
 # Voice Synthesis and Recognition
 asset 'voice-elements'

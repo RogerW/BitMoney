@@ -1,0 +1,36 @@
+<polymer-element name="app-signin">
+  <template>
+    <link rel="stylesheet" href="app-signin.css.scss" />
+    
+    <core-ajax-handler id="ajaxhandler"></core-ajax-handler>
+    
+    <paper-shadow z="1" class="login__form">
+      <content select="h2, .form__title"></content>
+      <div class="input__field" layout horizontal>
+        <core-icon icon="account-circle" class="icon" id="user_icon"></core-icon>
+        <paper-input-decorator class="field" id="user_field" label="Username or email address" flex>
+          <input id="user_input" is="core-input" name="user" value="{{user}}">
+        </paper-input-decorator>
+      </div>
+      
+      <div class="input__field" layout horizontal>
+        <core-icon icon="lock" class="icon" id="password_icon"></core-icon>
+      
+        <paper-input-decorator class="field" id="password_field" label="Enter your password" flex>
+          <input id="password_input" is="core-input" name="password" type="password" value="{{password}}"/>
+        </paper-input-decorator>
+      </div>
+        
+      <div class="input__field" layout horizontal>
+        <paper-toggle-button id="remember" checked></paper-toggle-button>
+        <paper-item class="field gray-text" style="left: 2px;">Remember me</paper-item>
+        <paper-fab id="arrow" icon="arrow-forward" title="submit" on-click="{{logged}}" ></paper-fab>
+      </div>
+      
+      
+    </paper-shadow>
+    
+  </template>
+
+  <script src="app-signin.js.coffee"></script>
+</polymer-element>

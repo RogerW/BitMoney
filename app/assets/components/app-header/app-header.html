@@ -2,14 +2,14 @@
   <template>
     <link rel="stylesheet" href="app-header.css.scss" />
 
-    <div class="header-page">
+    <paper-shadow z="1" class="header-page">
       <div class="nav"  horizontal layout center>
         <content select=".header__logo"></content>
         <div flex></div>
         <content></content>
       </div>
       
-    </div>
+    </paper-shadow>
   </template>
   
   <core-media-query query="{{query}}" queryMatches="{{phoneScreen}}"></core-media-query>

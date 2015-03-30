@@ -11,9 +11,9 @@
  * file per style scope.
  *= require_self
  */
-
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
+ 
+ @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
 
 html, body {
@@ -37,7 +37,6 @@ html, body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   border-bottom: 1px solid #ffffff;
-  border-top: 1px solid #273333;
   max-height: 500px;
   height: 100%;
   position: relative;
@@ -56,6 +55,29 @@ html, body {
 }
 
 .present__main {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.login__box {
+  min-height: 500px;
+  height: calc(100% - 80px);
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.login_main {
+  margin-left: auto;
+  margin-right: auto;
+  height: inherit;
+  max-width: 400px;
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+app-signin {
   display: table-cell;
   vertical-align: middle;
 }

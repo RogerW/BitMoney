@@ -10,6 +10,10 @@
     "polymer-core-elements": "git://github.com/Polymer/core-elements",
     "polymer-paper-elements": "git://github.com/Polymer/paper-elements",
     "platform": "latest",
+    "app-router": "latest",
+    "polymer-devise": "latest",
     "voice-elements": "latest"
+  },
+  "resolutions": {
   }
 }
