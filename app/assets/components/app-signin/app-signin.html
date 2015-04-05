@@ -1,32 +1,48 @@
 <polymer-element name="app-signin">
   <template>
     <link rel="stylesheet" href="app-signin.css.scss" />
-    
-    <core-ajax-handler id="ajaxhandler"></core-ajax-handler>
-    
+
     <paper-shadow z="1" class="login__form">
       <content select="h2, .form__title"></content>
       <div class="input__field" layout horizontal>
-        <core-icon icon="account-circle" class="icon" id="user_icon"></core-icon>
+        <core-icon icon="account-circle"  id="user_icon"></core-icon>
+
         <paper-input-decorator class="field" id="user_field" label="Username or email address" flex>
-          <input id="user_input" is="core-input" name="user" value="{{user}}">
+          <content select=".email__field"></content>
+          <!--<input id="user_input" is="core-input" name="user" value="{{user}}">-->
         </paper-input-decorator>
       </div>
-      
+
       <div class="input__field" layout horizontal>
         <core-icon icon="lock" class="icon" id="password_icon"></core-icon>
-      
+
         <paper-input-decorator class="field" id="password_field" label="Enter your password" flex>
-          <input id="password_input" is="core-input" name="password" type="password" value="{{password}}"/>
+          <content select=".password__field"></content>
+          <!--<input id="password_input" is="core-input" name="password" type="password" value="{{password}}"/>-->
         </paper-input-decorator>
       </div>
-        
+
       <div class="input__field" layout horizontal>
-        <paper-toggle-button id="remember" checked></paper-toggle-button>
-        <paper-item class="field gray-text" style="left: 2px;">Remember me</paper-item>
-        <paper-fab id="arrow" icon="arrow-forward" title="submit" on-click="{{logged}}" ></paper-fab>
+        <paper-toggle-button id="remember" checked value="{{remember}}" on-core-change="{{toggleChange}}"></paper-toggle-button>
+        <paper-item class="field gray-text" style="left: 2px;" on-click="{{rememberClick}}">Remember me</paper-item>
+          <content select=".remember__field" id="remember__checkbox"></content>
+          <content select=".remember__field" id="remember__checkbox"></content>
       </div>
-      
+
+      <div class="input__field" layout horizontal>
+        <paper-button id="signup" flex>
+          <content select=".sign-up__link"></content>
+        </paper-button>
+
+        <paper-button id="arrow" icon="arrow-forward" title="submit" on-click="{{logged}}" flex>
+          Sign In
+        </paper-button>
+
+        <content select="submit"></content>
+      </div>
+
+
+    <content></content>
       
     </paper-shadow>
     

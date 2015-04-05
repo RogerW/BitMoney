@@ -5,15 +5,16 @@
     "angular-route": "latest",
     "angular-resource": "latest",
     "angular-mocks": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-material": "latest",
+    "angular-material-icons": "latest",
     "webcomponentsjs": "latest",
     "polymer": "git://github.com/Polymer/polymer",
     "polymer-core-elements": "git://github.com/Polymer/core-elements",
     "polymer-paper-elements": "git://github.com/Polymer/paper-elements",
     "platform": "latest",
-    "app-router": "latest",
-    "polymer-devise": "latest",
+    "normalize.css": "latest",
     "voice-elements": "latest"
-  },
-  "resolutions": {
   }
 }

@@ -14,14 +14,19 @@ Rails.application.routes.draw do
     resources :add_consumptions, only: [:new, :create]
     resources :add_funds, only: [:new, :create]
   end
-  
-  devise_for :users
+
+
+  get "/pages/*id" => 'pages#show', as: :page, format: false
+
+  devise_for :users, :controllers => {sessions: 'sessions'}
+
   devise_scope :user do
     authenticated :user do
-      root 'accounts#index', as: :authenticated_root
+      root 'pages#show', id: 'account',  as: :authenticated_root
+      # root 'accounts#index', as: :authenticated_root
     end
     unauthenticated do
-      root 'high_voltage/pages#show', id: 'welcome', as: :unauthenticated_root
+      root 'pages#show', id: 'welcome', as: :unauthenticated_root
     end
   end
 

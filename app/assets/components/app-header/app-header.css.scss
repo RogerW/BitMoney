@@ -3,8 +3,32 @@
 }
 
 .header-page {
+  display: inline-block;
+  box-sizing: border-box;
+  border-radius: 2px;
   height: 80px;
   text-align: center;
+  width: 100%;
+}
+
+.paper-shadow-bottom-z-1 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.paper-shadow-top-z-1 {
+  box-shadow: none;
+}
+
+paper-shadow,
+paper-animated-shadow {
+  display: block;
+  position: relative;
+}
+
+paper-shadow::shadow #shadow-bottom,
+paper-shadow::shadow #shadow-top {
+  border-radius: inherit;
+  pointer-events: none;
 }
 
 .nav {

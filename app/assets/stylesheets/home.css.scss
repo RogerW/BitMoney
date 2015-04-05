@@ -1,114 +1,143 @@
-@import "compass/css3";
+/*
+ *= require_self
+ */
 
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
+@import "angular-material/angular-material.css";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
+@import "material-design-icons/sprites/svg-sprite/svg-sprite-action.css";
 
-.header1 {
-  height:  500px;
-  background-image: asset_url("landing-bg.png", image);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: auto 600px;
-  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
-  margin-bottom: 100px;
-//  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.2);
-}
-
-
-#logo__text {
-  margin-top: 120px;
-  font-weight: bold;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 5em;
-  padding-top: 50px;
-  margin-bottom: 50px;
-  color: #ffffff;
-}
-
-.promo__header {
-//  font-family: 'Roboto Condensed', sans-serif;
-  color: #273333;
-  font-weight: bold;
-  text-align: center;
-}
-
-.promo__button {
-  height: 200px;
-  padding-top: 80px;
-  margin-bottom: 50px;
-}
-
-.slogan {
-  color: #ffffff;
-  font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
-}
-
-#registry_slogan {
-  margin-top: 40px;
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-}
-
-.promo__line {
+html, body {
   height: 100%;
-}
-
-.promo__image {
-  padding-top: 1.5rem;
-  padding-right:  3rem;
-  padding-left:  3rem;
-}
-
-.promo__text {
-  padding-top: 4.5rem;
-  height: 212px;
-  padding-left:  3rem;
-  padding-right:  3rem;
-}
-
-.promo__text > h4 {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
-}
-
-.promo__text > p {
+  margin: 0;
+  color: #273333;
+  //  font-family: 'Roboto Slab', serif;
   font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
+  font-size: 12pt;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}
+
+.menuBtn {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px 0 0 16px;
+  width: 36px;
+}
+md-toolbar h1 {
+  font-weight: normal;
+}
+md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+
+/* Using Data-URI converted from svg until <md-icon> becomes available
+https://github.com/google/material-design-icons
+*/
+.menuBtn {
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGcgaWQ9IkhlYWRlciI+CiAgICA8Zz4KICAgICAgICA8cmVjdCB4PSItNjE4IiB5PSItMjIzMiIgZmlsbD0ibm9uZSIgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzYwMCIvPgogICAgPC9nPgo8L2c+CjxnIGlkPSJMYWJlbCI+CjwvZz4KPGcgaWQ9Ikljb24iPgogICAgPGc+CiAgICAgICAgPHJlY3QgZmlsbD0ibm9uZSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgICAgICAgPHBhdGggZD0iTTMsMThoMTh2LTJIM1YxOHogTTMsMTNoMTh2LTJIM1YxM3ogTTMsNnYyaDE4VjZIM3oiIHN0eWxlPSJmaWxsOiNmM2YzZjM7Ii8+CiAgICA8L2c+CjwvZz4KPGcgaWQ9IkdyaWQiIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgZGlzcGxheT0iaW5saW5lIj4KICAgIDwvZz4KPC9nPgo8L3N2Zz4=) no-repeat  center center;
+}
+
+.ng-scope { height: 100%; }
+
+.card__inner {
+  padding: 1rem .5rem;
+}
+
+.account__header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+  margin: 0rem;
+}
+
+.account__title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1rem;
+  margin: 0rem;
+  font-style: bold;
+}
+
+.account__description {
+  font-size: .8rem;
   color: #273333;
 }
 
-.promo__text__left {
-  height: 200px;
-  padding-left: 1.5rem;
-  text-align: right;
+.account__balance {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  margin: 0rem;
+  font-style: bold;
 }
 
-.promo__text > p {
-  font-size: 16px;
-  color: #637272;
+hr {
+  border: none; /* Убираем границу */
+  background-color: #273333; /* Цвет линии */
+  color: #273333; /* Цвет линии для IE6-7 */
+  height: 1px; /* Толщина линии */
 }
 
-.promo__text > p:hover {
-  color: #273333;
+ng-md-icon {
+//  height: 2rem;
+//  width: 2rem;
+  margin: auto .5rem ;
 }
 
-.promo {
-  padding: 2% 0;
-  display:inline-block;
-  vertical-align:middle;
+.card__header {
+  height: 100px;
+  padding: 0.5rem 0rem 0rem 1rem;
 }
 
-p.promo {
-  font-size: 15px;
-  color: #273333;
+.accounts__header {
+  background: #FBCA54;
+  color: #ffffff;
+  fill: #ffffff
 }
 
+
+.invoices__header {
+  background-color: #FC575E;
+  color: #ffffff;
+  fill: #ffffff
+}
+
+.invoice__add-fund {
+  color: #7CA668;
+  fill: #7CA668;
+}
+
+.invoice__withdrawal {
+  color: #FC575E;
+  fill: #FC575E;
+}
+
+#add-invoice {
+  position: absolute;
+  right: 50px;
+  margin-top: -28px;
+  background: #398EC4;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+#main {
+  background-color: #F5F5F5;
+}
+
+md-whiteframe {
+  background-color: white;
+}
+
+@media only screen and (min-width: 600px) {
+  .right__panel {
+    margin-left: 0.5rem;
+  }
+
+  .left__panel {
+    margin-right: 0.5rem;
+  }
+}

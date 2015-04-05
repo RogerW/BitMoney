@@ -1,0 +1,29 @@
+!!!
+%html{lang: "ru", itemscope:true, itemtype:"http://schema.org/Product", "ng-app" => "MoneyBit"}
+  %head
+    %meta{:content => "initial-scale=1, maximum-scale=1", :name => "viewport"}
+    %meta{'http-equiv'=>"X-UA-Compatible", content:"IE=edge,chrome=1"}
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'MoneyBit'}"}
+    %meta{itemprop:"brand", content:"MoneyBit"}
+
+    = google_webfonts_init({google: [ 'Kaushan Script']})
+
+    = stylesheet_link_tag "home", media: "all"
+    = javascript_include_tag "home"
+    = csrf_meta_tags
+
+  %body{:layout => "column", "ng-controller" => "AppCtrl"}
+    %md-toolbar{:layout => "row"}
+      %button.menuBtn{"hide-gt-sm" => "", "ng-click" => "toggleSidenav('left')"}
+        %span.visually-hidden Menu
+      %h1.md-toolbar-tools{"layout-align-gt-sm" => "left"} MoneyBit.me
+    %div{:flex => "", :layout => "row"}
+      %md-sidenav.md-sidenav-left.md-whiteframe-z2{:layout => "column", "md-component-id" => "left", "md-is-locked-open" => "$mdMedia('gt-sm')"}
+        %md-content.md-padding
+          %md-list
+            %md-item{"ng-repeat"=>"item in menuItems"}
+              %ng-md-icon{icon:"{{item.icon}}", size:"24px"}
+              %p \{\{item.label\}\}
+      #content{:flex => "", :layout => "column"}
+        %md-content.md-padding#main{:flex => "", :layout => "column"}
+          = yield
