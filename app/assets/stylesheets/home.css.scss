@@ -24,17 +24,10 @@ html, body {
   width: 100%;
 }
 
-.menu__left .selected {
-  color: #03a9f4;
-}
-
 .face {
-  border-radius: 30px;
-  border: 1px solid #ddd;
   display: inline-block;
   margin: 4px 16px; 
   vertical-align: middle;
-  width: 48px;
 }
 
 .menuBtn {
@@ -44,6 +37,15 @@ html, body {
   margin: 16px 0 0 16px;
   width: 36px;
 }
+
+.header__logo {
+  font-size: 2rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: 'Kaushan Script', sans-serif;
+}
+
+
 md-toolbar h1 {
   font-weight: normal;
 }

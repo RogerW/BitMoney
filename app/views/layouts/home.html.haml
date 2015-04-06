@@ -16,14 +16,14 @@
     %md-toolbar{:layout => "row"}
       %button.menuBtn{"hide-gt-sm" => "", "ng-click" => "toggleSidenav('left')"}
         %span.visually-hidden Menu
-      %h1.md-toolbar-tools{"layout-align-gt-sm" => "left"} MoneyBit.me
+      %h1.md-toolbar-tools.header__logo{"layout-align-gt-sm" => "left"} MoneyBit.me
     %div{:flex => "", :layout => "row"}
       %md-sidenav.md-sidenav-left.md-whiteframe-z2{:layout => "column", "md-component-id" => "left", "md-is-locked-open" => "$mdMedia('gt-sm')"}
         %md-content.md-padding
           %md-list.menu__left
             %md-item{"ng-repeat"=>"item in menuItems"}
               %md-item-content
-                %md-button{'ng-click'=> "selectMenuItem(item)", 'ng-class'=>"{'selected' : item === selected }"}
+                %md-button{'ng-click'=> "selectMenuItem(item)", 'ng-class'=>"{'md-primary' : item === selected }"}
                   %ng-md-icon.face{icon:"{{item.icon}}", size:"24px"}
                   {{item.label}}
       #content{:flex => "", :layout => "column"}

@@ -18,7 +18,7 @@
                   .account__description {{account.description}}
                 .md-secondary{:layout => "row"}
                   .account__balance {{account.balance|currency}}
-                  %md-button.md-icon-button.md-primary{"aria-label" => "More"}
+                  %md-button.md-icon-button.md-primary{"aria-label" => "More",  'dropdown-menu'=>"ddSelectOptions", 'dropdown-model'=>"ddSelectSelected"}
                     %ng-md-icon{:icon => "more_vert", :size => "24px"}
               %md-divider{"md-inset" => "", "ng-if" => "!$last"}
             / </md-list>
@@ -29,8 +29,9 @@
           %h3.account__header{:flex => ""} Операции
           %md-button.md-icon-button.md-primary{"aria-label" => "More"}
             %ng-md-icon{:icon => "more_vert", :size => "24px"}
-        %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice"}
-          %ng-md-icon{:icon => "add", :size => "24px"}
+        %div{"ng-controller" => "consumptions"}
+          %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice",  'ng-click'=>"showAdvanced($event)"}
+            %ng-md-icon{:icon => "add", :size => "24px"}
         .card__inner
           %div{"ng-controller" => "getInvoices"}
             %div{"ng-repeat" => "invoice in invoices"}

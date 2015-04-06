@@ -5,6 +5,7 @@ asset 'angular-mocks'
 asset 'angular-animate'
 asset 'angular-aria'
 asset 'angular-material'
+asset 'angular-dropdowns'
 
 asset 'angular-material-icons'
 

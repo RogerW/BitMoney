@@ -8,6 +8,7 @@
     "angular-animate": "latest",
     "angular-aria": "latest",
     "angular-material": "latest",
+    "angular-dropdowns": "latest",
     "angular-material-icons": "latest",
     "webcomponentsjs": "latest",
     "polymer": "git://github.com/Polymer/polymer",

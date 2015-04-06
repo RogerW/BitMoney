@@ -5,6 +5,7 @@
 //= require angular-aria/angular-aria
 //= require angular-material/angular-material
 //= require angular-material-icons/angular-material-icons
+//= require angular-dropdowns/angular-dropdowns
 //= require jquery
 //= require jquery_ujs
 //= require MoneyBit
