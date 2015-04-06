@@ -1,0 +1,47 @@
+%div{:layout => "row", "layout-sm" => "column"}
+  %div{"flex-gt-sm" => "", "flex-sm" => ""}
+    .left__panel{:flex => "", :layout => "column"}
+      %md-whiteframe.md-whiteframe-z1
+        .card__header.accounts__header{:layout => "row", "layout-align" => "start start"}
+          %h3.account__header{:flex => ""} Счета
+          %md-button.md-icon-button.md-primary{"aria-label" => "More"}
+            %ng-md-icon{:icon => "more_vert", :size => "24px"}
+        .card__inner
+          %div{"ng-controller" => "getAccounts"}
+            / <md-list>
+            %div{"ng-repeat" => "account in accounts"}
+              %md-item-content
+                .md-tile-left
+                  %ng-md-icon{:icon => "credit_card", :size => "48px"}
+                .md-tile-content{:layout => "column"}
+                  .account__title {{account.title}}
+                  .account__description {{account.description}}
+                .md-secondary{:layout => "row"}
+                  .account__balance {{account.balance|currency}}
+                  %md-button.md-icon-button.md-primary{"aria-label" => "More"}
+                    %ng-md-icon{:icon => "more_vert", :size => "24px"}
+              %md-divider{"md-inset" => "", "ng-if" => "!$last"}
+            / </md-list>
+  %div{"flex-gt-sm" => "", "flex-sm" => ""}
+    .right__panel{:flex => "", :layout => "column"}
+      %md-whiteframe.md-whiteframe-z1
+        .card__header.invoices__header{:layout => "row", "layout-align" => "start start"}
+          %h3.account__header{:flex => ""} Операции
+          %md-button.md-icon-button.md-primary{"aria-label" => "More"}
+            %ng-md-icon{:icon => "more_vert", :size => "24px"}
+        %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice"}
+          %ng-md-icon{:icon => "add", :size => "24px"}
+        .card__inner
+          %div{"ng-controller" => "getInvoices"}
+            %div{"ng-repeat" => "invoice in invoices"}
+              %md-item-content{:class => "{{invoice_types[invoice.invtype]}}"}
+                .md-tile-left
+                  %ng-md-icon{:icon => "{{consumption_types[invoice.consumption_type]}}", :size => "48px"}
+                .md-tile-content{:layout => "column"}
+                  .account__title {{invoice.note}}
+                  .account__description {{invoice.created_at}}
+                .md-secondary{:layout => "row"}
+                  .account__balance {{invoice.amount|currency}}
+                  %md-button.md-icon-button.md-primary{"aria-label" => "More"}
+                    %ng-md-icon{:icon => "more_vert", :size => "24px"}
+              %md-divider{"md-inset" => "", "ng-if" => "!$last"}

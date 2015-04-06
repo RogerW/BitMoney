@@ -1,22 +1,40 @@
 /*
  *= require_self
  */
-
-@import "angular-material/angular-material.css";
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
-@import "material-design-icons/sprites/svg-sprite/svg-sprite-action.css";
+@import "angular-material/angular-material.css";
+// @import "main/variables";
 
 html, body {
   height: 100%;
   margin: 0;
   color: #273333;
-  //  font-family: 'Roboto Slab', serif;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', 'sans-serif';
   font-size: 12pt;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
+}
+
+.menu__left .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+
+.menu__left .selected {
+  color: #03a9f4;
+}
+
+.face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  margin: 4px 16px; 
+  vertical-align: middle;
+  width: 48px;
 }
 
 .menuBtn {
@@ -119,7 +137,6 @@ ng-md-icon {
   position: absolute;
   right: 50px;
   margin-top: -28px;
-  background: #398EC4;
   color: #ffffff;
   fill: #ffffff;
 }
