@@ -31,6 +31,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.7)
+    angularjs-rails-resource (2.0.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -272,6 +273,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_type
+  angularjs-rails-resource (~> 2.0.0)
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller

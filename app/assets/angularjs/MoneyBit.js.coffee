@@ -1,6 +1,6 @@
-app = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'MoneyBit.dashboard', 'ngMdIcons' ])
+@App = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'MoneyBit.dashboard_ctrl', 'ngMdIcons', 'rails' ])
 
-app.config ($mdThemingProvider) ->
+@App.config ($mdThemingProvider) ->
   $mdThemingProvider.definePalette 'primaryMoneyBitPalette',
     '50': 'ECF4FA'
     '100': 'BFDAEC'
@@ -55,3 +55,7 @@ app.config ($mdThemingProvider) ->
     .primaryPalette('primaryMoneyBitPalette')
     .warnPalette('warnMoneyBitPalette')
   return
+  
+@App.config ["$httpProvider", ($httpProvider) ->
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
+]

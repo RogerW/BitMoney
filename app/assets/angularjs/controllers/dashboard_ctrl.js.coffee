@@ -1,4 +1,4 @@
-app = angular.module('MoneyBit.dashboard', ['ngMaterial', 'ngDropdowns'])
+app = angular.module('MoneyBit.dashboard_ctrl', ['ngMaterial', 'ngDropdowns'])
 
 app.controller('getAccounts', ['$scope', '$http', ($scope, $http) ->
 
