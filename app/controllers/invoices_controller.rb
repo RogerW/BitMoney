@@ -1,15 +1,14 @@
 class InvoicesController < ApplicationController
-  before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+  before_action :authenticate_user!
+   
+  respond_to :json
 
   def index
-    @invoices = Invoice.all
-    respond_with(@invoices)
+    load_invoices
   end
 
   def show
-    respond_with(@invoice)
+    load_invoice or render json: {notice:"Can't find invoice"}, status: 404
   end
 
   def new
@@ -37,10 +36,23 @@ class InvoicesController < ApplicationController
   end
 
   private
-    def set_invoice
-      @invoice = Invoice.find(params[:id])
+    def load_invoices
+      @invoices ||= invoice_scope.to_a
     end
-
+    
+    def load_invoice
+      @invoice ||= invoice_scope.where(id: params[:id]).first
+    end
+    
+    def build_invoice
+      @invoice ||= account_scope.build
+      @invoice.attributes = invoice_params
+    end
+  
+    def invoice_scope
+      current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types)
+    end
+    
     def invoice_params
       params.require(:invoice).permit(:account_id, :amount, :note)
     end

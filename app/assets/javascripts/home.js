@@ -13,5 +13,6 @@
 //= require MoneyBit
 //= require ng_helpers
 //= require MoneyBitRoutes
+//= require observer
 //= require_tree ../angularjs/controllers
 //= require_tree ../angularjs/models

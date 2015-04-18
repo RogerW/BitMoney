@@ -1,5 +1,7 @@
-App.factory "Account", ['railsResourceFactory', 'railsSerializer', (railsResourceFactory, railsSerializer) ->
-  resource = railsResourceFactory
-    url: "/accounts"
-    name: "account"
+angular.module('MoneyBit').factory 'Account', [
+  'railsResourceFactory'
+  (railsResourceFactory) ->
+    railsResourceFactory
+      url: '/accounts'
+      name: 'account'
 ]

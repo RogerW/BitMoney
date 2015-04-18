@@ -1,4 +1,4 @@
-@App = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'MoneyBit.dashboard_ctrl', 'ngMdIcons', 'rails' ])
+@App = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'ngMdIcons', 'rails', 'ngMaterial'])
 
 @App.config ($mdThemingProvider) ->
   $mdThemingProvider.definePalette 'primaryMoneyBitPalette',

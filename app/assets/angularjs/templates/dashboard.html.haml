@@ -9,17 +9,39 @@
         .card__inner
           %div{"ng-controller" => "AccountsCtrl as accounts"}
             / <md-list>
-            %div{"ng-repeat" => "account in accounts.all"}
-              %md-item-content
+            %div{"ng-repeat" => "account in accounts"}
+              %md-item-content.account__item{ layoyt:"row" }
                 .md-tile-left
                   %ng-md-icon{:icon => "credit_card", :size => "48px"}
                 .md-tile-content{:layout => "column"}
                   .account__title {{account.title}}
                   .account__description {{account.description}}
                 .md-secondary{:layout => "row"}
-                  .account__balance {{account.balance}}
-                  %md-button.md-icon-button.md-primary{"aria-label" => "More",  'dropdown-menu'=>"ddSelectOptions", 'dropdown-model'=>"ddSelectSelected"}
-                    %ng-md-icon{:icon => "more_vert", :size => "24px"}
+                  .account__balance {{account.balance.fractional /100 | currency: account.balance.currency.htmlEntity:2}}
+                  %md-button.md-icon-button{"aria-label" => "Menu", 'ng-click' => "AddFundPanelOpen(account.id)"}
+                    %ng-md-icon{:icon => "more_vert", :size => "24"}
+              .account_menu__list{'ng-show' => 'AddFundPanel(account.id)'}
+                %md-subheader Действия
+                %div{layout:"row", "layout-align" => "center center"}
+                  %md-button.account_menu__button{layout:"column", "layout-align" => "center", 'ng-repeat' => 'action in account_actions', 'ng-click' => 'menu_action(action.name,account.id)'}
+                    
+                    %ng-md-icon{:icon => "{{action.icon}}", :size => "24"}
+                    %span.md-inline-list-icon-label {{action.title}}
+              // .add__fund{'ng-show' => 'AddFundPanel(account.id)', 'ng-controller' => 'AccountAddFundCtrl as add_funds'}
+              //   %form{name:"add_fund", layout:"column"}
+              //     %ng-form{name:'{{account.title}}'}
+              //       .form__line{layout:"row"}
+              //         %md-input-container{flex:true}
+              //           %label Amount
+              //           %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_fund.amount"}
+              //         %md-input-container{flex:true}
+              //           %label Note
+              //           %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_add_fund.note"}
+              //       %input{type:"hidden", 
+              //         'ng-model' => 'account_add_fund.account_id', 
+              //         'ng-init' => 'account_add_fund.account_id = account.id'}
+              //       %md-button.md-warn.md-raised{'ng-click'=>"create()"}
+              //         Пополнить
               %md-divider{"md-inset" => "", "ng-if" => "!$last"}
             / </md-list>
   %div{"flex-gt-sm" => "", "flex-sm" => ""}
@@ -29,20 +51,20 @@
           %h3.account__header{:flex => ""} Операции
           %md-button.md-icon-button.md-primary{"aria-label" => "More"}
             %ng-md-icon{:icon => "more_vert", :size => "24px"}
-        %div{"ng-controller" => "consumptions"}
-          %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice",  'ng-click'=>"showAdvanced($event)"}
-            %ng-md-icon{:icon => "add", :size => "24px"}
+        // %div{"ng-controller" => "consumptions"}
+        //   %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice",  'ng-click'=>"showAdvanced($event)"}
+        //     %ng-md-icon{:icon => "add", :size => "24px"}
         .card__inner
-          %div{"ng-controller" => "getInvoices"}
-            %div{"ng-repeat" => "invoice in invoices"}
-              %md-item-content{:class => "{{invoice_types[invoice.invtype]}}"}
+          %div{"ng-controller" => "InvoicesCtrl as invoices"}
+            %div{"ng-repeat" => "invoice in invoice_lists"}
+              %md-item-content{:class => "{{invoice.invtype}}", layoyt:"row"}
                 .md-tile-left
-                  %ng-md-icon{:icon => "{{consumption_types[invoice.consumption_type]}}", :size => "48px"}
+                  %ng-md-icon{:icon => "{{getConsuptionTypeIcon(invoice.invtype, invoice.consumptionTypes.icon)}}", :size => "48"}
                 .md-tile-content{:layout => "column"}
                   .account__title {{invoice.note}}
-                  .account__description {{invoice.created_at}}
+                  .account__description {{invoice.createdAt| date:'medium'}}
                 .md-secondary{:layout => "row"}
-                  .account__balance {{invoice.amount|currency}}
+                  .account__balance {{invoice.amount.fractional /100 | currency: invoice.amount.currency.htmlEntity:2}}
                   %md-button.md-icon-button.md-primary{"aria-label" => "More"}
                     %ng-md-icon{:icon => "more_vert", :size => "24px"}
               %md-divider{"md-inset" => "", "ng-if" => "!$last"}
