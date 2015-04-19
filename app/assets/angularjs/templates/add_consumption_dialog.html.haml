@@ -1,0 +1,28 @@
+%md-dialog{"aria-label" => "Расход"}
+  %md-content.sticky-container
+    %md-subheader.md-sticky-no-effect Расход
+    .dialog-content
+      %form{name:"add_consuption", layout:"column"}
+        .form__line{layout:"row", 'ng-show' => 'showAccountSelect()'}
+          %md-select{'ng-model' => 'account', placeholder:"Выберите счет", 'md-on-open' => 'loadAccounts()'}
+            %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+        .form__line{layout:"row", flex:true}
+          %md-select{'ng-model' => 'account_add_consumption.consumption_type_id', placeholder:"Укажите тип расходов", 'md-on-open' => 'loadConsumptionTypes()'}
+            %md-option{'ng-repeat'=>'consumptionType in consumptionTypes', 'ng-value' => 'consumptionType.id'}
+              %div{layout:"row", "layout-align" => "start center"}
+                %ng-md-icon{:icon => "consumptionType.icon", :size => "24"}
+                {{consumptionType.title}}
+        .form__line{layout:"row"}
+          %md-input-container{flex:true}
+            %label Amount
+            %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_consumption.amount"}
+          %md-input-container{flex:true}
+            %label Note
+            %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_add_consumption.note"}
+          %input{type:"hidden", 'ng-model' => 'account'}
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()"}
+      Добавить

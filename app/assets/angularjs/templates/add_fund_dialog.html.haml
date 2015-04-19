@@ -1,22 +1,22 @@
 %md-dialog{"aria-label" => "Доход"}
   %md-content.sticky-container
-    %md-subheader.md-sticky-no-effect Mango (Fruit)
+    %md-subheader.md-sticky-no-effect Доход
     .dialog-content
       %form{name:"add_fund", layout:"column"}
-        %ng-form{name:'{{account.title}}'}
-          .form__line{layout:"row"}
-            %md-input-container{flex:true}
-              %label Amount
-              %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_fund.amount"}
-            %md-input-container{flex:true}
-              %label Note
-              %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_add_fund.note"}
-            %input{type:"hidden", 
-              'ng-model' => 'account_id', 
-              'ng-init' => 'account_id = account.id'}
+        .form__line{layout:"row", 'ng-show' => 'showAccountSelect()'}
+          %md-select{'ng-model' => 'account', placeholder:"Выберите счет", 'md-on-open' => 'loadAccounts()'}
+            %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+        .form__line{layout:"row"}
+          %md-input-container{flex:true}
+            %label Amount
+            %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_fund.amount"}
+          %md-input-container{flex:true}
+            %label Note
+            %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_add_fund.note"}
+          %input{type:"hidden", 'ng-model' => 'account'}
   .md-actions{:layout => "row"}
-  %span{:flex => ""}
-    %md-button{"ng-click" => "answer('not useful')"}
-      Not Useful
-    %md-button.md-primary{"ng-click" => "answer('useful')"}
-      Useful
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()"}
+      Добавить

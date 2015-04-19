@@ -22,8 +22,8 @@ class Account::AddConsumptionsController < ApplicationController
   end
   
   def add_consumption_params
-    add_consumption_params = params[:account_add_consumption]
-    add_consumption_params[:account_id] = params[:account_id]
-    add_consumption_params ? add_consumption_params.permit(:account_id, :consumption_type_id, :amount, :note) : {}
+	  add_consumption_params = params[:account_add_consumption]
+	  add_consumption_params[:account_id] ? {} :add_consumption_params[:account_id] = params[:account_id]
+	  add_consumption_params ? add_consumption_params.permit(:account_id, :amount, :note, :consumption_type_id) : {}
   end
 end
