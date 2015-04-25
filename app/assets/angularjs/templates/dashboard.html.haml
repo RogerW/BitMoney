@@ -68,3 +68,9 @@
                   %md-button.md-icon-button.md-primary{"aria-label" => "More"}
                     %ng-md-icon{:icon => "more_vert", :size => "24px"}
               %md-divider{"md-inset" => "", "ng-if" => "!$last"}
+            %div{:layout => "row"}
+              %md-button.md-icon-button.md-primary{"aria-label" => "Назад", 'ng-click' => 'back()', 'ng-disabled' => "naviEnable('back')"}
+                %ng-md-icon{:icon => "arrow_back", :size => "24px"}
+                
+              %md-button.md-icon-button.md-primary{"aria-label" => "Вперед", 'ng-click' => 'next()', 'ng-disabled' => "naviEnable('next')"}
+                %ng-md-icon{:icon => "arrow_forward", :size => "24px"}

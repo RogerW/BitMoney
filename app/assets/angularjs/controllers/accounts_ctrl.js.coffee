@@ -1,17 +1,23 @@
-AccountsCtrl = undefined
-
-AccountsCtrl = ($scope, $mdDialog, Account) ->
+AccountsCtrl = ($scope, $mdDialog, Account, $mdToast) ->
 	$scope.accounts = []
+	
 	Account.query().then ((_this) ->
 		(results) ->
 			$scope.accounts = results
 			return
 	)(this)
-	$scope.$on 'account:add_fund', (event, data) ->
+	
+	$scope.$on 'account:add_fund', (event, account_id, amount) ->
 		angular.forEach $scope.accounts, (value, key) ->
-			if value.id == data.account_id
-				console.log parseFloat(value.balance.fractional) + data.amount * 100
-				value.balance.fractional = parseFloat(value.balance.fractional) + data.amount * 100
+			if value.id == account_id
+				value.balance.fractional = parseFloat(value.balance.fractional) + amount * 100
+			return
+		$scope.openAddFund = 0
+		return
+	$scope.$on 'account:add_consumption', (event, account_id, amount) ->
+		angular.forEach $scope.accounts, (value, key) ->
+			if value.id == account_id
+				value.balance.fractional = parseFloat(value.balance.fractional) - amount * 100
 			return
 		$scope.openAddFund = 0
 		return
@@ -62,6 +68,8 @@ AccountsCtrl = ($scope, $mdDialog, Account) ->
 				return $scope.showAddFundDialog(account_id)
 			when 'withdrawal'
 				return $scope.showAddConsumptionDialog(account_id)
+			when 'transfer'
+			  return $scope.showTransferDialog(account_id)
 			else
 				console.log action
 		return
@@ -72,10 +80,9 @@ AccountsCtrl = ($scope, $mdDialog, Account) ->
 			templateUrl: 'assets/templates/add_fund_dialog.html'
 			locals: account_id: account_id
 			targetEvent: ev).then ((answer) ->
-			concole.log = 'You said the information was "' + answer + '".'
+			$mdToast.show($mdToast.simple().content('Средства пополнены'));
 			return
 		), ->
-			$scope.alert = 'You cancelled the dialog.'
 			return
 
 	$scope.showAddConsumptionDialog = (account_id, ev) ->
@@ -84,10 +91,19 @@ AccountsCtrl = ($scope, $mdDialog, Account) ->
 			templateUrl: 'assets/templates/add_consumption_dialog.html'
 			locals: account_id: account_id
 			targetEvent: ev).then ((answer) ->
-			concole.log = 'You said the information was "' + answer + '".'
+			$mdToast.show($mdToast.simple().content('Средства списаны'));
 			return
 		), ->
-			$scope.alert = 'You cancelled the dialog.'
+			return
+	$scope.showTransferDialog = (account_id, ev) ->
+		$mdDialog.show(
+			controller: 'AccountTransferCtrl'
+			templateUrl: 'assets/templates/transfer_dialog.html'
+			locals: account_id: account_id
+			targetEvent: ev).then ((answer) ->
+			$mdToast.show($mdToast.simple().content('Средства переведены'));
+			return
+		), ->
 			return
 
 	return
@@ -98,6 +114,7 @@ AccountsCtrl.$inject = [
 	'$scope'
 	'$mdDialog'
 	'Account'
+	'$mdToast'
 ]
 angular.module('MoneyBit').controller 'AccountsCtrl', AccountsCtrl
 return

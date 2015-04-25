@@ -20,7 +20,7 @@ AccountAddFundCtrl = ($rootScope, $scope, $mdDialog, AccountAddFund, account_id,
     $scope.account_add_fund.account_id = $scope.account
 
     new AccountAddFund($scope.account_add_fund).create().then (results) =>
-      $rootScope.$broadcast('account:add_fund',  $scope.account_add_fund)
+      $rootScope.$broadcast('account:add_fund',  $scope.account_add_fund.account_id, $scope.account_add_fund.amount)
       $mdDialog.hide()
       return
       

@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
 
   def index
     load_invoices
+
   end
 
   def show
@@ -50,7 +51,8 @@ class InvoicesController < ApplicationController
     end
   
     def invoice_scope
-      current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types)
+      page = params[:page].present? ? params[:page] : 1
+      current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => page, :per_page => 15).order('invoices.created_at DESC')
     end
     
     def invoice_params

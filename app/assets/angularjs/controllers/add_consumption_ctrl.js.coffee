@@ -26,7 +26,7 @@ AccountAddConsumptionCtrl = ($rootScope, $scope, $mdDialog, AccountAddConsumptio
 		$scope.account_add_consumption.account_id = $scope.account
 
 		new AccountAddConsumption($scope.account_add_consumption).create().then (results) =>
-			$rootScope.$broadcast('account:add_consumption',  $scope.account_add_consumption)
+			$rootScope.$broadcast('account:add_consumption',  $scope.account_add_consumption.account_id, $scope.account_add_consumption.amount)
 			$mdDialog.hide()
 			return
 

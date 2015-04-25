@@ -1,0 +1,24 @@
+%md-dialog{"aria-label" => "Перевод"}
+  %md-content.sticky-container
+    %md-subheader.md-sticky-no-effect Перевод
+    .dialog-content
+      %form{name:"add_fund", layout:"column"}
+        .form__line{layout:"row", 'ng-show' => 'showAccountSelect()'}
+          %md-select{'ng-model' => 'account', placeholder:"Выберите источник", 'md-on-open' => 'loadAccounts()'}
+            %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+        .form__line{layout:"row"}
+          %md-select{'ng-model' => 'account_transfer.destination_id', placeholder:"Счет, на который переводим", 'md-on-open' => 'loadAccounts()'}
+            %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+        .form__line{layout:"row"}
+          %md-input-container{flex:true}
+            %label Amount
+            %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_transfer.amount"}
+          %md-input-container{flex:true}
+            %label Note
+            %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_transfer.note"}
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()"}
+      Добавить

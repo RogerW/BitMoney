@@ -9,7 +9,7 @@
         .form__line{layout:"row", flex:true}
           %md-select{'ng-model' => 'account_add_consumption.consumption_type_id', placeholder:"Укажите тип расходов", 'md-on-open' => 'loadConsumptionTypes()'}
             %md-option{'ng-repeat'=>'consumptionType in consumptionTypes', 'ng-value' => 'consumptionType.id'}
-              %div{layout:"row", "layout-align" => "start center"}
+              %div{layout:"row", "layout-align" => "center center"}
                 %ng-md-icon{:icon => "consumptionType.icon", :size => "24"}
                 {{consumptionType.title}}
         .form__line{layout:"row"}

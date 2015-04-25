@@ -8,9 +8,9 @@ gem 'pg', group: [:production]
 # Use SQLite for development ant testing
 gem 'sqlite3', group: [:development, :test]
 
-source 'https://rails-assets.org' do
-  # gem 'rails-assets-platform'
-end
+# source 'https://rails-assets.org' do
+#   # gem 'rails-assets-platform'
+# end
 
 
 gem 'bower-rails'
@@ -21,7 +21,7 @@ gem 'angularjs-rails-resource', '~> 2.0.0'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
-# gem "green_monkey", '0.2.2'
+gem "will_paginate"
 
 gem 'google-webfonts-rails'
 
@@ -54,6 +54,7 @@ gem 'devise'
 gem 'pundit'
 
 gem 'sprockets-rails', '>= 2.1.4'
+gem 'paper_trail', '~> 4.0.0.beta2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

@@ -1,4 +1,6 @@
 class Account::Transfer < ActiveType::Object
+  has_paper_trail
+  
   attribute :account_id, :integer
   attribute :destination_id, :integer
   attribute :amount, :string

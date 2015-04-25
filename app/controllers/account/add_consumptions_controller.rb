@@ -10,9 +10,9 @@ class Account::AddConsumptionsController < ApplicationController
     build_add_counsumption
     authorize @add_consumption
     if @add_consumption.save
-      redirect_to :back, :notice => "Expenses made successfully"
+      render json: @add_consumption, status: 200
     else
-      render :new
+      render json: @add_consumption, status: 500
     end
   end
   
