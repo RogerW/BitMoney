@@ -5,5 +5,5 @@ class Invoice < ActiveRecord::Base
 
   enum invtype: [:add_fund, :withdrawal]
   
-  monetize :amount_cents
+  monetize :amount_cents, with_model_currency: :amount_currency
 end

@@ -1,4 +1,7 @@
-@App = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'ngMdIcons', 'rails', 'ngMaterial'])
+@App = angular.module('MoneyBit', [ 'MoneyBit.controller','MoneyBit.routes', 'ngMdIcons', 'rails', 'ngMaterial', 'ng-mfb'])
+
+#@App.config ($mdGestureProvider) ->
+#	$mdGestureProvider.skipClickHijack()
 
 @App.config ($mdThemingProvider) ->
   $mdThemingProvider.definePalette 'primaryMoneyBitPalette',

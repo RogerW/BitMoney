@@ -1,76 +1,69 @@
-%div{:layout => "row", "layout-sm" => "column"}
-  %div{"flex-gt-sm" => "", "flex-sm" => ""}
-    .left__panel{:flex => "", :layout => "column"}
-      %md-whiteframe.md-whiteframe-z1
-        .card__header.accounts__header{:layout => "row", "layout-align" => "start start"}
-          %h3.account__header{:flex => ""} Счета
-          %md-button.md-icon-button.md-primary{"aria-label" => "More"}
-            %ng-md-icon{:icon => "more_vert", :size => "24px"}
-        .card__inner
-          %div{"ng-controller" => "AccountsCtrl as accounts"}
-            / <md-list>
-            %div{"ng-repeat" => "account in accounts"}
-              %md-item-content.account__item{ layoyt:"row" }
-                .md-tile-left
-                  %ng-md-icon{:icon => "credit_card", :size => "48px"}
-                .md-tile-content{:layout => "column"}
-                  .account__title {{account.title}}
-                  .account__description {{account.description}}
-                .md-secondary{:layout => "row"}
-                  .account__balance {{account.balance.fractional /100 | currency: account.balance.currency.htmlEntity:2}}
-                  %md-button.md-icon-button{"aria-label" => "Menu", 'ng-click' => "AddFundPanelOpen(account.id)"}
-                    %ng-md-icon{:icon => "more_vert", :size => "24"}
-              .account_menu__list{'ng-show' => 'AddFundPanel(account.id)'}
-                %md-subheader Действия
-                %div{layout:"row", "layout-align" => "center center"}
-                  %md-button.account_menu__button{layout:"column", "layout-align" => "center", 'ng-repeat' => 'action in account_actions', 'ng-click' => 'menu_action(action.name,account.id)'}
-                    
-                    %ng-md-icon{:icon => "{{action.icon}}", :size => "24"}
-                    %span.md-inline-list-icon-label {{action.title}}
-              // .add__fund{'ng-show' => 'AddFundPanel(account.id)', 'ng-controller' => 'AccountAddFundCtrl as add_funds'}
-              //   %form{name:"add_fund", layout:"column"}
-              //     %ng-form{name:'{{account.title}}'}
-              //       .form__line{layout:"row"}
-              //         %md-input-container{flex:true}
-              //           %label Amount
-              //           %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_fund.amount"}
-              //         %md-input-container{flex:true}
-              //           %label Note
-              //           %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_add_fund.note"}
-              //       %input{type:"hidden", 
-              //         'ng-model' => 'account_add_fund.account_id', 
-              //         'ng-init' => 'account_add_fund.account_id = account.id'}
-              //       %md-button.md-warn.md-raised{'ng-click'=>"create()"}
-              //         Пополнить
-              %md-divider{"md-inset" => "", "ng-if" => "!$last"}
-            / </md-list>
-  %div{"flex-gt-sm" => "", "flex-sm" => ""}
-    .right__panel{:flex => "", :layout => "column"}
-      %md-whiteframe.md-whiteframe-z1
-        .card__header.invoices__header{:layout => "row", "layout-align" => "start start"}
-          %h3.account__header{:flex => ""} Операции
-          %md-button.md-icon-button.md-primary{"aria-label" => "More"}
-            %ng-md-icon{:icon => "more_vert", :size => "24px"}
-        // %div{"ng-controller" => "consumptions"}
-        //   %md-button#add-invoice.md-fab.md-primary{"aria-label" => "Add invoice",  'ng-click'=>"showAdvanced($event)"}
-        //     %ng-md-icon{:icon => "add", :size => "24px"}
-        .card__inner
-          %div{"ng-controller" => "InvoicesCtrl as invoices"}
-            %div{"ng-repeat" => "invoice in invoice_lists"}
-              %md-item-content{:class => "{{invoice.invtype}}", layoyt:"row"}
-                .md-tile-left
-                  %ng-md-icon{:icon => "{{getConsuptionTypeIcon(invoice.invtype, invoice.consumptionTypes.icon)}}", :size => "48"}
-                .md-tile-content{:layout => "column"}
-                  .account__title {{invoice.note}}
-                  .account__description {{invoice.createdAt| date:'medium'}}
-                .md-secondary{:layout => "row"}
-                  .account__balance {{invoice.amount.fractional /100 | currency: invoice.amount.currency.htmlEntity:2}}
-                  %md-button.md-icon-button.md-primary{"aria-label" => "More"}
-                    %ng-md-icon{:icon => "more_vert", :size => "24px"}
-              %md-divider{"md-inset" => "", "ng-if" => "!$last"}
-            %div{:layout => "row"}
-              %md-button.md-icon-button.md-primary{"aria-label" => "Назад", 'ng-click' => 'back()', 'ng-disabled' => "naviEnable('back')"}
-                %ng-md-icon{:icon => "arrow_back", :size => "24px"}
-                
-              %md-button.md-icon-button.md-primary{"aria-label" => "Вперед", 'ng-click' => 'next()', 'ng-disabled' => "naviEnable('next')"}
-                %ng-md-icon{:icon => "arrow_forward", :size => "24px"}
+#main{layout:"column", 'layout-gt-md' => 'row', 'layout-margin' => true, 'layout-fill' => true, 'md-padding' => true}
+	.left__panel{:flex => "", :layout => "column"}
+		%md-whiteframe.md-whiteframe-z1{"ng-controller" => "AccountsCtrl as accounts"}
+			.card__header.accounts__header{:layout => "row", "layout-align" => "start start"}
+				%h3.account__header{:flex => ""} Счета
+				%md-button.md-icon-button.md-primary{"aria-label" => "More"}
+					%ng-md-icon{:icon => "add", :size => "24px", 'ng-click' => 'menu_action("add_account",0)'}
+			.card__inner
+				.account__list-item{"ng-repeat" => "account in accounts", layout:"column", flex:true}
+					.account__list-content{layout:"row", flex:true}
+						.account__icon{'layout-align' => "center center"}
+							%ng-md-icon{:icon => "credit_card", :size => "48px"}
+						.account__list-main{flex:true, layout:"column"}
+							.account__title {{account.title}}
+							.account__description {{account.description}}
+						.account__balance-field{'layout-align' => "start center", layout:"row"}
+							%i.fa.account_currency{class:"fa-{{account.balance.currency.id}}"}
+							.account__balance {{account.balance.fractional /100}}
+							%md-button.md-icon-button{"aria-label" => "Menu", 'ng-click' => "AddFundPanelOpen(account.id)", 'layout-align' => "center center",'md-ripple-size'=>'auto'}
+								%i.fa.fa-ellipsis-v.fa-lg{'ng-if' => '!AddFundPanel(account.id)'}
+								%i.fa.fa-close.fa-lg{'ng-if' => 'AddFundPanel(account.id)'}
+					.account_menu__list{'ng-show' => 'AddFundPanel(account.id)'}
+						%h5 Действия
+						%div{layout:"row", "layout-align" => "center center", 'layout-wrap' => true }
+							%md-button.account_menu__button{'ng-repeat' => 'action in account_actions', 'ng-click' => 'menu_action(action.name,account.id)'}
+								%div{layout:"column", "layout-align" => "center center"}
+									%i.fa.fa-lg{class:"{{action.icon}}"}
+									%span.md-inline-list-icon-label {{action.title}}
+					%md-divider{"md-inset" => "", "ng-if" => "!$last"}
+	.right__panel{:flex => "", :layout => "column", "ng-controller" => "InvoicesCtrl as invoices"}
+		%md-whiteframe.md-whiteframe-z1
+			.card__header.invoices__header{:layout => "row", "layout-align" => "start start", 'md-theme'=>"docs-dark"}
+				%h3.account__header{:flex => ""} Операции
+				.invoice__filter{'ng-show' => 'filterShow', layout:"row"}
+					%my-container{layout:"row", 'layout-align'=>'start center'}
+						%i.fa.fa-lg.fa-credit-card
+						%md-input-container
+							%md-select{'ng-model'=>"someModel", placeholder:"Укажите счет"}
+
+				%md-input-container{'ng-show' => 'searchShow'}
+					%label Поиск
+					%input{'ng-model'=>'search'}
+				%md-button.md-icon-button{"aria-label" => "Найти", 'ng-click' => 'searchButtonPressed()'}
+					%i.fa.fa-lg.fa-search
+				%md-button.md-icon-button{"aria-label" => "Фильтр"}
+					%i.fa.fa-lg.fa-filter
+			.card__inner
+				.invoice__list-item{"ng-repeat" => "invoice in invoice_lists", layout:"column", flex:true}
+					.invoice__list-content{layout:"row", flex:true, :class => "{{invoice.invtype}}", layoyt:"row"}
+						.invoice__icon{'layout-align' => "center center"}
+							%i.fa.fa-lg{class:"{{getConsuptionTypeIcon(invoice)}}"}
+						.invoice__list-main{flex:true, layout:"column"}
+							.account__title {{invoice.note}}
+							.account__description {{invoice.createdAt| date:'medium'}}
+						.invoice__balance-field{'layout-align' => "start center", layout:"row"}
+							%i.fa.account_currency{class:"fa-{{invoice.amount.currency.id}}"}
+							.account__balance {{invoice.amount.fractional/100}}
+							%md-button.md-icon-button{"aria-label" => "More", 'layout-align' => "center center",'md-ripple-size'=>'auto'}
+								%i.fa.fa-ellipsis-v.fa-lg
+					%md-divider{"md-inset" => "", "ng-if" => "!$last"}
+				%div{:layout => "row"}
+					%md-button.md-icon-button.md-primary{"aria-label" => "Назад", 'ng-click' => 'back()', 'ng-disabled' => "naviEnable('back')"}
+						%ng-md-icon{:icon => "arrow_back", :size => "24px"}
+					%md-button.md-icon-button.md-primary{"aria-label" => "Вперед", 'ng-click' => 'next()', 'ng-disabled' => "naviEnable('next')"}
+						%ng-md-icon{:icon => "arrow_forward", :size => "24px"}
+
+-#  %nav{'mfb-menu' => true, 'ng-md-icon' =>true, 'position'=>"br", 'toggling-method'=>"click", 'effect'=>"zoomin", 'resting-icon'=>"fa fa-plus", 'active-icon'=>"fa fa-remove"}
+-#    -#%ng-md-icon{:icon => "add", :size => "24px"}
+-#    %button{'mfb-button' => true, 'icon'=>"paper-airplane", 'label'=>"menu item"}

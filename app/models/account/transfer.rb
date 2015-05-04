@@ -13,6 +13,7 @@ class Account::Transfer < ActiveType::Object
   
   validate :has_money?
   validate :equal_accounts?
+  validate :currency_equal?
   validates_presence_of :account_id, :destination_id, :amount
   
   after_save :add_fund
@@ -23,32 +24,37 @@ class Account::Transfer < ActiveType::Object
   private
   
   def has_money?
-    if account.balance < amount.to_money
+    if account.balance < Money.new(amount*100, account.balance.currency)
       errors.add(:amount, "Not enough money")
     end
   end
+
 
   def equal_accounts?
     if account.id == destination.id
       errors.add(:destination_id, "Source and Destination Equal")
     end
   end
-  
-  def add_fund 
-    destination.update_attributes!(balance: destination.balance + amount.to_money)
+
+  def currency_equal?
+	  errors.add(:destination_id, "Different currencies") if (account.balance.currency != destination.balance.currency )
   end
   
+  def add_fund 
+    destination.update_attributes!(balance: destination.balance + Money.new(amount*100, destination.balance.currency))
+  end
+
   def withdrawal
-    account.update_attributes!(balance: account.balance - amount.to_money)
+    account.update_attributes!(balance: account.balance - Money.new(amount*100, account.balance.currency))
   end
   
   def create_add_fund_invoice
-    destination.invoices.create(amount: amount, note: "Transfer from account id #{account.id} #{note}", 
+    destination.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: "Transfer from account id #{account.id} #{note}",
         invtype: Invoice.invtypes[:add_fund])
   end
   
   def create_withdrawal_invoice
-    invoice = account.invoices.create(amount: amount, 
+    invoice = account.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code,
         note: "Transfer to account id #{destination.id} #{note}", 
         invtype: Invoice.invtypes[:withdrawal])
     consumption_type_id = ConsumptionType.where(title: "Перевод").first

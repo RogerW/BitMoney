@@ -8,6 +8,12 @@ InvoicesCtrl = ($scope, Invoice) ->
       return
   
   $scope.query_invoice(1)
+
+  $scope.searchShow = false
+  $scope.filterShow = true
+
+  $scope.searchButtonPressed = () ->
+	  $scope.searchShow = !$scope.searchShow
   
   $scope.next = ->
     $scope.query_invoice($scope.invoice_lists.$current_page + 1)
@@ -40,11 +46,11 @@ InvoicesCtrl = ($scope, Invoice) ->
       $scope.query_invoice(1)
     return
     
-  $scope.getConsuptionTypeIcon = (invtype, icon) ->
-    if (invtype == 'add_fund')
-      return 'input'
+  $scope.getConsuptionTypeIcon = (invoice) ->
+    if (invoice.invtype == 'add_fund')
+      return 'fa-arrow-circle-right'
     else
-      return icon
+      return 'fa-bed'
     
   return
 

@@ -1,0 +1,22 @@
+%md-dialog{"aria-label" => "Перевод"}
+  %md-content.sticky-container
+    %md-subheader.md-sticky-no-effect Перевод
+    .dialog-content
+      %form{name:"add_fund", layout:"column"}
+        .form__line{layout:"row"}
+          %md-input-container{flex:true}
+            %label Название
+            %input{name:"Название", 'ng-model' => "account.title", 'md-maxlength'=>"50", required:true}
+          %md-input-container{flex:true}
+            %label Описание
+            %input{'md-maxlength'=>"150", required:true, name:"note", 'ng-model'=>"account.description"}
+        .form__line{layout:"row"}
+          %md-select{'ng-model' => 'account.balance_currency', placeholder:"Валюта", 'ng-init' => 'loadCurrency()'}
+            %md-option{'ng-repeat' => 'currency in accountCurrencies', 'ng-value' => 'currency.currency'} {{currency.description}}
+
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "update_or_update()"}
+      Добавить

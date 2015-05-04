@@ -4,8 +4,9 @@ asset 'angular-resource'
 asset 'angular-mocks'
 asset 'angular-animate'
 asset 'angular-aria'
-asset 'angular-material'
-asset 'angular-dropdowns'
+asset 'angular-material', 'v0.8.3-master-ffd299d'
+asset 'font-awesome'
+asset 'ng-mfb'
 
 asset 'angular-material-icons'
 

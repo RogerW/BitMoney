@@ -25,11 +25,11 @@ class Account::AddFund < ActiveType::Object
   end
     
   def add_fund
-    account.update_attributes!(balance: account.balance + amount.to_money)
+    account.update_attributes!(balance: account.balance + Money.new(amount*100, account.balance.currency))
   end
     
   def create_invoice
-    account.invoices.create( amount: amount, note: note).add_fund!
+    account.invoices.create( amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: note).add_fund!
   end
 
 end

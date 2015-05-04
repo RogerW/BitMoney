@@ -10,7 +10,7 @@ class Account::AddFundsController < ApplicationController
     if @add_fund.save
       render json: @add_fund, status: 200
     else
-      render json: @add_fund, status: 400
+      render json: @add_fund, status: 500
     end
   end
     

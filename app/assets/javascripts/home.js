@@ -10,9 +10,14 @@
 //= require angularjs/rails/resource/extensions/snapshots
 //= require jquery
 //= require jquery_ujs
+//= require ng-mfb/mfb/src/mfb
+//= require ng-mfb/src/mfb-directive
+//= require ng-mfb/mfb/src/lib/modernizr.touch
 //= require MoneyBit
-//= require ng_helpers
 //= require MoneyBitRoutes
-//= require observer
 //= require_tree ../angularjs/controllers
 //= require_tree ../angularjs/models
+
+//require bootstrap/dist/js/bootstrap
+//require bootstrap-material-design/dist/js/ripples
+//require bootstrap-material-design/dist/js/material
