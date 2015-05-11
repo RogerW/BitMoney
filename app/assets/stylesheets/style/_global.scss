@@ -1,0 +1,11 @@
+@import "base/variables";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  color: $color_text_dark;
+  font-family: $font_main_primary, $font_main_secondary;
+  font-size: $font_base_size;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
+}

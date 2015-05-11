@@ -1,6 +1,6 @@
 #main{layout:"column", 'layout-gt-md' => 'row', 'layout-margin' => true, 'layout-fill' => true, 'md-padding' => true}
 	.left__panel{:flex => "", :layout => "column"}
-		%md-whiteframe.md-whiteframe-z1{"ng-controller" => "AccountsCtrl as accounts"}
+		%md-whiteframe.md-whiteframe-z1{"ng-controller" => "AccountsCtrl as accounts", :layout => "column", "layout-align" => "start start"}
 			.card__header.accounts__header{:layout => "row", "layout-align" => "start start"}
 				%h3.account__header{:flex => ""} Счета
 				%md-button.md-icon-button.md-primary{"aria-label" => "More"}
@@ -28,22 +28,35 @@
 									%span.md-inline-list-icon-label {{action.title}}
 					%md-divider{"md-inset" => "", "ng-if" => "!$last"}
 	.right__panel{:flex => "", :layout => "column", "ng-controller" => "InvoicesCtrl as invoices"}
-		%md-whiteframe.md-whiteframe-z1
-			.card__header.invoices__header{:layout => "row", "layout-align" => "start start", 'md-theme'=>"docs-dark"}
-				%h3.account__header{:flex => ""} Операции
-				.invoice__filter{'ng-show' => 'filterShow', layout:"row"}
-					%my-container{layout:"row", 'layout-align'=>'start center'}
-						%i.fa.fa-lg.fa-credit-card
-						%md-input-container
-							%md-select{'ng-model'=>"someModel", placeholder:"Укажите счет"}
-
-				%md-input-container{'ng-show' => 'searchShow'}
-					%label Поиск
-					%input{'ng-model'=>'search'}
-				%md-button.md-icon-button{"aria-label" => "Найти", 'ng-click' => 'searchButtonPressed()'}
-					%i.fa.fa-lg.fa-search
-				%md-button.md-icon-button{"aria-label" => "Фильтр"}
-					%i.fa.fa-lg.fa-filter
+		%md-whiteframe.md-whiteframe-z1{:layout => "column", "layout-align" => "start start"}
+			.card__header.invoices__header{ 'md-theme'=>"docs-dark", flex:true}
+				.invoices__header-top{:layout => "row", "layout-align" => "start start"}
+					%h3.account__header{:flex => ""} Операции
+					%md-input-container{'ng-show' => 'searchShow', 'md-no-float' => true}
+						%input{'ng-model'=>'search', placeholder:'Поиск'}
+					%md-button.md-icon-button{"aria-label" => "Найти", 'ng-click' => 'searchButtonPressed()'}
+						%i.fa.fa-lg.fa-search
+					%md-button.md-icon-button{"aria-label" => "Фильтр", 'ng-click' => 'filterButtonPressed()'}
+						%i.fa.fa-lg.fa-filter
+				.invoice__filter{'ng-show' => 'filterShow', :layout => "row", "layout-align" => "start start"}
+					%filter__container{layout:"row", 'layout-sm' => "column", 'layout-align'=>'start center', 'layout-fill'=>true, 'layout-wrap' => true}
+						.filter__field{flex:true, layout:"row", "layout-align" => "center center"}
+							%i.fa.fa-lg.fa-credit-card.fa-filter__icon
+							%md-input-container
+								%md-select{'ng-model'=>"filter.account_id", placeholder:"Укажите счет", 'md-on-open' => 'loadAccounts()'}
+									%md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+						.filter__field{flex:true, layout:"row", "layout-align" => "center center"}
+							%i.fa.fa-lg.fa-calendar.fa-filter__icon
+							%md-input-container
+								%label Начальная дата
+								%input{'ng-model' => 'filter.start_date', type:"date"}
+						.filter__field{flex:true, layout:"row", "layout-align" => "center center"}
+							%i.fa.fa-lg.fa-calendar.fa-filter__icon
+							%md-input-container
+								%label Конечная дата
+								%input{'ng-model' => 'filter.end_date', type:"date"}
+						.filter__field{flex:true, layout:"row", "layout-align" => "center center"}
+							%md-button.md-raised.filter__button{"aria-label" => "Фильтр", 'ng-click' => 'filterActionButtonPressed()'} Фильтр
 			.card__inner
 				.invoice__list-item{"ng-repeat" => "invoice in invoice_lists", layout:"column", flex:true}
 					.invoice__list-content{layout:"row", flex:true, :class => "{{invoice.invtype}}", layoyt:"row"}

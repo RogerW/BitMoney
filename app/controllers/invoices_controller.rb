@@ -52,7 +52,27 @@ class InvoicesController < ApplicationController
   
     def invoice_scope
       page = params[:page].present? ? params[:page] : 1
-      current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => page, :per_page => 15).order('invoices.created_at DESC')
+      if page == '0'
+	      invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => 1, :per_page => Invoice.count).order('invoices.created_at DESC')
+      else
+	      invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => page, :per_page => 15).order('invoices.created_at DESC')
+      end
+
+      if params[:account_id].present?
+	      invoice_scope = invoice_scope.where(account_id:params[:account_id])
+      end
+
+      if params[:start_date].present?
+	      invoice_scope = invoice_scope.where("invoices.created_at >= ?", Time.parse(params[:start_date]))
+      end
+
+      if params[:end_date].present?
+	      invoice_scope = invoice_scope.where("invoices.created_at <= ?", Time.parse(params[:end_date]))
+      end
+
+      # puts invoice_scope.to_sql
+
+      return invoice_scope
     end
     
     def invoice_params

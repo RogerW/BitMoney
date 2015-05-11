@@ -4,16 +4,10 @@
 @import "angular-material/angular-material.css";
 @import "font-awesome/css/font-awesome.css";
 @import "base/variables";
+@import "style/global";
+@import "style/dashboard";
 
-html, body {
-  height: 100%;
-  margin: 0;
-  color: #273333;
-  font-family: 'Open Sans', 'sans-serif';
-  font-size: $font_base_size;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-touch-callout: none;
-}
+
 
 .menu__left .md-button {
   color: inherit;
@@ -60,79 +54,10 @@ https://github.com/google/material-design-icons
   background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGcgaWQ9IkhlYWRlciI+CiAgICA8Zz4KICAgICAgICA8cmVjdCB4PSItNjE4IiB5PSItMjIzMiIgZmlsbD0ibm9uZSIgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzYwMCIvPgogICAgPC9nPgo8L2c+CjxnIGlkPSJMYWJlbCI+CjwvZz4KPGcgaWQ9Ikljb24iPgogICAgPGc+CiAgICAgICAgPHJlY3QgZmlsbD0ibm9uZSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgICAgICAgPHBhdGggZD0iTTMsMThoMTh2LTJIM1YxOHogTTMsMTNoMTh2LTJIM1YxM3ogTTMsNnYyaDE4VjZIM3oiIHN0eWxlPSJmaWxsOiNmM2YzZjM7Ii8+CiAgICA8L2c+CjwvZz4KPGcgaWQ9IkdyaWQiIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgZGlzcGxheT0iaW5saW5lIj4KICAgIDwvZz4KPC9nPgo8L3N2Zz4=) no-repeat  center center;
 }
 
-.card__inner {
-  padding: 1rem .5rem;
-}
-
-.account__header {
-  font-family: 'Roboto Slab', serif;
-  font-size: 1.5rem;
-  margin: 0rem;
-}
-
-.account__title {
-  font-family: 'Roboto Slab', serif;
-  font-size: 1rem;
-  margin: 0rem;
-  font-style: bold;
-}
-
-.account__description {
-  font-size: .8rem;
-  color: #273333;
-}
-
-.account__balance {
-  font-family: 'Roboto Slab', serif;
-  font-size: 2rem;
-  margin: 0rem;
-  font-style: bold;
-}
-
-.account_currency {
-  font-size: 1.4rem;
-  margin: 0rem;
-}
-
-hr {
-  border: none; /* Убираем границу */
-  background-color: #273333; /* Цвет линии */
-  color: #273333; /* Цвет линии для IE6-7 */
-  height: 1px; /* Толщина линии */
-}
-
 ng-md-icon {
 //  height: 2rem;
 //  width: 2rem;
   margin: auto .5rem ;
-}
-
-.card__header {
-  height: 100px;
-  padding: 0.5rem 0rem 0rem 1rem;
-}
-
-.accounts__header {
-  background: #FBCA54;
-  color: #ffffff;
-  fill: #ffffff
-}
-
-
-.invoices__header {
-  background-color: #FC575E;
-  color: #ffffff;
-  fill: #ffffff
-}
-
-.add_fund {
-  color: #7CA668;
-  fill: #7CA668;
-}
-
-.withdrawal {
-  color: #FC575E;
-  fill: #FC575E;
 }
 
 #add-invoice {
@@ -161,9 +86,7 @@ ng-md-icon {
   width: 48px;
 }
 
-#main {
-  background-color: #F5F5F5;
-}
+
 
 md-whiteframe {
   background-color: white;

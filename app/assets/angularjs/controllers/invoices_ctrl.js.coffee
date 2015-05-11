@@ -1,4 +1,4 @@
-InvoicesCtrl = ($scope, Invoice) ->
+InvoicesCtrl = ($scope, Invoice, Account) ->
   $scope.invoice_lists = [];
   
   $scope.query_invoice = (page) ->
@@ -10,11 +10,40 @@ InvoicesCtrl = ($scope, Invoice) ->
   $scope.query_invoice(1)
 
   $scope.searchShow = false
-  $scope.filterShow = true
+  $scope.filterShow = false
+
+  $scope.loadAccounts = ->
+    $scope.accounts = []
+    Account.query().then (results) =>
+      $scope.accounts = results
+      return
+
 
   $scope.searchButtonPressed = () ->
 	  $scope.searchShow = !$scope.searchShow
-  
+	  return
+
+  $scope.filterButtonPressed = () ->
+    $scope.filterShow = !$scope.filterShow
+    console.log $scope.filterShow
+    return
+
+  $scope.filterActionButtonPressed = () ->
+    filter_param = ['page':0]
+
+    if($scope.filter.account_id != '')
+      filter_param['account_id'] = $scope.filter.account_id
+
+    if($scope.filter.start_date != '')
+      filter_param['start_date'] = $scope.filter.start_date
+
+    if($scope.filter.end_date != '')
+      filter_param['end_date'] = $scope.filter.end_date
+
+    Invoice.query(filter_param).then (results) =>
+      $scope.invoice_lists = results
+      return
+
   $scope.next = ->
     $scope.query_invoice($scope.invoice_lists.$current_page + 1)
     return
@@ -54,6 +83,6 @@ InvoicesCtrl = ($scope, Invoice) ->
     
   return
 
-InvoicesCtrl.$inject = ['$scope', 'Invoice']
+InvoicesCtrl.$inject = ['$scope', 'Invoice', 'Account']
 
 angular.module('MoneyBit').controller('InvoicesCtrl', InvoicesCtrl)
