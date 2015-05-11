@@ -1,19 +1,16 @@
-/*
- *= require_self
- */
 @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
 @import "angular-material/angular-material.css";
 @import "font-awesome/css/font-awesome.css";
-@import "ng-mfb/mfb/src/mfb.css";
+@import "base/variables";
 
 html, body {
   height: 100%;
   margin: 0;
   color: #273333;
   font-family: 'Open Sans', 'sans-serif';
-  font-size: 12pt;
+  font-size: $font_base_size;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-touch-callout: none;
 }

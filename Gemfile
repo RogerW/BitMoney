@@ -14,9 +14,9 @@ gem 'sqlite3', group: [:development, :test]
 
 
 gem 'bower-rails'
-gem 'emcee'
+# gem 'emcee'
 gem 'haml-rails'
-gem 'polymer-rails'
+# gem 'polymer-rails'
 gem 'angularjs-rails-resource', '~> 2.0.0'
 gem 'high_voltage'
 gem 'money-rails'
@@ -54,12 +54,14 @@ gem 'russian'
 gem 'devise'
 gem 'pundit'
 
-gem 'sprockets-rails', '>= 2.1.4'
+gem 'sprockets-rails'
+#, '>= 2.1.4'
 gem 'paper_trail', '~> 4.0.0.beta2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
+gem 'sass-rails'
+#, '~> 4.0.stable'
+# gem 'compass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

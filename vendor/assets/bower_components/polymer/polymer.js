@@ -11781,6 +11781,35 @@ scope.importElements = importElements;
 
 })(Polymer);
 
+/**
+ * The `auto-binding` element extends the template element. It provides a quick 
+ * and easy way to do data binding without the need to setup a model. 
+ * The `auto-binding` element itself serves as the model and controller for the 
+ * elements it contains. Both data and event handlers can be bound. 
+ *
+ * The `auto-binding` element acts just like a template that is bound to 
+ * a model. It stamps its content in the dom adjacent to itself. When the 
+ * content is stamped, the `template-bound` event is fired.
+ *
+ * Example:
+ *
+ *     <template is="auto-binding">
+ *       <div>Say something: <input value="{{value}}"></div>
+ *       <div>You said: {{value}}</div>
+ *       <button on-tap="{{buttonTap}}">Tap me!</button>
+ *     </template>
+ *     <script>
+ *       var template = document.querySelector('template');
+ *       template.value = 'something';
+ *       template.buttonTap = function() {
+ *         console.log('tap!');
+ *       };
+ *     </script>
+ *
+ * @module Polymer
+ * @status stable
+*/
+
 (function() {
 
   var element = document.createElement('polymer-element');

@@ -5,14 +5,14 @@
 //= require angular-aria/angular-aria
 //= require angular-material/angular-material
 //= require angular-material-icons/angular-material-icons
-//= require angular-dropdowns/angular-dropdowns
+//require angular-dropdowns/angular-dropdowns
 //= require angularjs/rails/resource
 //= require angularjs/rails/resource/extensions/snapshots
 //= require jquery
 //= require jquery_ujs
 //= require ng-mfb/mfb/src/mfb
 //= require ng-mfb/src/mfb-directive
-//= require ng-mfb/mfb/src/lib/modernizr.touch
+//require ng-mfb/mfb/src/lib/modernizr.touch
 //= require MoneyBit
 //= require MoneyBitRoutes
 //= require_tree ../angularjs/controllers
