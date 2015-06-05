@@ -7,7 +7,9 @@ json.from_index (previous_page * @invoices.per_page)+1
 json.invoices @invoices do |invoice|
   json.(invoice, :id, :account_id, :amount, :note, :invtype, :created_at)
   
-  if invoice.consumptions
-    json.consumption_types invoice.consumption_types, :id
+  json.account invoice.account, :id, :title, :description, :balance
+  
+  unless invoice.consumption_types.empty?
+    json.consumption_types invoice.consumption_types.first, :id, :title, :icon
   end
 end

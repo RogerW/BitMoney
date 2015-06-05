@@ -8,9 +8,9 @@ class Account::AddFundsController < ApplicationController
   def create
     build_account_add_fund
     if @add_fund.save
-      render json: @add_fund, status: 200
+      render json: {message:"Средства зачислены!"}, status: 200
     else
-      render json: @add_fund, status: 500
+      render json: {:errors => @add_fund.errors.full_messages}, status: 422
     end
   end
     

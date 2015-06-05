@@ -38,7 +38,7 @@ class Account::AddConsumption < ActiveType::Object
   end
   
   def create_consumption
-    @invoice.consumptions.create(consumption_type_id: consumption_type_id)
+    @invoice.consumption_types << ConsumptionType.find(consumption_type_id)
   end
   
 end

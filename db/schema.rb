@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422064956) do
+ActiveRecord::Schema.define(version: 20150522101711) do
 
   create_table "accounts", force: true do |t|
     t.integer  "user_id"
@@ -36,15 +36,13 @@ ActiveRecord::Schema.define(version: 20150422064956) do
 
   add_index "consumption_types", ["user_id"], name: "index_consumption_types_on_user_id"
 
-  create_table "consumptions", force: true do |t|
-    t.integer  "invoice_id"
-    t.integer  "consumption_type_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "consumption_types_invoices", force: true do |t|
+    t.integer "invoice_id"
+    t.integer "consumption_type_id"
   end
 
-  add_index "consumptions", ["consumption_type_id"], name: "index_consumptions_on_consumption_type_id"
-  add_index "consumptions", ["invoice_id"], name: "index_consumptions_on_invoice_id"
+  add_index "consumption_types_invoices", ["consumption_type_id"], name: "index_consumption_types_invoices_on_consumption_type_id"
+  add_index "consumption_types_invoices", ["invoice_id"], name: "index_consumption_types_invoices_on_invoice_id"
 
   create_table "invoices", force: true do |t|
     t.integer  "account_id"

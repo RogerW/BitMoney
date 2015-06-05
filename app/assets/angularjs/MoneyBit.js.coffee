@@ -4,17 +4,17 @@
 #	$mdGestureProvider.skipClickHijack()
 
 @App.config ($mdThemingProvider) ->
-  $mdThemingProvider.definePalette 'primaryMoneyBitPalette',
-    '50': 'ECF4FA'
-    '100': 'BFDAEC'
-    '200': 'A8CEE5'
-    '300': '84B9DA'
-    '400': '5EA4CF'
-    '500': '398EC4'
-    '600': '327DAC'
-    '700': '2E729C'
-    '800': '225474'
-    '900': '16384C'
+  $mdThemingProvider.definePalette 'customBlue',
+    '50': 'e5f0f7'
+    '100': 'c2dced'
+    '200': '9cc7e2'
+    '300': '74b0d6'
+    '400': '579fcd'
+    '500': '398ec4'
+    '600': '3380b0'
+    '700': '2e729d'
+    '800': '286389'
+    '900': '1d4762'
     'A100': '4AB9FF'
     'A200': '2A8EC4'
     'A400': '2A7CC4'
@@ -29,17 +29,17 @@
       'A100'
     ]
     'contrastLightColors': undefined
-  $mdThemingProvider.definePalette 'warnMoneyBitPalette',
-    '50': 'FFFFEF'
-    '100': 'FEC9CB'
-    '200': 'FEB6B9'
-    '300': 'FD979B'
-    '400': 'FD767D'
-    '500': 'FC575E'
-    '600': 'E54F56'
-    '700': 'D74A51'
-    '800': 'B13E42'
-    '900': '8C3035'
+  $mdThemingProvider.definePalette 'customRed',
+    '50': 'ffe9ea'
+    '100': 'fecbcd'
+    '200': 'feabaf'
+    '300': 'fd898e'
+    '400': 'fc7076'
+    '500': 'fc575e'
+    '600': 'e54f56'
+    '700': 'cc464c'
+    '800': 'b33e43'
+    '900': '832d31'
     'A100': 'FF777E'
     'A200': 'E56B71'
     'A400': 'FD417D'
@@ -54,9 +54,66 @@
       'A100'
     ]
     'contrastLightColors': undefined
+  $mdThemingProvider.definePalette 'customGreen',
+    '50': 'eef3eb'
+    '100': 'd6e3d0'
+    '200': 'bed3b4'
+    '300': 'a3c195'
+    '400': '90b37f'
+    '500': '7ca668'
+    '600': '71975f'
+    '700': '648654'
+    '800': '58764a'
+    '900': '405636'
+    'A100': '4AB9FF'
+    'A200': '2A8EC4'
+    'A400': '2A7CC4'
+    'A700': '2A51C4'
+    'contrastDefaultColor': 'light'
+    'contrastDarkColors': [
+      '50'
+      '100'
+      '200'
+      '300'
+      '400'
+      '600'
+    ]
+    'contrastLightColors': undefined
+  $mdThemingProvider.definePalette 'customYellow',
+    '50': 'fef8e9'
+    '100': 'feefca'
+    '200': 'fde5aa'
+    '300': 'fcda87'
+    '400': 'fcd26e'
+    '500': 'fbca54'
+    '600': 'e4b84c'
+    '700': 'cba444'
+    '800': 'b28f3c'
+    '900': '83692c'
+    'A100': 'FF777E'
+    'A200': 'E56B71'
+    'A400': 'FD417D'
+    'A700': 'FD0B7D'
+    'contrastDefaultColor': 'light'
+    'contrastDarkColors': [
+      '50'
+      '100'
+      '200'
+      '300'
+      '400'
+      '600'
+    ]
+    'contrastLightColors': undefined
   $mdThemingProvider.theme('default')
-    .primaryPalette('primaryMoneyBitPalette')
-    .warnPalette('warnMoneyBitPalette')
+    .primaryPalette('customBlue', {'default':'500'})
+    .warnPalette('customRed')
+    .accentPalette('customGreen')
+  $mdThemingProvider.theme('greenTheme')
+    .primaryPalette('customGreen')
+    .backgroundPalette('customGreen')
+  $mdThemingProvider.theme('redTheme')
+    .primaryPalette('customGreen')
+    .backgroundPalette('customRed')
   return
   
 @App.config ["$httpProvider", ($httpProvider) ->

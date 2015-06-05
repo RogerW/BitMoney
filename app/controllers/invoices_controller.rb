@@ -9,31 +9,38 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    load_invoice or render json: {notice:"Can't find invoice"}, status: 404
+    load_invoice or render json: {message:"Can't find invoice"}, status: 404
   end
 
-  def new
-    @invoice = Invoice.new
-    respond_with(@invoice)
-  end
+  # def new
+  #   @invoice = Invoice.new
+  #   respond_with(@invoice)
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def create
-    @invoice = Invoice.new(invoice_params)
-    @invoice.save
-    respond_with(@invoice)
-  end
+  # def create
+  #   @invoice = Invoice.new(invoice_params)
+  #   @invoice.save
+  #   respond_with(@invoice)
+  # end
 
   def update
-    @invoice.update(invoice_params)
-    respond_with(@invoice)
+    load_invoice
+    build_invoice
+    save_invoice or render json: {:errors => @invoice.errors.full_messages}, status: 422
   end
 
   def destroy
-    @invoice.destroy
-    respond_with(@invoice)
+    load_invoice
+    
+    if @invoice.destroy
+      render json: {message: "Запись удалена!"}, status: 200
+    else
+      render json: {:errors => @invoice.errors.full_messages}, status: 422
+    end
+    
   end
 
   private
@@ -49,25 +56,37 @@ class InvoicesController < ApplicationController
       @invoice ||= account_scope.build
       @invoice.attributes = invoice_params
     end
+    
+    def save_invoice
+      if @invoice.save
+        render json: @invoice, status: 200
+      end
+    end
   
     def invoice_scope
       page = params[:page].present? ? params[:page] : 1
       if page == '0'
-	      invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => 1, :per_page => Invoice.count).order('invoices.created_at DESC')
+        invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types, :account).references(:consumption_types, :account).paginate(:page => 1, :per_page => Invoice.count).order('invoices.created_at DESC')
       else
-	      invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types).references(:consumption_types).paginate(:page => page, :per_page => 15).order('invoices.created_at DESC')
+        invoice_scope = current_user.admin? ? Invoice.where(nil) : current_user.invoices.includes(:consumption_types, :account).references(:consumption_types, :account).paginate(:page => page, :per_page => 15).order('invoices.created_at DESC')
       end
 
       if params[:account_id].present?
-	      invoice_scope = invoice_scope.where(account_id:params[:account_id])
+        invoice_scope = invoice_scope.where(account_id:params[:account_id])
       end
 
       if params[:start_date].present?
-	      invoice_scope = invoice_scope.where("invoices.created_at >= ?", Time.parse(params[:start_date]))
+        invoice_scope = invoice_scope.where("invoices.created_at >= ?", Time.parse(params[:start_date]))
       end
 
       if params[:end_date].present?
-	      invoice_scope = invoice_scope.where("invoices.created_at <= ?", Time.parse(params[:end_date]))
+        invoice_scope = invoice_scope.where("invoices.created_at <= ?", Time.parse(params[:end_date]))
+      end
+      
+      if params[:find_text].present?
+        invoices = Invoice.arel_table
+        find_text = "%#{params[:find_text]}%"
+        invoice_scope = invoice_scope.where(invoices[:note].matches(find_text))
       end
 
       # puts invoice_scope.to_sql
@@ -76,6 +95,6 @@ class InvoicesController < ApplicationController
     end
     
     def invoice_params
-      params.require(:invoice).permit(:account_id, :amount, :note)
+      params.require(:invoice).permit(:account_id, :amount, :note, :consumption_type_id)
     end
 end

@@ -17,6 +17,7 @@
 //= require MoneyBitRoutes
 //= require_tree ../angularjs/controllers
 //= require_tree ../angularjs/models
+//= require_tree ../angularjs/directives
 
 //require bootstrap/dist/js/bootstrap
 //require bootstrap-material-design/dist/js/ripples

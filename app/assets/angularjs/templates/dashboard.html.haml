@@ -4,7 +4,7 @@
 			.card__header.accounts__header{:layout => "row", "layout-align" => "start start"}
 				%h3.account__header{:flex => ""} Счета
 				%md-button.md-icon-button.md-primary{"aria-label" => "More"}
-					%ng-md-icon{:icon => "add", :size => "24px", 'ng-click' => 'menu_action("add_account",0)'}
+					%ng-md-icon{:icon => "add", :size => "24px", 'ng-click' => 'menu_action("add_account")'}
 			.card__inner
 				.account__list-item{"ng-repeat" => "account in accounts", layout:"column", flex:true}
 					.account__list-content{layout:"row", flex:true}
@@ -22,18 +22,18 @@
 					.account_menu__list{'ng-show' => 'AddFundPanel(account.id)'}
 						%h5 Действия
 						%div{layout:"row", "layout-align" => "center center", 'layout-wrap' => true }
-							%md-button.account_menu__button{'ng-repeat' => 'action in account_actions', 'ng-click' => 'menu_action(action.name,account.id)'}
+							%md-button.account_menu__button{'ng-repeat' => 'action in account_actions', 'ng-click' => 'menu_action(action.name, account, $event)'}
 								%div{layout:"column", "layout-align" => "center center"}
 									%i.fa.fa-lg{class:"{{action.icon}}"}
 									%span.md-inline-list-icon-label {{action.title}}
 					%md-divider{"md-inset" => "", "ng-if" => "!$last"}
 	.right__panel{:flex => "", :layout => "column", "ng-controller" => "InvoicesCtrl as invoices"}
 		%md-whiteframe.md-whiteframe-z1{:layout => "column", "layout-align" => "start start"}
-			.card__header.invoices__header{ 'md-theme'=>"docs-dark", flex:true}
+			.card__header.invoices__header{ 'md-theme'=>"default", flex:true}
 				.invoices__header-top{:layout => "row", "layout-align" => "start start"}
 					%h3.account__header{:flex => ""} Операции
 					%md-input-container{'ng-show' => 'searchShow', 'md-no-float' => true}
-						%input{'ng-model'=>'search', placeholder:'Поиск'}
+						%input{'ng-model'=>'find_text', placeholder:'Поиск', 'ng-enter' => 'searchButtonPressed()'}
 					%md-button.md-icon-button{"aria-label" => "Найти", 'ng-click' => 'searchButtonPressed()'}
 						%i.fa.fa-lg.fa-search
 					%md-button.md-icon-button{"aria-label" => "Фильтр", 'ng-click' => 'filterButtonPressed()'}
@@ -56,19 +56,19 @@
 								%label Конечная дата
 								%input{'ng-model' => 'filter.end_date', type:"date"}
 						.filter__field{flex:true, layout:"row", "layout-align" => "center center"}
-							%md-button.md-raised.filter__button{"aria-label" => "Фильтр", 'ng-click' => 'filterActionButtonPressed()'} Фильтр
+							%md-button.md-raised.md-primary{"aria-label" => "Фильтр", 'ng-click' => 'filterActionButtonPressed()'} Фильтр
 			.card__inner
 				.invoice__list-item{"ng-repeat" => "invoice in invoice_lists", layout:"column", flex:true}
 					.invoice__list-content{layout:"row", flex:true, :class => "{{invoice.invtype}}", layoyt:"row"}
 						.invoice__icon{'layout-align' => "center center"}
 							%i.fa.fa-lg{class:"{{getConsuptionTypeIcon(invoice)}}"}
 						.invoice__list-main{flex:true, layout:"column"}
-							.account__title {{invoice.note}}
+							.account__title {{invoice.account.title}}: {{invoice.note}}
 							.account__description {{invoice.createdAt| date:'medium'}}
 						.invoice__balance-field{'layout-align' => "start center", layout:"row"}
 							%i.fa.account_currency{class:"fa-{{invoice.amount.currency.id}}"}
 							.account__balance {{invoice.amount.fractional/100}}
-							%md-button.md-icon-button{"aria-label" => "More", 'layout-align' => "center center",'md-ripple-size'=>'auto'}
+							%md-button.md-icon-button{"aria-label" => "More", 'layout-align' => "center center",'md-ripple-size'=>'auto', 'ng-click' => "editInvoice(invoice)"}
 								%i.fa.fa-ellipsis-v.fa-lg
 					%md-divider{"md-inset" => "", "ng-if" => "!$last"}
 				%div{:layout => "row"}

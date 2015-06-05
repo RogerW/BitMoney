@@ -8,7 +8,7 @@ AccountDialogCtrl = ($scope, $rootScope, $mdDialog, Account, account) ->
 		console.log $scope.account.balance_currency
 
 
-	$scope.update_or_update = ->
+	$scope.update_or_create = ->
 		unless($scope.account.id > 0)
 			new Account($scope.account).create().then (results) =>
 				$rootScope.$broadcast('account:add_account',  results)
@@ -19,6 +19,8 @@ AccountDialogCtrl = ($scope, $rootScope, $mdDialog, Account, account) ->
 			  $rootScope.$broadcast('account:add_account',  results)
 			  $mdDialog.hide()
 			  return
+	$scope.cancel = () ->
+		$mdDialog.hide()
 
 	$scope.accountCurrencies = [
 		{'currency':'USD', 'description':'Американский доллар'}

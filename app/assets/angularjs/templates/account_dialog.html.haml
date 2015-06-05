@@ -1,22 +1,29 @@
-%md-dialog{"aria-label" => "Перевод"}
+%md-dialog{"aria-label" => "Редактировать счет"}
   %md-content.sticky-container
-    %md-subheader.md-sticky-no-effect Перевод
+    %md-subheader.md-sticky-no-effect Редактирование счета
     .dialog-content
-      %form{name:"add_fund", layout:"column"}
+      %form{name:"edit", layout:"column", 'layout-margin'=>true, 'layout-padding' => true}
         .form__line{layout:"row"}
           %md-input-container{flex:true}
             %label Название
-            %input{name:"Название", 'ng-model' => "account.title", 'md-maxlength'=>"50", required:true}
+            %input{name:"name", 'ng-model' => "account.title", 'md-maxlength'=>"50", required:true}
+            %div{'ng-messages'=>'edit.name.$error', 'ng-show' => 'edit.name.$touched'}
+              %div{'ng-message'=>"required", 'ng-show' => 'edit.name.$error.required'} Обязательно для заполнения!
+              %div{'ng-message'=>"md-maxlength", 'ng-show' => 'edit.name.$error.md-maxlength'} Слишком длинное название!
           %md-input-container{flex:true}
             %label Описание
             %input{'md-maxlength'=>"150", required:true, name:"note", 'ng-model'=>"account.description"}
+            %div{'ng-messages'=>'edit.note.$error', 'ng-show' => 'edit.note.$touched'}
+              %div{'ng-message'=>"required", 'ng-show' => 'edit.note.$error.required'} Обязательно для заполнения!
+              %div{'ng-message'=>"md-maxlength", 'ng-show' => 'edit.note.$error.md-maxlength'} Слишком длинный комментарий!
         .form__line{layout:"row"}
-          %md-select{'ng-model' => 'account.balance_currency', placeholder:"Валюта", 'ng-init' => 'loadCurrency()'}
-            %md-option{'ng-repeat' => 'currency in accountCurrencies', 'ng-value' => 'currency.currency'} {{currency.description}}
+          %md-input-container{flex:true}
+            %md-select{'ng-model' => 'account.balance_currency', placeholder:"Валюта", 'ng-init' => 'loadCurrency()', required:true}
+              %md-option{'ng-repeat' => 'currency in accountCurrencies', 'ng-value' => 'currency.currency'} {{currency.description}}
 
   .md-actions{:layout => "row"}
     %span{:flex => ""}
     %md-button{"ng-click" => "cancel()"}
       Отменить
-    %md-button.md-primary{"ng-click" => "update_or_update()"}
-      Добавить
+    %md-button.md-primary{"ng-click" => "update_or_create()", 'ng-disabled'=>"edit.$invalid"}
+      Сохранить
