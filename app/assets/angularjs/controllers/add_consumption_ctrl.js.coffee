@@ -17,23 +17,25 @@ AccountAddConsumptionCtrl = ($rootScope, $scope, $mdDialog, AccountAddConsumptio
   
   if temp_invoice isnt null
     temp_invoice.amount = temp_invoice.amount.fractional/100
-    if temp_invoice.consumptionType is null
-      temp_invoice.consumption_type_id = temp_invoice.consumptionType.id
-      
+    if temp_invoice.consumptionTypes isnt undefined
+      temp_invoice.consumption_type_id = temp_invoice.consumptionTypes.id
+
   $scope.account_add_consumption = temp_invoice || {}
-  
+
   $scope.account = account || {}
   
   $scope.show_consumption = () ->
     if $scope.consumptionTypes is undefined or typeof ($scope.consumptionTypes) isnt "object"
-      temp = temp_invoice.consumptionTypes.title
+      if $scope.account_add_consumption.consumptionTypes is undefined
+        temp = "Укажите тип расходов"
+      else
+        temp = temp_invoice.consumptionTypes.title
     else
       angular.forEach $scope.consumptionTypes, (value, key) ->
         console.log $scope.account_add_consumption.consumption_type_id
         if value.id == $scope.account_add_consumption.consumption_type_id
           temp = value.title
-          console.log temp
-          
+          return
     temp
   
   $scope.delete = () ->
@@ -58,17 +60,19 @@ AccountAddConsumptionCtrl = ($rootScope, $scope, $mdDialog, AccountAddConsumptio
 
   $scope.create = ->
     $scope.account_add_consumption.account_id = $scope.account.id
-    
-    if $scope.account_add_consumption.id is null
+
+    if $scope.account_add_consumption.id == undefined
       new AccountAddConsumption($scope.account_add_consumption).create().then (results) =>
         $rootScope.$broadcast('account:add_consumption',  $scope.account_add_consumption.account_id, $scope.account_add_consumption.amount)
         $mdDialog.hide()
         return
+      return
     else
       $scope.account_add_consumption.update().then (results) =>
         $rootScope.$broadcast('account:add_consumption',  $scope.account_add_consumption.account_id, $scope.account_add_consumption.amount)
         $mdDialog.hide()
         return
+      return
 
   $scope.hide = ->
     $mdDialog.hide()

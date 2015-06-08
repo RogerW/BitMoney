@@ -49,16 +49,18 @@ class Account::Transfer < ActiveType::Object
   end
   
   def create_add_fund_invoice
-    destination.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: "Transfer from account id #{account.id} #{note}",
+    destination.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: "Перевод со счета #{account.title} #{note}",
         invtype: Invoice.invtypes[:add_fund])
   end
   
   def create_withdrawal_invoice
+	  consumption_type_id = ConsumptionType.where(title: "Перевод").first
     invoice = account.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code,
-        note: "Transfer to account id #{destination.id} #{note}", 
-        invtype: Invoice.invtypes[:withdrawal])
-    consumption_type_id = ConsumptionType.where(title: "Перевод").first
-    invoice.consumptions.create(consumption_type_id: consumption_type_id)
+                            note: "Перевод на счет #{destination.title} #{note}",
+                            invtype: Invoice.invtypes[:withdrawal],
+                            consumption_type_id: consumption_type_id)
+
+		invoice.consumption_types << consumption_type_id
   end
   
 end

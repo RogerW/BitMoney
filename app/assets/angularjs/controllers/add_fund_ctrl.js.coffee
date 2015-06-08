@@ -11,7 +11,6 @@ AccountAddFundCtrl = ($rootScope, $scope, $mdDialog, AccountAddFund, account, Ac
   
   if temp_invoice isnt null
     temp_invoice.amount = temp_invoice.amount.fractional/100
-    temp_invoice.consumption_type_id = temp_invoice.consumptionTypes.id
 
   $scope.account_add_fund = temp_invoice || {}
   console.log $scope.account_add_fund
@@ -36,17 +35,30 @@ AccountAddFundCtrl = ($rootScope, $scope, $mdDialog, AccountAddFund, account, Ac
   $scope.create = ->
     $scope.account_add_fund.account_id = $scope.account.id
 
-    new AccountAddFund($scope.account_add_fund).create().then ((results) ->
-      $rootScope.$broadcast('account:add_fund',  $scope.account_add_fund.account_id, $scope.account_add_fund.amount)
-      $mdDialog.hide(results.message)
-      return
-    ), (error) ->
-      if error.status == 422
-        $scope.errors = error.data.errors
-        $scope.errorShow = true
+    if $scope.account_add_fund.id== undefined
+      new AccountAddFund($scope.account_add_fund).create().then ((results) ->
+        $rootScope.$broadcast('account:add_fund',  $scope.account_add_fund.account_id, $scope.account_add_fund.amount)
+        $mdDialog.hide(results.message)
+        return
+      ), (error) ->
+        if error.status == 422
+          $scope.errors = error.data.errors
+          $scope.errorShow = true
+          return
         return
       return
-    return
+    else
+      $scope.account_add_fund.update().then ((results) ->
+        $rootScope.$broadcast('account:add_fund',  $scope.account_add_fund.account_id, $scope.account_add_fund.amount)
+        $mdDialog.hide(results.message)
+        return
+      ), (error) ->
+        if error.status == 422
+          $scope.errors = error.data.errors
+          $scope.errorShow = true
+          return
+        return
+      return
       
   $scope.hide = (message) ->
     $mdDialog.hide(message)

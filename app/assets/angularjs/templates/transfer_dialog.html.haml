@@ -2,6 +2,10 @@
   %md-content.sticky-container
     %md-subheader.md-sticky-no-effect Перевод
     .dialog-content
+      .error{'ng-show' => "errorShow", 'layout' => "column"}
+        %div{'ng-repeat' => 'error in errors', layout:"row", 'layout-align' => 'start center'}
+          %i.fa.fa-lg.fa-times-circle.dialog-icon__error
+          %p {{error}}
       %form{name:"transfer", layout:"column", 'layout-gt-md' => "row", 'layout-padding'=>true, 'layout-margin' => true}
         .form__line{layout:"column", flex:true}
           %md-input-container{flex:true}

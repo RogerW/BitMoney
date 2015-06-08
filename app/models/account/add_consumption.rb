@@ -34,10 +34,11 @@ class Account::AddConsumption < ActiveType::Object
   end
   
   def create_withdrawal_invoice
-    @invoice = account.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: note, invtype: Invoice.invtypes[:withdrawal])
+    @invoice = account.invoices.create(amount_cents: amount*100, amount_currency: account.balance.currency.iso_code, note: note, invtype: Invoice.invtypes[:withdrawal], consumption_type_id: consumption_type_id)
   end
   
   def create_consumption
+		puts consumption_type_id
     @invoice.consumption_types << ConsumptionType.find(consumption_type_id)
   end
   

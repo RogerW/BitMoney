@@ -52,11 +52,18 @@ AccountTransferCtrl = ($rootScope, $scope, $mdDialog, AccountTransfer, account, 
   $scope.create = ->
     $scope.account_transfer.account_id = $scope.source.id
 
-    new AccountTransfer($scope.account_transfer).create().then (results) =>
+    new AccountTransfer($scope.account_transfer).create().then ((results) =>
       $rootScope.$broadcast('account:add_consumption',  $scope.account_transfer.account_id, $scope.account_transfer.amount)
       $rootScope.$broadcast('account:add_fund',  $scope.account_transfer.destination_id, $scope.account_transfer.amount)
-      $mdDialog.hide()
+      $mdDialog.hide(results.message)
       return
+    ), (error) ->
+      if error.status == 422
+        $scope.errors = error.data.errors
+        $scope.errorShow = true
+        return
+      return
+    return
 
   $scope.hide = ->
     $mdDialog.hide()

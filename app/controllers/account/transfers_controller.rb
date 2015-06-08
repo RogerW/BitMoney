@@ -10,9 +10,9 @@ class Account::TransfersController < ApplicationController
     build_account_transfer
     authorize @account_transfer
     if @account_transfer.save
-      render json: @account_transfer, status: 200
+	    render json: {message:"Деньги успешно переведены!"}, status: 200
     else
-      render json: @account_transfer, status: 500
+      render json: {:errors => @account_transfer.errors.full_messages}, status: 422
     end
   end
   
