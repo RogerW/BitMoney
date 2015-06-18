@@ -9,126 +9,155 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
+ *= require normalize.css/normalize.css
  *= require_self
- *= require_tree .
  */
-
-@import "compass/css3";
-@import "bootstrap";
-@import "bootstrap-material-design";
-
-@mixin vertical-align() {
-  display: block;
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-  }
-  > * {
-    display: inline-block;
-    vertical-align: middle;
-    width: 98%;
-  }
-}
-
-.header {
-  @extend .navbar;
-  @extend .navbar-white;
-}
-
-.header__logo {
-  @extend .navbar-brand;
-  font-family: 'Kaushan Script', cursive;
-  font-size: 36px;
-}
-
-.head__menu-box {
-  @extend .navbar-collapse;
-  @extend .collapse;
-  @extend .navbar-responsive-collapse;
-}
-
-.head__menu-list {
-  @extend .nav;
-  @extend .navbar-nav;
-  @extend .navbar-right;
-}
-
-.present {
-  height:  500px;
-  background-image: asset_url("landing-bg.png", image);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: auto 600px;
-  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
-  margin-bottom: 100px;
-  margin-top: -20px;
-
-  .present__slogan {
-    @include make-xs-column(5);
-
-
-    .present__slogan--logo {
-      font-family: 'Kaushan Script', cursive;
-      font-size: 42px;
-      color: white;
-      padding-top: 150px;
-    }
-  }
-
-  .present__image {
-    @include make-xs-column(7);
-
-    img {
-      height: 500px;
-    }
-
-  }
-}
-
-
-
+ 
+ @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
 
 html, body {
-    height: 100%;
-  background-color: white;
+  height: 100%;
+  margin: 0;
+//  font-family: 'Roboto Slab', serif;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14pt;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-touch-callout: none;
 }
 
-#wrap__navigation {
-  height: 70px;
+core-scaffold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
-.page-wrap {
-  min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -70px;
-}
-
-.page-wrap:after {
-  content: "";
-  display: block;
-}
-
-.footer {
-  height: 70px;
-  background-color: #273333;
+core-icon {
+  display: inline-block;
   vertical-align: middle;
+  background-repeat: no-repeat;
+  fill: currentcolor;
+  position: relative;
+  height: 24px;
+  width: 24px;
+}
+
+.scaffold__main {
+  padding: 1rem;
+}
+
+.content {
+  background-color: #fff;
+  height: 5000px;
+  padding: 20px;
+}
+
+/* some default styles for mode="cover" on core-scaffold */
+core-scaffold[mode=cover]::shadow core-header-panel::shadow #mainContainer {
+  left: 120px;
+}
+
+core-scaffold[mode=cover] .content {
+  margin: 20px 100px 20px 0;
+}
+
+.header__link {
+  text-decoration: none;
+  color: #222;
+}
+
+.present__block {
+  text-align: center;
+  background-image: asset_url("landing-bg.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  border-bottom: 1px solid #ffffff;
+  max-height: 500px;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+}
+
+.present__container {
+  margin-left: auto;
+  margin-right: auto;
+  height: inherit;
+  max-width: 860px;
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+.present__main {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.login__box {
+  min-height: 500px;
+  height: calc(100% - 80px);
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.login_main {
+  margin-left: auto;
+  margin-right: auto;
+  height: inherit;
+  max-width: 400px;
+  position: relative;
+  width: 100%;
+  display: table;
+}
+
+app-signin {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.present__slogan > h1 {
   color: #ffffff;
-  padding-top: 10px;
-  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
+  font-family: 'Roboto Slab', serif;
+  font-size: 2.5rem;
 }
 
-a:visited.text-danger {
-  color: #f44336;
+hr {
+  border: none; /* Убираем границу */
+  background-color: #273333; /* Цвет линии */
+  color: #273333; /* Цвет линии для IE6-7 */
+  height: 1px; /* Толщина линии */
 }
 
-a:visited.text-success {
-  color: #0f9d58;
+.present__slogan > h2 {
+  color: #FBCA54;
+//  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
 }
 
-.logo {
-  
+.present__registry > p {
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+paper-button[raised].present__registry-button {
+  background: #7CA668;
+  color: #fff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.present__registry-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.about__block {
+  height: 300px;
+  background-color: #273333;
+  width: 100%;
 }

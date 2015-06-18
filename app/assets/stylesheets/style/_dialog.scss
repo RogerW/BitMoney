@@ -1,0 +1,15 @@
+@import "base/variables";
+
+.add_fund__subheader {
+  background-color: $color_green;
+}
+
+.error {
+  font-size: .8rem;
+  font-family: $font_headers_primary, $font_headers_secondary;
+  color: $color_red;
+}
+
+.dialog-icon__error {
+  margin-right: 0.5rem;
+}

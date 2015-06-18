@@ -1,0 +1,54 @@
+<polymer-element name="app-card">
+  <template>
+    <link rel="stylesheet" href="app-card.css.scss" />
+
+    <core-ajax
+      auto
+      url="http://www.filltext.com/"
+      params='{ "rows": "5", "title": "{username}", "balance": "{numberLength|4}", "description":"{string|20}"}'
+      handleAs="json"
+      response="{{accounts}}"
+    ></core-ajax>
+
+    <div class="card__main">
+      <paper-shadow z="1">
+
+        <div class="card__inner">
+          <div layout horizontal>
+            <h3 class="account__header" flex>Счета</h3>
+            <core-icon icon="more-vert"></core-icon>
+          </div>
+
+          <core-selector selected="{{selected}}">
+            <template repeat="{{account, i in accounts}}">
+
+                <hr/>
+
+                <div class="account__line" layout horizontal center>
+                  <!--<paper-ripple fit></paper-ripple>-->
+                  <core-icon icon="credit-card" class="account__icon"></core-icon>
+                  <div layout vertical flex three>
+                    <div class="account__title">{{account.title}}</div>
+                    <div class="account__description">{{account.description}}</div>
+                  </div>
+
+                  <div class="account__balance" flex>{{account.balance}}</div>
+                </div>
+              <core-collapse opened="{{selected == i}}" fixedSize>
+                <div id="target">
+                  {{selected == i}}
+                </div>
+              </core-collapse>
+            </template>
+          </core-selector>
+
+        </div>
+      </paper-shadow>
+
+
+    </div>
+
+  </template>
+
+  <script src="app-card.js.coffee"></script>
+</polymer-element>

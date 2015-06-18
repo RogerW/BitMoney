@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :accounts, dependent: :destroy
   has_many :consumption_types, dependent: :destroy
-  has_many :invoices, through: :accounts
+  has_many :invoices, through: :accounts, dependent: :destroy
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   after_initialize :set_default_role, :if => :new_record?
   
   after_create :create_default_consumption_types
+  after_create :create_default_accounts
 
   def set_default_role
     self.role ||= :user
@@ -28,6 +29,11 @@ class User < ActiveRecord::Base
     self.consumption_types.create(title: "Автомобиль")
     self.consumption_types.create(title: "Разное")
     self.consumption_types.create(title: "Перевод")
+  end
+  
+  def create_default_accounts
+    self.accounts.create(title: "Наличные", is_default:true)
+    self.accounts.create(title: "Зарплатная карта")
   end
   
 end

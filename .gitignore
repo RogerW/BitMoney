@@ -19,3 +19,6 @@ test
 .DS_Store
 /.idea
 /.c9
+/vendor
+
+vendor/assets/bower_components

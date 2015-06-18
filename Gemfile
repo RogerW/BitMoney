@@ -8,21 +8,23 @@ gem 'pg', group: [:production]
 # Use SQLite for development ant testing
 gem 'sqlite3', group: [:development, :test]
 
-source 'https://rails-assets.org' do
-  # gem 'rails-assets-boostrap-sass'
-  gem 'rails-assets-bootstrap-material-design'
-  gem 'rails-assets-angular'
-  gem 'rails-assets-ng-tags-input'
-end
+# source 'https://rails-assets.org' do
+#   # gem 'rails-assets-platform'
+# end
 
+
+gem 'bower-rails'
+# gem 'emcee'
 gem 'haml-rails'
-gem 'bootstrap-sass', '~> 3.3.3'
+# gem 'polymer-rails'
+gem 'angularjs-rails-resource', '~> 2.0.0'
 gem 'high_voltage'
 gem 'money-rails'
 gem 'active_type'
-gem 'bem'
+gem "will_paginate"
 
 gem 'google-webfonts-rails'
+
 
 group :development do
   gem 'better_errors'
@@ -52,11 +54,14 @@ gem 'russian'
 gem 'devise'
 gem 'pundit'
 
-gem 'sprockets-rails', '>= 2.1.4'
+gem 'sprockets-rails'
+#, '>= 2.1.4'
+gem 'paper_trail', '~> 4.0.0.beta2'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
+gem 'sass-rails'
+#, '~> 4.0.stable'
+# gem 'compass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

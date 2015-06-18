@@ -1,47 +1,76 @@
 class ConsumptionTypesController < ApplicationController
-  before_action :set_consumption_type, only: [:show, :edit, :update, :destroy]
-
-  respond_to :html
+	before_action :authenticate_user!
 
   def index
-    @consumption_types = ConsumptionType.all
-    respond_with(@consumption_types)
+	  load_consumption_types
   end
 
   def show
-    respond_with(@consumption_type)
+	  load_consumption_type
   end
 
   def new
-    @consumption_type = ConsumptionType.new
-    respond_with(@consumption_type)
+	  build_consumption_type
   end
 
   def edit
+	  load_consumption_types
   end
 
   def create
-    @consumption_type = ConsumptionType.new(consumption_type_params)
-    @consumption_type.save
-    respond_with(@consumption_type)
+	  build_consumption_type
+	  save_consumption_type or render json: @consumption_type, status: 500
   end
 
   def update
-    @consumption_type.update(consumption_type_params)
-    respond_with(@consumption_type)
+	  load_consumption_type
+	  build_consumption_type
+	  save_account or render json: @consumption_type, status: 500
   end
 
   def destroy
-    @consumption_type.destroy
-    respond_with(@consumption_type)
+	  load_consumption_type
+	  @consumption_type.destroy or render json: @consumption_type, status: 500
   end
 
   private
-    def set_consumption_type
-      @consumption_type = ConsumptionType.find(params[:id])
+    def load_consumption_type
+	    @consumption_type ||= consumption_type_scope.where(id: params[:id]).first
     end
 
-    def consumption_type_params
-      params.require(:consumption_type).permit(:title, :user_id)
-    end
+		def load_consumption_types
+			@consumption_types ||= consumption_type_scope.to_a
+		end
+
+		def build_consumption_type
+			@consumption_type ||= consumption_type_scope.build
+			@consumption_type.attributes = consumption_type_params
+		end
+
+		def save_consumption_type
+			if @consumption_type.save
+				render json: @consumption_type, status: 200
+			end
+		end
+
+		def consumption_type_params
+			consumption_type_params = params[:consumption_type]
+			if current_user.admin?
+
+				if consumption_type_params
+					consumption_type_params[:user_id].nil? ? consumption_type_params[:user_id] = current_user.id : {}
+				end
+
+				consumption_type_params ? consumption_type_params.permit(:title, :icon, :user_id) : {}
+			else
+				consumption_type_params ? consumption_type_params.permit(:title, :icon) : {}
+			end
+
+
+		end
+
+		def consumption_type_scope
+			current_user.admin? ? ConsumptionType.where(nil) : current_user.consumption_types
+		end
+
 end

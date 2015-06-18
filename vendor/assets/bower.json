@@ -1,0 +1,22 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-resource": "latest",
+    "angular-mocks": "latest",
+    "angular-animate": "latest",
+    "angular-aria": "latest",
+    "angular-material": "v0.9.0",
+    "font-awesome": "latest",
+    "ng-mfb": "latest",
+    "angular-material-icons": "latest",
+    "webcomponentsjs": "latest",
+    "polymer": "git://github.com/Polymer/polymer",
+    "polymer-core-elements": "git://github.com/Polymer/core-elements",
+    "polymer-paper-elements": "git://github.com/Polymer/paper-elements",
+    "platform": "latest",
+    "normalize.css": "latest",
+    "voice-elements": "latest"
+  }
+}

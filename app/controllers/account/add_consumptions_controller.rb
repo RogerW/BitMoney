@@ -10,20 +10,21 @@ class Account::AddConsumptionsController < ApplicationController
     build_add_counsumption
     authorize @add_consumption
     if @add_consumption.save
-      redirect_to :back, :notice => "Expenses made successfully"
+      render json: @add_consumption, status: 200
     else
-      render :new
+      render json: @add_consumption, status: 500
     end
   end
   
-  private 
+  private
+
   def build_add_counsumption
     @add_consumption ||= Account::AddConsumption.new(add_consumption_params)
   end
   
   def add_consumption_params
-    add_consumption_params = params[:account_add_consumption]
-    add_consumption_params[:account_id] = params[:account_id]
-    add_consumption_params ? add_consumption_params.permit(:account_id, :consumption_type_id, :amount, :note) : {}
+	  add_consumption_params = params[:account_add_consumption]
+	  add_consumption_params[:account_id] ? {} :add_consumption_params[:account_id] = params[:account_id]
+	  add_consumption_params ? add_consumption_params.permit(:account_id, :amount, :note, :consumption_type_id) : {}
   end
 end

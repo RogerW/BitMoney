@@ -1,41 +1,11 @@
-%section.present
-	.container
-		.row
+.present__block
+	.present__container
+		.present__main
 			.present__slogan
-				%h3.present__slogan--logo MoneyBit.me
-				%p.slogan
-					%em Возможно, самая простая система учета ваших финансов, которую вы можете найти!
-				= link_to "Зарегиститроваться сейчас!", new_user_registration_path, class: "btn btn-warning"
-			.present__image
-				= image_tag "EasilyEditOnYourMac.png", class: "img-responsive"
-.container
-	.row
-		.columns.col-xs-12
-			%h2.promo__header
-				%em 3 Причины регистрации на MoneyBit.me
-	.row.promo__line
-		.columns.col-xs-6.promo__image.text-right
-			= image_tag "kopilka.png"
-		.columns.col-xs-6.promo__text
-			%h4 Вы всегда знаете куда уходят ваши деньги.
-			%p= t('promo_text_money')
-	.row.promo__line
-		.columns.col-xs-6.promo__text
-			%h4.text-right С легкостью управляйте счетами.
-			%p.text-right Знаете ли вы, свой собственный капитал? Сколько у вас в копилке? Или в вашем банке? Визуализация эти цифры даст вам большое чувство. Такой мир.
-		.columns.col-xs-6.promo__image
-			= image_tag "accounts.png"
-	.row.promo__line
-		.columns.col-xs-6.promo__image.text-right
-			= image_tag "goals.png"
-		.columns.col-xs-6.promo__text
-			%h4 Ваше финансовое развитие
-			%p Вы сможете увидеть, что в двух простых графики.Шесть месяцев расходы по сравнению с графика доходов и ежемесячные расходы категории графике. Время гордиться!
-	.row
-		.columns.col-xs-12.text-center.promo__button
-			= link_to "Зарегистируйтесь!", new_user_registration_path, class: "btn btn-primary btn-raised btn-lg"
-
-
-
-
-
+				%h1 Простой способ учета и планирования Ваших финансов
+				%h2 Начните учет ваших финансов прямо сейчас, и вы очень быстро поймете куда утекают ваши деньги.
+			.present__registry
+				%p Зарегистрируйтесь сейчас!
+				%paper-button.present__registry-button{raised:true}
+					= link_to t(:sign_up_link), new_user_registration_path, class: "present__registry-link"
+.about__block

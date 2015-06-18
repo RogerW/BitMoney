@@ -1,0 +1,98 @@
+:host {
+  display: block;
+}
+
+.input__field {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  margin: auto 0.5rem;
+}
+
+.login__form {
+  padding-bottom: .5rem;
+  padding-top: .5rem;
+}
+
+#arrow {
+  background-color: rgb(124, 166, 104);
+  display: block;
+  margin: 0.5rem auto;
+  color: #ffffff;
+  margin-left: .5rem;
+}
+
+#signup {
+  background-color: #398EC4;
+  display: block;
+  margin: 0.5rem auto;
+  color: #ffffff;
+  margin-right: .5rem;
+}
+
+.paper-shadow-bottom-z-1 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.paper-shadow-top-z-1 {
+  box-shadow: none;
+}
+
+paper-shadow,
+paper-animated-shadow {
+  display: block;
+  position: relative;
+}
+
+paper-shadow::shadow #shadow-bottom,
+paper-shadow::shadow #shadow-top {
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+
+
+polyfill-next-selector { content: '.login__form .form__title, h2'; }
+
+.login__form ::content .form__title, h2 {
+  margin: .5rem auto;
+  color: black;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+}
+
+polyfill-next-selctor {content: '.input__field .remember__field';}
+
+.input__field ::content .remember__field {
+  display: none;
+}
+
+
+polyfill-next-selctor {content: '.input__field .sign-up__link';}
+
+.input__field ::content .sign-up__link {
+  text-decoration: none;
+  color: white;
+}
+
+#remeber {
+  margin: auto 5px auto auto;
+}
+
+paper-toggle-button {
+  margin-top: 15px;
+}
+
+paper-toggle-button::shadow [checked] .toggle {
+  background-color: rgb(124, 166, 104);
+}
+paper-toggle-button::shadow [checked] .toggle-ink {
+  color: rgb(124, 166, 104);
+}
+input::-webkit-input-placeholder, .gray-text {
+  color: #999;
+}

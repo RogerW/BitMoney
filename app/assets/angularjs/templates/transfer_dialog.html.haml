@@ -1,0 +1,47 @@
+%md-dialog{"aria-label" => "Перевод", flex:80}
+  %md-content.sticky-container
+    %md-subheader.md-sticky-no-effect Перевод
+    .dialog-content
+      .error{'ng-show' => "errorShow", 'layout' => "column"}
+        %div{'ng-repeat' => 'error in errors', layout:"row", 'layout-align' => 'start center'}
+          %i.fa.fa-lg.fa-times-circle.dialog-icon__error
+          %p {{error}}
+      %form{name:"transfer", layout:"column", 'layout-gt-md' => "row", 'layout-padding'=>true, 'layout-margin' => true}
+        .form__line{layout:"column", flex:true}
+          %md-input-container{flex:true}
+            %md-select{'ng-model' => 'source', placeholder:"Выберите источник", 'md-on-open' => 'loadAccounts()', flex:true, required:true, name:'source', 'ng-change' => 'change_source()'}
+              %md-select-label {{source.title}}
+              %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc'} {{acc.title}}
+            %div{'ng-messages'=>'transfer.source.$error', 'ng-show' => 'transfer.source.$touched'}
+              %div{'ng-message'=>"required", 'ng-show' => 'transfer.source.$error.required'} Обязательно для заполнения!
+          .account__balance 
+            Баланс: 
+            %i.fa.account_currency{class:"fa-{{source.balance.currency.id}}"} 
+            {{source.balance.fractional /100}}
+        .form__line{layout:"column", flex:true}
+          .form__line{layout:"row"}
+            %md-input-container{flex:true}
+              %md-select{'ng-model' => 'account_transfer.destination_id', placeholder:"Счет, на который переводим", 'md-on-open' => 'loadDestination()', flex:true, required:true, name:"destination"}
+                %md-option{'ng-repeat'=>'acc in destination_accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+              %div{'ng-messages'=>'transfer.destination.$error', 'ng-show' => 'transfer.destination.$touched'}
+                %div{'ng-message'=>"required", 'ng-show' => 'transfer.destination.$error.required'} Обязательно для заполнения!
+                %div{'ng-message'=>"account-dublicate", 'ng-show' => 'transfer.destination.$error.accountDublicate'} Счет отправления и назначения не должны совпадать!
+          .form__line{layout:"column", 'layout-gt-md' => "row"}
+            %md-input-container{flex:true}
+              %label Сумма
+              %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_transfer.amount", required:true, min:0.01}
+              %div{'ng-messages'=>'transfer.amount.$error', 'ng-show' => 'transfer.amount.$touched'}
+                %div{'ng-message'=>"required", 'ng-show' => 'transfer.amount.$error.required'} Укажите сумму!
+                %div{'ng-message'=>"min", 'ng-show' => 'transfer.amount.$error.min'} Должно быль болше 0.01!
+            %md-input-container{flex:true}
+              %label Комментарий
+              %input{'md-maxlength'=>"30", required:true, name:"note", 'ng-model'=>"account_transfer.note"}
+              %div{'ng-messages'=>'transfer.note.$error', 'ng-show' => 'transfer.note.$touched'}
+                %div{'ng-message'=>"required", 'ng-show' => 'transfer.note.$error.required'} Обязательно для заполнения!
+                %div{'ng-message'=>"md-maxlength", 'ng-show' => 'transfer.note.$error.md-maxlength'} Слишком длинный комментарий!
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()", 'ng-disabled'=>"transfer.$invalid"}
+      Перевести

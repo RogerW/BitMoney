@@ -34,7 +34,7 @@ class ConsumptionsController < ApplicationController
   private
 
   def consumption_scope
-    current_user.admin? ? Consumption.where(nil) : current_user.accounts
+    current_user.admin? ? Consumption.where(nil) : current_user.accounts.consumptions
   end
 
   def consumption_params

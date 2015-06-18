@@ -4,6 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
+  config.secret_key = 'e29993a71adba9045398b341f4b8012f822ab81f4109f095f886b5cca05cebd501f2ebfe4314ffe80f2d883071de341b8336f1748b785d0c55cbe53a4a5cb11e'
   # config.secret_key = 'b9adc25af83a2f2e9e6002d4921fe51a98c806ef3709b7cd5bac2f767cb6ae0998dbcbf68360d6e5899a978206f19f4519ac5f8fcacad28fadf1b92c61c811ac'
 
   # ==> Mailer Configuration
@@ -62,7 +63,7 @@ Devise.setup do |config|
   # config.http_authenticatable = false
 
   # If 401 status code should be returned for AJAX requests. True by default.
-  # config.http_authenticatable_on_xhr = true
+  config.http_authenticatable_on_xhr = true
 
   # The realm used in Http Basic Authentication. 'Application' by default.
   # config.http_authentication_realm = 'Application'
@@ -224,7 +225,8 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  # config.navigational_formats = ['*/*', :html]
+  config.navigational_formats = ['*/*', :html]
+  # config.navigational_formats = [:json, :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = Rails.env.test? ? :get : :delete

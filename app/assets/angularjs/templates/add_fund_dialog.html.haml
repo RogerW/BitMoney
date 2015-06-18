@@ -1,0 +1,36 @@
+%md-dialog{"aria-label" => "Доход"}
+  %form{name:"add_fund"}
+    %md-content.sticky-container
+      %md-subheader.md-sticky-no-effect{'md-theme' => "greenTheme"} 
+        %i.fa.fa-lg.fa-arrow-circle-right
+        Доход
+      .dialog-content{'layout'=>'row', 'layout-padding' => true, 'layout-margin' => true}
+        .error{'ng-show' => "errorShow", 'layout' => "column"}
+          %div{'ng-repeat' => 'error in errors', layout:"row", 'layout-align' => 'start center'}
+            %i.fa.fa-lg.fa-times-circle.dialog-icon__error
+            %p {{error}}
+        .form__line{layout:"row", 'ng-show' => 'showAccountSelect()'}
+          %md-select{'ng-model' => 'account', placeholder:"Выберите счет", 'md-on-open' => 'loadAccounts()'}
+            %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+        .form__line{layout:"row"}
+          %md-input-container{flex:true}
+            %label Сумма
+            %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_fund.amount", required:true, min:"0.01"}
+              %div{'ng-messages'=>'add_fund.amount.$error', 'ng-show' => 'add_fund.amount.$touched'}
+                %div{'ng-message'=>"required", 'ng-show' => 'add_fund.amount.$error.required'} Укажите сумму!
+                %div{'ng-message'=>"min", 'ng-show' => 'add_fund.amount.$error.min'} Должно быль болше 0.01!
+          %md-input-container{flex:true}
+            %label Комментарий
+            %input{'md-maxlength'=>"250", required:true, name:"note", 'ng-model'=>"account_add_fund.note"}
+            %div{'ng-messages'=>'add_fund.note.$error', 'ng-show' => 'add_fund.note.$touched'}
+              %div{'ng-message'=>"required", 'ng-show' => 'add_fund.note.$error.required'} Обязательно для заполнения!
+              %div{'ng-message'=>"md-maxlength", 'ng-show' => 'add_fund.note.$error.md-maxlength'} Слишком длинный комментарий!
+          %input{type:"hidden", 'ng-model' => 'account'}
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()", 'ng-disabled'=>"add_fund.$invalid"}
+      Сохранить
+    %md-button.md-warn{"ng-click" => "deleteInvoice()", 'ng-if' => 'account_add_fund.id'}
+      Удалить

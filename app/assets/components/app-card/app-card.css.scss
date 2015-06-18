@@ -1,0 +1,63 @@
+:host {
+  display: block;
+}
+
+.card__main {
+  background-color: #ffffff;
+}
+
+.card__inner {
+  padding: 0.5rem;
+}
+
+.account__header {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.5rem;
+  margin: 0rem;
+}
+
+.account__icon {
+  height: 3rem;
+  width: 3rem;
+
+  margin: auto .5rem ;
+}
+
+.account__title {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1rem;
+  margin: 0rem;
+  font-style: bold;
+}
+
+.account__description {
+  font-size: .8rem;
+  color: #273333;
+}
+
+.account__balance {
+  font-family: 'Roboto Slab', serif;
+  font-size: 2rem;
+  margin: 0rem;
+  font-style: bold;
+}
+
+.paper-shadow-bottom-z-1 {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+.paper-shadow-top-z-1 {
+  box-shadow: none;
+}
+
+paper-shadow,
+paper-animated-shadow {
+  display: block;
+  position: relative;
+}
+
+paper-shadow::shadow #shadow-bottom,
+paper-shadow::shadow #shadow-top {
+  border-radius: inherit;
+  pointer-events: none;
+}

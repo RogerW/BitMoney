@@ -1,114 +1,121 @@
-@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
 
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+@import "angular-material/angular-material.css";
+@import "font-awesome/css/font-awesome.css";
+@import "base/variables";
+@import "style/global";
+@import "style/dashboard";
+@import "style/dialog";
+
+
+
+.menu__left .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
 }
 
-
-.header1 {
-  height:  500px;
-  background-image: asset_url("landing-bg.png", image);
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: auto 600px;
-  @include box-shadow(rgba(0,0,0,0.2) 0px 0px 5px);
-  margin-bottom: 100px;
-//  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.2);
+.face {
+  display: inline-block;
+  margin: 4px 16px; 
+  vertical-align: middle;
 }
 
+.menuBtn {
+  background-color: transparent;
+  border: none;
+  height: 38px;
+  margin: 16px 0 0 16px;
+  width: 36px;
+}
 
-#logo__text {
-  margin-top: 120px;
-  font-weight: bold;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 5em;
-  padding-top: 50px;
-  margin-bottom: 50px;
+.header__logo {
+  font-size: 2rem;
   color: #ffffff;
+  text-decoration: none;
+  font-family: 'Kaushan Script', sans-serif;
 }
 
-.promo__header {
-//  font-family: 'Roboto Condensed', sans-serif;
-  color: #273333;
-  font-weight: bold;
+md-toolbar h1 {
+  font-weight: normal;
+}
+md-list .md-button {
+  color: inherit;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+}
+
+/* Using Data-URI converted from svg until <md-icon> becomes available
+https://github.com/google/material-design-icons
+*/
+.menuBtn {
+  background: transparent url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGcgaWQ9IkhlYWRlciI+CiAgICA8Zz4KICAgICAgICA8cmVjdCB4PSItNjE4IiB5PSItMjIzMiIgZmlsbD0ibm9uZSIgd2lkdGg9IjE0MDAiIGhlaWdodD0iMzYwMCIvPgogICAgPC9nPgo8L2c+CjxnIGlkPSJMYWJlbCI+CjwvZz4KPGcgaWQ9Ikljb24iPgogICAgPGc+CiAgICAgICAgPHJlY3QgZmlsbD0ibm9uZSIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CiAgICAgICAgPHBhdGggZD0iTTMsMThoMTh2LTJIM1YxOHogTTMsMTNoMTh2LTJIM1YxM3ogTTMsNnYyaDE4VjZIM3oiIHN0eWxlPSJmaWxsOiNmM2YzZjM7Ii8+CiAgICA8L2c+CjwvZz4KPGcgaWQ9IkdyaWQiIGRpc3BsYXk9Im5vbmUiPgogICAgPGcgZGlzcGxheT0iaW5saW5lIj4KICAgIDwvZz4KPC9nPgo8L3N2Zz4=) no-repeat  center center;
+}
+
+ng-md-icon {
+//  height: 2rem;
+//  width: 2rem;
+  margin: auto .5rem ;
+}
+
+#add-invoice {
+  position: absolute;
+  right: 50px;
+  margin-top: -28px;
+  color: #ffffff;
+  fill: #ffffff;
+}
+
+.md-inline-list-icon-label {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 0.6rem;
+  font-size: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.md-grid-text {
+  padding-bottom: 5px; 
+}
+
+.md-inline-list-icon {
+  height: 48px;
+  width: 48px;
+}
+
+
+
+md-whiteframe {
+  background-color: white;
+}
+
+.account_menu__button {
+  height: 62px;
+}
+
+.account_menu__list {
   text-align: center;
 }
 
-.promo__button {
-  height: 200px;
-  padding-top: 80px;
-  margin-bottom: 50px;
+.invoice__icon {
+  height: 50px;
+  font-size: 2rem;
+  width: 50px;
+  margin-right: 0.5rem;
+  margin-left: .5rem;
 }
 
-.slogan {
-  color: #ffffff;
-  font-size: 18px;
-  font-family: 'Open Sans', sans-serif;
-}
 
-#registry_slogan {
-  margin-top: 40px;
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-}
+@media only screen and (min-width: 600px) {
+  .right__panel {
+    margin-left: 0.5rem;
+  }
 
-.promo__line {
-  height: 100%;
+  .left__panel {
+    margin-right: 0.5rem;
+  }
 }
-
-.promo__image {
-  padding-top: 1.5rem;
-  padding-right:  3rem;
-  padding-left:  3rem;
-}
-
-.promo__text {
-  padding-top: 4.5rem;
-  height: 212px;
-  padding-left:  3rem;
-  padding-right:  3rem;
-}
-
-.promo__text > h4 {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
-}
-
-.promo__text > p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  color: #273333;
-}
-
-.promo__text__left {
-  height: 200px;
-  padding-left: 1.5rem;
-  text-align: right;
-}
-
-.promo__text > p {
-  font-size: 16px;
-  color: #637272;
-}
-
-.promo__text > p:hover {
-  color: #273333;
-}
-
-.promo {
-  padding: 2% 0;
-  display:inline-block;
-  vertical-align:middle;
-}
-
-p.promo {
-  font-size: 15px;
-  color: #273333;
-}
-

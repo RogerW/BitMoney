@@ -1,0 +1,18 @@
+<polymer-element name="checkbox-input" attributes="label">
+  <template>
+    <style>:host{display:block}polyfill-next-selector{content:'.checkbox input[type="checkbox"]'}.checkbox ::content input[type="checkbox"]{display:none}input[type="checkbox"]{display:none}paper-checkbox{padding:20px 20px 20px 0}section{width:300px}paper-checkbox.blue::shadow #ink[checked]{color:#BBDEFB}paper-checkbox.blue::shadow #checkbox.checked{background-color:#2196F3;border-color:#2196F3}
+</style>
+    
+    <div class="checkbox">
+      <core-label horizontal="" layout="">
+        <paper-checkbox for="" on-change="{{change}}"></paper-checkbox>
+        <h4>{{label}}</h4>
+        <content id="content" select='input[type="checkbox"]'></content>
+        <content></content>
+      </core-label>
+    </div>
+    
+  </template>
+
+  <script>Polymer("checkbox-input",{publish:{label:"checkbox",input_name:"checkbox"},change:function(e,t,c){for(var h=this.$.content.getDistributedNodes(),i=0;i<h.length;i++)h[i].getAttribute("type","checkbox")&&(h[i].checked="true"==c.getAttribute("aria-checked")?!1:!0)}});</script>
+</polymer-element>

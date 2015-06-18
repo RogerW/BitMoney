@@ -23,21 +23,19 @@ class AccountsController < ApplicationController
   
   def create
     build_account
-    flash[:notice] = t(:create_account_successful_text)
-    save_account or render :new 
+    save_account or render json: @account, status: 500
   end
   
   def update
     load_account
     build_account
-    flash[:notice] = 'Account updated'
-    save_account or render :edit, notice: t(:could_not_find_account_text)
+    save_account or render json: @account, status: 500
   end
   
   def destroy
     load_account
     @account.destroy
-    redirect_to accounts_path
+    render json:@account, status: 200
   end
   
   private
@@ -57,7 +55,7 @@ class AccountsController < ApplicationController
   
   def save_account
     if @account.save
-      redirect_to @account
+      render json: @account, status: 200
     end
   end
   
@@ -69,9 +67,9 @@ class AccountsController < ApplicationController
         account_params[:user_id].nil? ? account_params[:user_id] = current_user.id : {}
       end
       
-      account_params ? account_params.permit(:title, :description, :user_id) : {}
+      account_params ? account_params.permit(:title, :description, :user_id, :balance_currency) : {}
     else
-      account_params ? account_params.permit(:title, :description) : {}
+      account_params ? account_params.permit(:title, :description, :balance_currency) : {}
     end
     
     

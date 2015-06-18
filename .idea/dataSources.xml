@@ -9,10 +9,8 @@
     </data-source>
     <data-source source="LOCAL" name="Rails BitMoney: production" uuid="1977d20d-8c94-49bb-a079-cb47133f62a6">
       <driver-ref>postgresql</driver-ref>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql:BitMoney_production</jdbc-url>
-      <user-name>BitMoney</user-name>
-      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddfe8dfe3dffedfe7dfe5dfe4dfefdff3dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails BitMoney: development" uuid="69c19b17-e220-4adc-bd42-9d9d87975952">

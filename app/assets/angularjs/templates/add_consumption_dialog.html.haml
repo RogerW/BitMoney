@@ -1,0 +1,40 @@
+%md-dialog{"aria-label" => "Расход", 'flex'=>80}
+  %md-content.sticky-container
+    %md-subheader.md-sticky-no-effect{'md-theme' => "redTheme"}
+      %i.fa.fa-lg.fa-minus-circle
+      Расход
+    .dialog-content{"layout"=>"row", "layout-padding" => true, "layout-margin" => true}
+      .consumptions__fields{flex:true}
+        %form{name:"add_consumption"}
+          .form__line{layout:"row", 'ng-show' => 'showAccountSelect()'}
+            %md-select{'ng-model' => 'account', placeholder:"Выберите счет", 'md-on-open' => 'loadAccounts()'}
+              %md-option{'ng-repeat'=>'acc in accounts', 'ng-value' => 'acc.id'} {{acc.title}}
+          .form__line{layout:"row", flex:true}
+            %md-select{'ng-model' => 'account_add_consumption.consumption_type_id', placeholder:"*Укажите тип расходов", 'md-on-open' => 'loadConsumptionTypes()', required:true, flex:true}
+              %md-select-label {{show_consumption()}}
+              %md-option{'ng-repeat'=>'consumptionType in consumptionTypes', 'ng-value' => 'consumptionType.id'}
+                %div{layout:"row", "layout-align" => "center center"}
+                  %ng-md-icon{:icon => "consumptionType.icon", :size => "24"}
+                  {{consumptionType.title}}
+          .form__line{layout:"row"}
+            %md-input-container{flex:true}
+              %label *Сумма
+              %input{type:"number", step:"0.01", name:"amount", 'ng-model' => "account_add_consumption.amount", required:true, min:"0.01"}
+                %div{'ng-messages'=>'add_consumption.amount.$error', 'ng-show' => 'add_consumption.amount.$touched'}
+                  %div{'ng-message'=>"required", 'ng-show' => 'add_consumption.amount.$error.required'} Укажите сумму!
+                  %div{'ng-message'=>"min", 'ng-show' => 'add_consumption.amount.$error.min'} Должно быль болше 0.01!
+            %md-input-container{flex:true}
+              %label Комментарий
+              %input{'md-maxlength'=>"120", name:"note", 'ng-model'=>"account_add_consumption.note"}
+                %div{'ng-messages'=>'add_consumption.note.$error', 'ng-show' => 'add_consumption.note.$touched'}
+                  %div{'ng-message'=>"md-maxlength", 'ng-show' => 'add_consumption.note.$error.md-maxlength'} Слишком длинный комментарий!
+            %input{type:"hidden", 'ng-model' => 'account'}
+      .consumptions__foto{flex:true}
+  .md-actions{:layout => "row"}
+    %span{:flex => ""}
+    %md-button{"ng-click" => "cancel()"}
+      Отменить
+    %md-button.md-primary{"ng-click" => "create()", 'ng-disabled'=>"add_consumption.$invalid"}
+      Сохранить
+    %md-button.md-warn{"ng-click" => "delete()", 'ng-if' => 'account_add_consumption.id'}
+      Удалить
