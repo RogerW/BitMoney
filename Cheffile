@@ -1,0 +1,9 @@
+site "http://community.opscode.com/api/v1"
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'sqlite', '~> 1.1.0'
+cookbook 'ruby_build'
+cookbook 'rbenv'
+cookbook 'nodejs'
+cookbook 'vim'
