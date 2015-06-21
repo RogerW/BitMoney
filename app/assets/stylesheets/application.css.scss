@@ -15,6 +15,9 @@
  
  @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
+ 
+ @import "angular-material/angular-material.css";
+ @import "font-awesome/css/font-awesome.css";
 
 
 html, body {
@@ -27,46 +30,25 @@ html, body {
   -webkit-touch-callout: none;
 }
 
-core-scaffold {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+.header__block {
+  height:80px;
 }
 
-core-icon {
-  display: inline-block;
-  vertical-align: middle;
-  background-repeat: no-repeat;
-  fill: currentcolor;
-  position: relative;
-  height: 24px;
-  width: 24px;
+.header__logo {
+  font-size: 2rem;
+  color: #222;
+  text-decoration: none;
+  font-family: 'Kaushan Script', sans-serif;
 }
 
-.scaffold__main {
-  padding: 1rem;
-}
-
-.content {
-  background-color: #fff;
-  height: 5000px;
-  padding: 20px;
-}
-
-/* some default styles for mode="cover" on core-scaffold */
-core-scaffold[mode=cover]::shadow core-header-panel::shadow #mainContainer {
-  left: 120px;
-}
-
-core-scaffold[mode=cover] .content {
-  margin: 20px 100px 20px 0;
+.nav {
+  max-width: 1200px;
+  width: 100%;
 }
 
 .header__link {
-  text-decoration: none;
-  color: #222;
+  text-decoration:none;
+  color:white;
 }
 
 .present__block {

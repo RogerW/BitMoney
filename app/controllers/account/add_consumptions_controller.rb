@@ -16,8 +16,7 @@ class Account::AddConsumptionsController < ApplicationController
     end
   end
   
-  private
-
+  private 
   def build_add_counsumption
     @add_consumption ||= Account::AddConsumption.new(add_consumption_params)
   end
