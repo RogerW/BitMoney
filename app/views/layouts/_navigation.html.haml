@@ -9,7 +9,5 @@
       %md-button.md-primary.md-raised
         = link_to t(:sign_out_link), destroy_user_session_path, class: "header__link"
     - else
-      %md-button.md-primary.md-raised
-        = link_to t(:sign_in_link), new_user_session_path, class: "header__link"
-      %md-button.md-primary.md-raised
-        = link_to t(:sign_up_link), new_user_registration_path, class: "header__link"
+      %md-button.md-primary.md-raised{'href' => new_user_session_path}= t(:sign_in_link)
+      %md-button.md-primary.md-raised{'href' => new_user_registration_path}= t(:sign_up_link)

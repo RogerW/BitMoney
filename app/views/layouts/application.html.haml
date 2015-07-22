@@ -6,7 +6,6 @@
     %title= content_for?(:title) ? yield(:title) : 'MoneyBit.me'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'MoneyBit'}"}
     %meta{itemprop:"brand", content:"MoneyBit"}
-    = google_webfonts_init({google: [ 'Kaushan Script']})
 
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
@@ -16,4 +15,6 @@
     = render "layouts/navigation"
 
     = yield
+    
+    = render "layouts/footer"
 

@@ -5,6 +5,7 @@ asset 'angular-mocks'
 asset 'angular-animate'
 asset 'angular-aria'
 asset 'angular-material', 'v0.9.0'
+asset 'angular-devise'
 asset 'font-awesome'
 asset 'ng-mfb'
 

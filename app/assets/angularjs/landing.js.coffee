@@ -1,4 +1,4 @@
-@App = angular.module('MoneyBit', [ 'ngMaterial'])
+@App = angular.module('MoneyBit', [ 'ngMaterial', 'Devise'])
 
 #@App.config ($mdGestureProvider) ->
 #	$mdGestureProvider.skipClickHijack()

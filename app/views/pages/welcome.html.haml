@@ -1,11 +1,37 @@
-.present__block
+.present__block{'md-theme' => "greenTheme"}
 	.present__container
-		.present__main
+		.present__main{layout:"column", "layout-align" => "center center"}
 			.present__slogan
 				%h1 Простой способ учета и планирования Ваших финансов
 				%h2 Начните учет ваших финансов прямо сейчас, и вы очень быстро поймете куда утекают ваши деньги.
 			.present__registry
 				%p Зарегистрируйтесь сейчас!
-				%paper-button.present__registry-button{raised:true}
-					= link_to t(:sign_up_link), new_user_registration_path, class: "present__registry-link"
-.about__block
+				%md-button.md-primary.md-raised{'href' => new_user_registration_path, layout:"column", "layout-align" => "center center"}= t(:sign_up_link)
+.about__block{layout:"row", "layout-align"=>"center center"}
+	.about__container
+		%h3 Комплексный учет ваших расходов и доходов. Постановка целей. Анализ.
+.promo__block{layout:"column", "layout-align" => "center center"}
+	.promo__container{layout:"column", "layout-align" => "center center"}
+		.promo__header-1
+			%h2 Сделайте учет ваших финансов простым и удобным.
+		%hr
+	.promo__container{layout:"row", 'layout-margin' => true, 'layout-fill' => true, 'layout-padding' => true}
+		.promo__image{layout:"row", 'layout-align' => "end center", flex:true}
+			%img{src:"https://dummyimage.com/300x200"}
+		.promo__text{flex:true}
+			%h2 Вы всегда будете знать сколько у вас сейчас денег.
+			%p Положением дел своё слово работать. Свои обещания, держать своё слово, работать честно, благородно вести себя по карьерной. Предпринимателем и изворотливости, которые прожили богатую жизнь, – даёт повод. Научитесь или мало чего достигнете успеха.
+			%md-button.md-primary.md-raised{'href' => new_user_registration_path, layout:"column", "layout-align" => "center center"}= t(:sign_up_link)
+	%hr.promo__splitter
+	.promo__container{layout:"row", 'layout-margin' => true, 'layout-fill' => true, 'layout-padding' => true}
+		.promo__text{flex:true}
+			%h2 Даем ответ на вопрос "Куда утекают мои деньги?"
+			%p Товарищи! укрепление и развитие структуры обеспечивает широкому кругу (специалистов) участие в формировании дальнейших направлений развития. Повседневная практика показывает, что консультация с широким активом способствует подготовки и реализации позиций, занимаемых участниками в отношении поставленных задач.
+			%md-button.md-primary.md-raised{'href' => new_user_registration_path, layout:"column", "layout-align" => "center center"}= t(:sign_up_link)
+		.promo__image{layout:"row", 'layout-align' => "start center", flex:true}
+			%img{src:"https://dummyimage.com/300x200"}
+.bottom__block{layout:"column", 'layout-align' => "center center"}
+	.bottom__container{'md-theme' => "greenTheme"}
+		%h2 Зарегистрируйтесь сейчас!
+		%md-button.md-primary.md-raised{'href' => new_user_registration_path, layout:"column", "layout-align" => "center center"}= t(:sign_up_link)
+			

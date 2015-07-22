@@ -15,69 +15,16 @@
  
  @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700,400&subset=cyrillic-ext,cyrillic,latin);
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400&subset=cyrillic,latin);
+ @import url(http://fonts.googleapis.com/css?family=Kaushan+Script);
  
  @import "angular-material/angular-material.css";
  @import "font-awesome/css/font-awesome.css";
 
-
-html, body {
-  height: 100%;
-  margin: 0;
-//  font-family: 'Roboto Slab', serif;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14pt;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-touch-callout: none;
-}
-
-.header__block {
-  height:80px;
-}
-
-.header__logo {
-  font-size: 2rem;
-  color: #222;
-  text-decoration: none;
-  font-family: 'Kaushan Script', sans-serif;
-}
-
-.nav {
-  max-width: 1200px;
-  width: 100%;
-}
-
-.header__link {
-  text-decoration:none;
-  color:white;
-}
-
-.present__block {
-  text-align: center;
-  background-image: asset_url("landing-bg.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  border-bottom: 1px solid #ffffff;
-  max-height: 500px;
-  height: 100%;
-  position: relative;
-  z-index: 3;
-  width: 100%;
-}
-
-.present__container {
-  margin-left: auto;
-  margin-right: auto;
-  height: inherit;
-  max-width: 860px;
-  position: relative;
-  width: 100%;
-  display: table;
-}
-
-.present__main {
-  display: table-cell;
-  vertical-align: middle;
-}
+ @import "base/variables";
+ @import "style/global";
+ @import "style/landing";
+ @import "style/navigation";
+ 
 
 .login__box {
   min-height: 500px;
@@ -102,44 +49,37 @@ app-signin {
   vertical-align: middle;
 }
 
-.present__slogan > h1 {
-  color: #ffffff;
-  font-family: 'Roboto Slab', serif;
-  font-size: 2.5rem;
-}
+
 
 hr {
   border: none; /* Убираем границу */
-  background-color: #273333; /* Цвет линии */
-  color: #273333; /* Цвет линии для IE6-7 */
+  background-color: $color_text_dark; /* Цвет линии */
+  color: $color_text_dark; /* Цвет линии для IE6-7 */
   height: 1px; /* Толщина линии */
 }
 
-.present__slogan > h2 {
-  color: #FBCA54;
-//  font-family: 'Roboto Slab', serif;
-  font-size: 1.5rem;
-}
-
-.present__registry > p {
-  font-size: 0.8rem;
-  color: #ffffff;
-}
-
-paper-button[raised].present__registry-button {
-  background: #7CA668;
-  color: #fff;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .present__registry-link {
-  color: #fff;
+  color: $color_text_light;
   text-decoration: none;
 }
 
-.about__block {
-  height: 300px;
-  background-color: #273333;
-  width: 100%;
+.footer__block {
+  height: 85px;
+}
+
+.footer_container{
+  max-width: 1200px;
+  width:100%;
+  
+  h2 {
+    font-size: $font_size_small_text;
+    color: rgba($color_text_dark, 0.4);
+    margin-right: 1rem;
+  }
+  
+  a {
+    margin: 0 0.4rem;
+    font-size: $font_size_small_text;
+    text-decoration: none;
+  }
 }

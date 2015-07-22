@@ -8,6 +8,7 @@
     "angular-animate": "latest",
     "angular-aria": "latest",
     "angular-material": "v0.9.0",
+    "angular-devise": "latest",
     "font-awesome": "latest",
     "ng-mfb": "latest",
     "angular-material-icons": "latest",
