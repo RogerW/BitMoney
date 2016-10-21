@@ -1,1 +1,1 @@
-Roger_Wilco
+Simple money management system
